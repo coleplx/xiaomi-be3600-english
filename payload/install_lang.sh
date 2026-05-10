@@ -52,6 +52,16 @@ setup_overlay() {
     fi
 }
 
+# Phase 2.5: Patch templates (wrap unwrapped Chinese in <%: %>)
+patch_templates() {
+    log "Patching templates..."
+    if [ -f "$PATCH_DIR/patch_templates.sh" ]; then
+        PATCH_DIR="$PATCH_DIR/luci/view/web" sh "$PATCH_DIR/patch_templates.sh"
+    else
+        log "patch_templates.sh not found, skipping"
+    fi
+}
+
 # Phase 3: Install LMO files
 install_lmo() {
     log "Installing LMO files..."
@@ -82,6 +92,10 @@ register_lang() {
     # Apply language setting
     uci set luci.main.lang='en'
     uci commit luci
+
+    # Set default room name to English
+    uci set xiaoqiang.common.ROUTER_LOCALE='Home'
+    uci commit xiaoqiang 2>/dev/null
 }
 
 # Phase 5: Persistence (survive reboots)
@@ -130,6 +144,10 @@ if ! uci get luci.languages.en > /dev/null 2>&1; then
     uci set luci.languages.en='English'
     uci commit luci
 fi
+
+# Set default room name to English
+CURRENT_LOCALE=$(uci get xiaoqiang.common.ROUTER_LOCALE 2>/dev/null)
+[ "$CURRENT_LOCALE" = "家" ] && uci set xiaoqiang.common.ROUTER_LOCALE='Home' && uci commit xiaoqiang
 PATCH_EOF
 
     chmod +x "$PATCH_SCRIPT"
@@ -154,6 +172,7 @@ PATCH_EOF
 log "=== Xiaomi BE3600 Language Install ==="
 do_backup
 setup_overlay
+patch_templates
 install_lmo
 register_lang
 setup_persistence

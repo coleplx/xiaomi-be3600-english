@@ -4820,3 +4820,12 @@ msgstr "Some older devices do not support Wi-Fi 6 protocol well and may not be a
 
 msgid "当前系统时间："
 msgstr "Current System Time:"
+
+msgid "搜索并添加Mesh节点"
+msgstr "Search and add Mesh Node"
+
+msgid "搜索并添加Mesh节点时，请先到Wi-Fi设置页面，开启5G Wi-Fi。"
+msgstr "Before searching and adding Mesh nodes, please go to Wi-Fi settings and enable 5G Wi-Fi."
+
+msgid "去开启"
+msgstr "Enable"

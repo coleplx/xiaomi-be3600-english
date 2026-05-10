@@ -39,6 +39,9 @@ do_upload() {
     # Upload install script
     $SCP_CMD "$SCRIPT_DIR/payload/install_lang.sh" "${ROUTER_USER}@${ROUTER_IP}:/data/lang_patch/"
 
+    # Upload template patcher
+    $SCP_CMD "$SCRIPT_DIR/payload/patch_templates.sh" "${ROUTER_USER}@${ROUTER_IP}:/data/lang_patch/"
+
     log "Upload complete."
 }
 
