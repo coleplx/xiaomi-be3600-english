@@ -1,0 +1,4822 @@
+# Xiaomi BE3600 English Translation
+# msgstr "" = untranslated (Chinese shown as-is)
+# Fill in English translations between the quotes on msgstr lines
+#
+
+msgid "(UTC)协调世界时"
+msgstr "(UTC) Coordinated Universal Time"
+
+msgid "(UTC)卡萨布兰卡"
+msgstr "(UTC) Casablanca"
+
+msgid "(UTC)蒙罗维亚,雷克雅未克"
+msgstr "(UTC) Monrovia, Reykjavik"
+
+msgid "(UTC)都柏林,爱丁堡,里斯本,伦敦"
+msgstr "(UTC) Dublin, Edinburgh, Lisbon, London"
+
+msgid "(UTC+1)中非西部"
+msgstr "(UTC+1) West Central Africa"
+
+msgid "(UTC+1)布鲁塞尔,哥本哈根,马德里,巴黎"
+msgstr "(UTC+1) Brussels, Copenhagen, Madrid, Paris"
+
+msgid "(UTC+1)温得和克"
+msgstr "(UTC+1) Windhoek"
+
+msgid "(UTC+1)萨拉热窝,斯科普里,华沙,萨格勒布"
+msgstr "(UTC+1) Sarajevo, Skopje, Warsaw, Zagreb"
+
+msgid "(UTC+1)贝尔格莱德,布拉迪斯拉发,布达佩斯,卢布尔雅那"
+msgstr "(UTC+1) Belgrade, Bratislava, Budapest, Ljubljana"
+
+msgid "(UTC+1)阿姆斯特丹,柏林,伯尔尼,罗马,斯德歌尔摩,维也纳"
+msgstr "(UTC+1) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna"
+
+msgid "(UTC+10)关岛,莫尔兹比港"
+msgstr "(UTC+10) Guam, Port Moresby"
+
+msgid "(UTC+10)堪培拉,墨尔本,悉尼"
+msgstr "(UTC+10) Canberra, Melbourne, Sydney"
+
+msgid "(UTC+10)布里斯班"
+msgstr "(UTC+10) Brisbane"
+
+msgid "(UTC+10)雅库茨克"
+msgstr "(UTC+10) Yakutsk"
+
+msgid "(UTC+10)霍巴特"
+msgstr "(UTC+10) Hobart"
+
+msgid "(UTC+10:30)澳大利亚远东标准时间"
+msgstr "(UTC+10:30) Australian Far East Standard Time"
+
+msgid "(UTC+11)所罗门群岛,新喀里多尼亚"
+msgstr "(UTC+11) Solomon Islands, New Caledonia"
+
+msgid "(UTC+11)符拉迪沃斯托克"
+msgstr "(UTC+11) Vladivostok"
+
+msgid "(UTC+11:30)诺福克岛标准时间"
+msgstr "(UTC+11:30) Norfolk Island Standard Time"
+
+msgid "(UTC+12)协调世界时+12"
+msgstr "(UTC+12) UTC+12"
+
+msgid "(UTC+12)奥克兰,惠灵顿"
+msgstr "(UTC+12) Auckland, Wellington"
+
+msgid "(UTC+12)斐济"
+msgstr "(UTC+12) Fiji"
+
+msgid "(UTC+12)马加丹"
+msgstr "(UTC+12) Magadan"
+
+msgid "(UTC+12:45)查塔姆群岛标准时间"
+msgstr "(UTC+12:45) Chatham Islands Standard Time"
+
+msgid "(UTC+13)努库阿洛法"
+msgstr "(UTC+13) Nuku'alofa"
+
+msgid "(UTC+14)基里巴斯"
+msgstr "(UTC+14) Kiribati"
+
+msgid "(UTC+2)伊斯坦布尔"
+msgstr "(UTC+2) Istanbul"
+
+msgid "(UTC+2)哈拉雷,比勒陀利亚"
+msgstr "(UTC+2) Harare, Pretoria"
+
+msgid "(UTC+2)大马士革"
+msgstr "(UTC+2) Damascus"
+
+msgid "(UTC+2)安曼"
+msgstr "(UTC+2) Amman"
+
+msgid "(UTC+2)开罗"
+msgstr "(UTC+2) Cairo"
+
+msgid "(UTC+2)明斯克"
+msgstr "(UTC+2) Minsk"
+
+msgid "(UTC+2)耶路撒冷"
+msgstr "(UTC+2) Jerusalem"
+
+msgid "(UTC+2)贝鲁特"
+msgstr "(UTC+2) Beirut"
+
+msgid "(UTC+2)赫尔辛基,基辅,里加,索非亚,塔林,维尔纽斯"
+msgstr "(UTC+2) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
+
+msgid "(UTC+2)雅典,布加勒斯特"
+msgstr "(UTC+2) Athens, Bucharest"
+
+msgid "(UTC+3)内罗毕"
+msgstr "(UTC+3) Nairobi"
+
+msgid "(UTC+3)加里宁格勒"
+msgstr "(UTC+3) Kaliningrad"
+
+msgid "(UTC+3)巴格达"
+msgstr "(UTC+3) Baghdad"
+
+msgid "(UTC+3)科威特,利雅得"
+msgstr "(UTC+3) Kuwait, Riyadh"
+
+msgid "(UTC+3:30)德黑兰"
+msgstr "(UTC+3:30) Tehran"
+
+msgid "(UTC+4)埃里温"
+msgstr "(UTC+4) Yerevan"
+
+msgid "(UTC+4)巴库"
+msgstr "(UTC+4) Baku"
+
+msgid "(UTC+4)第比利斯"
+msgstr "(UTC+4) Tbilisi"
+
+msgid "(UTC+4)莫斯科,圣彼得堡,伏尔加格勒"
+msgstr "(UTC+4) Moscow, St. Petersburg, Volgograd"
+
+msgid "(UTC+4)路易港"
+msgstr "(UTC+4) Port Louis"
+
+msgid "(UTC+4)阿布扎比,马斯喀特"
+msgstr "(UTC+4) Abu Dhabi, Muscat"
+
+msgid "(UTC+4:30)喀布尔"
+msgstr "(UTC+4:30) Kabul"
+
+msgid "(UTC+5)伊斯兰堡,卡拉奇"
+msgstr "(UTC+5) Islamabad, Karachi"
+
+msgid "(UTC+5)塔什干"
+msgstr "(UTC+5) Tashkent"
+
+msgid "(UTC+5:30)斯里加亚渥登普拉"
+msgstr "(UTC+5:30) Sri Jayawardenepura"
+
+msgid "(UTC+5:30)钦奈,加尔各答,孟买,新德里"
+msgstr "(UTC+5:30) Chennai, Kolkata, Mumbai, New Delhi"
+
+msgid "(UTC+5:45)加德满都"
+msgstr "(UTC+5:45) Kathmandu"
+
+msgid "(UTC+6)叶卡捷琳堡"
+msgstr "(UTC+6) Yekaterinburg"
+
+msgid "(UTC+6)达卡"
+msgstr "(UTC+6) Dhaka"
+
+msgid "(UTC+6)阿斯塔纳"
+msgstr "(UTC+6) Astana"
+
+msgid "(UTC+6:30)仰光"
+msgstr "(UTC+6:30) Yangon"
+
+msgid "(UTC+7)新西伯利亚"
+msgstr "(UTC+7) Novosibirsk"
+
+msgid "(UTC+7)曼谷,河内,雅加达"
+msgstr "(UTC+7) Bangkok, Hanoi, Jakarta"
+
+msgid "(UTC+8)乌兰巴托"
+msgstr "(UTC+8) Ulaanbaatar"
+
+msgid "(UTC+8)克拉斯诺亚尔斯克"
+msgstr "(UTC+8) Krasnoyarsk"
+
+msgid "(UTC+8)北京,重庆,香港特别行政区,乌鲁木齐"
+msgstr "(UTC+8) Beijing, Chongqing, Hong Kong SAR, Urumqi"
+
+msgid "(UTC+8)台北"
+msgstr "(UTC+8) Taipei"
+
+msgid "(UTC+8)吉隆坡,新加坡"
+msgstr "(UTC+8) Kuala Lumpur, Singapore"
+
+msgid "(UTC+8)珀斯"
+msgstr "(UTC+8) Perth"
+
+msgid "(UTC+8:30)朝鲜标准时间"
+msgstr "(UTC+8:30) North Korea Standard Time"
+
+msgid "(UTC+9)伊尔库茨克"
+msgstr "(UTC+9) Irkutsk"
+
+msgid "(UTC+9)大阪,札幌,东京"
+msgstr "(UTC+9) Osaka, Sapporo, Tokyo"
+
+msgid "(UTC+9)首尔"
+msgstr "(UTC+9) Seoul"
+
+msgid "(UTC+9:30)达尔文"
+msgstr "(UTC+9:30) Darwin"
+
+msgid "(UTC+9:30)阿德莱德"
+msgstr "(UTC+9:30) Adelaide"
+
+msgid "(UTC-1)亚速尔群岛"
+msgstr "(UTC-1) Azores"
+
+msgid "(UTC-1)佛得角群岛"
+msgstr "(UTC-1) Cape Verde Islands"
+
+msgid "(UTC-10)夏威夷"
+msgstr "(UTC-10) Hawaii"
+
+msgid "(UTC-11)协调世界时"
+msgstr "(UTC-11) Coordinated Universal Time"
+
+msgid "(UTC-11)萨摩亚群岛"
+msgstr "(UTC-11) Samoa"
+
+msgid "(UTC-12)国际日期变更线西"
+msgstr "(UTC-12) International Date Line West"
+
+msgid "(UTC-2)中大西洋"
+msgstr "(UTC-2) Mid-Atlantic"
+
+msgid "(UTC-2)协调世界时-02"
+msgstr "(UTC-2) UTC-02"
+
+msgid "(UTC-3)卡宴,福塔雷萨"
+msgstr "(UTC-3) Cayenne, Fortaleza"
+
+msgid "(UTC-3)巴西利亚"
+msgstr "(UTC-3) Brasilia"
+
+msgid "(UTC-3)布宜诺斯艾利斯"
+msgstr "(UTC-3) Buenos Aires"
+
+msgid "(UTC-3)格陵兰"
+msgstr "(UTC-3) Greenland"
+
+msgid "(UTC-3)蒙得维的亚"
+msgstr "(UTC-3) Montevideo"
+
+msgid "(UTC-3:30)纽芬兰"
+msgstr "(UTC-3:30) Newfoundland"
+
+msgid "(UTC-4)乔治敦,拉巴斯,马瑙斯,圣湖安"
+msgstr "(UTC-4) Georgetown, La Paz, Manaus, San Juan"
+
+msgid "(UTC-4)亚松森"
+msgstr "(UTC-4) Asuncion"
+
+msgid "(UTC-4)圣地亚哥"
+msgstr "(UTC-4) Santiago"
+
+msgid "(UTC-4)大西洋时间(加拿大)"
+msgstr "(UTC-4) Atlantic Time (Canada)"
+
+msgid "(UTC-4)库亚巴"
+msgstr "(UTC-4) Cuiaba"
+
+msgid "(UTC-4:30)加拉加斯"
+msgstr "(UTC-4:30) Caracas"
+
+msgid "(UTC-5)东部时间(美国和加拿大)"
+msgstr "(UTC-5) Eastern Time (US & Canada)"
+
+msgid "(UTC-5)印第安纳州(东部)"
+msgstr "(UTC-5) Indiana (East)"
+
+msgid "(UTC-5)波哥大,利马,基多"
+msgstr "(UTC-5) Bogota, Lima, Quito"
+
+msgid "(UTC-6)中美洲"
+msgstr "(UTC-6) Central America"
+
+msgid "(UTC-6)中部时间(美国和加拿大)"
+msgstr "(UTC-6) Central Time (US & Canada)"
+
+msgid "(UTC-6)瓜达拉哈拉,墨西哥城,蒙特雷"
+msgstr "(UTC-6) Guadalajara, Mexico City, Monterrey"
+
+msgid "(UTC-6)萨斯克彻温"
+msgstr "(UTC-6) Saskatchewan"
+
+msgid "(UTC-7)亚利桑那"
+msgstr "(UTC-7) Arizona"
+
+msgid "(UTC-7)奇瓦瓦,拉巴斯,马萨特兰"
+msgstr "(UTC-7) Chihuahua, La Paz, Mazatlan"
+
+msgid "(UTC-7)山地时间(美国和加拿大)"
+msgstr "(UTC-7) Mountain Time (US & Canada)"
+
+msgid "(UTC-8)下加利福尼亚州"
+msgstr "(UTC-8) Baja California"
+
+msgid "(UTC-8)太平洋时间(美国和加拿大)"
+msgstr "(UTC-8) Pacific Time (US & Canada)"
+
+msgid "(UTC-9)阿拉斯加"
+msgstr "(UTC-9) Alaska"
+
+msgid "(UTC-9:30)马克萨斯群岛标准时间"
+msgstr "(UTC-9:30) Marquesas Islands Standard Time"
+
+msgid "* 推荐使用如下型号的SFP+模块："
+msgstr "* Recommended SFP+ module models:"
+
+msgid "*2.5G口不支持设定为游戏网口"
+msgstr "*The 2.5G port does not support being set as a gaming port"
+
+msgid "*注：在创建虚拟内存过程中若Docker服务正在运行，Docker服务将会被重启。在虚拟内存使用过程中，请勿直接拔出磁盘，如需拔出磁盘，请使用安全移除磁盘功能。"
+msgstr "*Note: If the Docker service is running during virtual memory creation, it will be restarted. Do not unplug the disk while virtual memory is in use; use the 'Safely Remove Disk' function instead."
+
+msgid "*注：部分设备在Samba访问时需要额外的网络凭据，请尝试在用户名输入栏处输入guest，密码输入栏留空尝试连接。如问题仍无法解决，请联系客服处理。"
+msgstr "*Note: Some devices require extra network credentials for Samba access. Try 'guest' as the username and leave the password blank. If the issue persists, contact customer service."
+
+msgid "*请确保此路由器处于未配置状态，如已配置请长按Reset按键5秒以上进行重置"
+msgstr "*Please ensure this router is unconfigured. If already configured, press and hold Reset for over 5 seconds to reset."
+
+msgid ", 等待自动跳转... 用时{$time}秒"
+msgstr ", waiting for automatic redirect... Time taken: {$time}s"
+
+msgid "-- Please choose --"
+msgstr "-- Please choose --"
+
+msgid "-- custom --"
+msgstr "-- custom --"
+
+msgid "-DHCP静态IP分配"
+msgstr "- DHCP Static IP Assignment"
+
+msgid "-DMZ主机设置"
+msgstr "- DMZ Host Settings"
+
+msgid "-局域网默认网关"
+msgstr "- LAN Default Gateway"
+
+msgid "-端口转发"
+msgstr "- Port Forwarding"
+
+msgid "1. Auto模式：智能配置此路由器IPv6网络为Passthough/ Native / NAT 6 ，推荐选择此配置方式；"
+msgstr "1. Auto Mode: Automatically configures IPv6 as Passthrough / Native / NAT 6. Recommended."
+
+msgid "1. Qos设置；"
+msgstr "1. QoS Settings;"
+
+msgid "1. 到相应终端制造商官网下载更新驱动；"
+msgstr "1. Download driver updates from the terminal manufacturer's website;"
+
+msgid "1. 当前无线网络名称为"
+msgstr "1. Current wireless network name is"
+
+msgid "1. 自动模式（推荐）"
+msgstr "1. Auto Mode (Recommended)"
+
+msgid "1. 通过DDNS服务商获得域名及账号密码信息；"
+msgstr "1. Obtain domain name and account info from the DDNS provider;"
+
+msgid "1.VPN用户名、密码、服务器地址、协议类型等信息需要向VPN服务商获取。"
+msgstr "1. Obtain VPN username, password, server address, and protocol from the provider."
+
+msgid "1.创建期间请勿断电或拔插存储设备;"
+msgstr "1. Do not power off or unplug storage devices during creation;"
+
+msgid "1.单击安装第三方管理按钮，此时会进行第三方管理工具的安装；"
+msgstr "1. Click the 'Install Third-Party Management' button to start installation;"
+
+msgid "1.如果您已开启访客wifi，切换为无线中继模式后，访客wifi将会关闭"
+msgstr "1. If Guest Wi-Fi is enabled, it will be turned off after switching to Wireless Relay mode."
+
+msgid "1.恢复出厂设置操作会抹掉当前路由器的所有设置；"
+msgstr "1. Factory reset will erase all current router settings;"
+
+msgid "1.请确保小米路由器的WAN口与旧路由器通过网线连接"
+msgstr "1. Ensure the Xiaomi router's WAN port is connected to the old router via Ethernet."
+
+msgid "1.首先需要在VPN服务商官网上注册账号，获得用户名、密码、服务器地址、协议类型等信息。"
+msgstr "1. Register on the VPN provider's website to obtain account details."
+
+msgid "10000M"
+msgstr "10000M"
+
+msgid "10000M/5000M/2500M/1000M/100M自动协商（推荐）"
+msgstr "10000M/5000M/2500M/1000M/100M Auto-negotiation (Recommended)"
+
+msgid "1000M"
+msgstr "1000M"
+
+msgid "1000M/100M自动协商（推荐）"
+msgstr "1000M/100M Auto-negotiation (Recommended)"
+
+msgid "100M"
+msgstr "100M"
+
+msgid "1024MB"
+msgstr "1024MB"
+
+msgid "10G光模块："
+msgstr "10G Optical Module:"
+
+msgid "10G模式"
+msgstr "10G Mode"
+
+msgid "10G电模块："
+msgstr "10G Electrical Module:"
+
+msgid "11a only"
+msgstr "11a only"
+
+msgid "11a/an/ac mixed"
+msgstr "11a/an/ac mixed"
+
+msgid "11an only"
+msgstr "11an only"
+
+msgid "11b only"
+msgstr "11b only"
+
+msgid "11b/g mixed"
+msgstr "11b/g mixed"
+
+msgid "11b/g/n mixed"
+msgstr "11b/g/n mixed"
+
+msgid "11g only"
+msgstr "11g only"
+
+msgid "11n only"
+msgstr "11n only"
+
+msgid "128MB"
+msgstr "128MB"
+
+msgid "160/80/40/20MHz"
+msgstr "160/80/40/20MHz"
+
+msgid "160MHz频宽只适用于36至64信道，系统将自动为您切换至36信道"
+msgstr "160MHz bandwidth only applies to channels 36-64; the system will automatically switch to channel 36."
+
+msgid "160MHz频宽只适用于36至64信道，系统将自动为您切换至80MHz频宽"
+msgstr "160MHz bandwidth only applies to channels 36-64; the system will switch to 80MHz bandwidth."
+
+msgid "1G模式"
+msgstr "1G Mode"
+
+msgid "1G电模块："
+msgstr "1G Electrical Module:"
+
+msgid "1、DHCP 服务器：开启后，小米路由可以自动向您的接入设备分配 IP 地址、DNS 服务器地址等网络参数，并通过此功能实现 IP 地址的集中管理；关闭后，小米路由将不为您的计算机自动分配 IP 地址、DNS 服务器地址等网络参数，当另一台路由器通过 Wi-Fi 中继方式连接此路由器时，中继连接将会失败。"
+msgstr "1. DHCP Server: When enabled, the router automatically assigns IP and DNS addresses to devices for centralized management. If disabled, parameters must be set manually, and Wi-Fi relay connections from other routers will fail."
+
+msgid "1、将未配置过的子路由WAN口与主路由LAN口通过网线连接"
+msgstr "1. Connect the WAN port of an unconfigured sub-router to the LAN port of the main router via Ethernet."
+
+msgid "1、将未配置过的路由器作为子路由，放置在需要Wi-Fi信号覆盖的房间 （如已配置请长按Reset按键5秒以上进行重置）"
+msgstr "1. Place an unconfigured router in the room needing coverage (Reset if already configured)."
+
+msgid "1、局域网IP地址管理栏中，选择255.255.0.0掩码段。"
+msgstr "1. In LAN IP management, select the 255.255.0.0 subnet mask."
+
+msgid "2. DHCPv6：此模式会根据NAT 6方式采用情况动态配置IPv6上网方式；"
+msgstr "2. DHCPv6: Dynamically configures IPv6 based on NAT 6 usage;"
+
+msgid "2. VPN服务与智能VPN分流。"
+msgstr "2. VPN service and Intelligent VPN routing."
+
+msgid "2. 固定速率模式"
+msgstr "2. Fixed Speed Mode"
+
+msgid "2. 开启DDNS服务，添加服务，输入前一步获取的信息，保存并启用该服务。"
+msgstr "2. Enable DDNS, add service, enter the details, and save to activate."
+
+msgid "2. 当前小米路由器的IP地址为"
+msgstr "2. The current Xiaomi router IP address is"
+
+msgid "2. 若最新驱动仍无法解决兼容性问题，建议先关闭该功能。"
+msgstr "2. If the latest drivers don't fix compatibility issues, disable this feature."
+
+msgid "2.4G Wi-Fi"
+msgstr "2.4G Wi-Fi"
+
+msgid "2.4G 漫游"
+msgstr "2.4G Roaming"
+
+msgid "2.4G 选项"
+msgstr "2.4G Options"
+
+msgid "2.4GHz 连网设备"
+msgstr "2.4GHz Connected Devices"
+
+msgid "2.4GHz 选项"
+msgstr "2.4GHz Options"
+
+msgid "2.4GHz连网设备"
+msgstr "2.4GHz Connected Devices"
+
+msgid "2.5G模式"
+msgstr "2.5G Mode"
+
+msgid "2.使用过程中，如需拔出磁盘请使用安全移除磁盘功能，强行拔出可能会导致路由器工作异常甚至重启;"
+msgstr "2. Use 'Safely Remove Disk' before unplugging; forced removal may cause malfunctions or reboots;"
+
+msgid "2.切换为无线中继模式后，Mesh功能将不可用"
+msgstr "2. After switching to Wireless Relay mode, Mesh functionality will be unavailable."
+
+msgid "2.将信息添加到服务中，并启用该VPN服务"
+msgstr "2. Add info to the service and enable the VPN service."
+
+msgid "2.旧路由器与小米路由处于同一局域网中，可以互访"
+msgstr "2. The old and Xiaomi routers are on the same LAN and can access each other."
+
+msgid "2.服务器地址可以是域名或IP地址，具体由服务商提供。"
+msgstr "2. Server address can be a domain or IP, provided by the service provider."
+
+msgid "2.管理工具安装成功后，单击管理Docker按钮，网页会跳转至第三方管理工具，此页面集成了容器、镜像的基本操作功能和信息展示、管理等功能。"
+msgstr "2. After installation, click 'Manage Docker' to open the third-party tool for managing containers and images."
+
+msgid "2.若此前已完成Mesh组网，子路由将会失去连接，待恢复出厂设置后需重新进行组网。"
+msgstr "2. If a Mesh network exists, sub-routers will disconnect and require re-pairing after a factory reset."
+
+msgid "20M"
+msgstr "20M"
+
+msgid "2500M"
+msgstr "2500M"
+
+msgid "2500M/1000M/100M自动协商（推荐）"
+msgstr "2500M/1000M/100M Auto-negotiation (Recommended)"
+
+msgid "255.255.0.0"
+msgstr "255.255.0.0"
+
+msgid "255.255.255.0"
+msgstr "255.255.255.0"
+
+msgid "256MB"
+msgstr "256MB"
+
+msgid "2、保存子网掩码配置，系统将自动重启并开启"
+msgstr "2. After saving, the system will restart and support up to "
+
+msgid "2、将子路由上电，启动完成后将自动进行组网，组网时子路由Internet指示灯快闪"
+msgstr "2. Power on the sub-router; it will pair automatically, with the Internet light flashing quickly."
+
+msgid "2、接通子路由电源，等待System指示灯变成蓝色或白色常亮（颜色取决于具体型号）"
+msgstr "2. Power on the sub-router and wait for the System light to stay blue or white."
+
+msgid "2、租期：IP 地址分配给局域网计算机以后，如果使用时间超过这个租期，小米路由将给计算机分配新的 IP 地址。"
+msgstr "2. Lease Time: After an IP is assigned, if this time is exceeded, the router will assign a new IP to the computer."
+
+msgid "3. PPPoEv6：此模式将默认复用IPv4拨号链路，也可以手动输入IPv6宽带账号密码手动配置；"
+msgstr "3. PPPoEv6: Defaults to reusing the IPv4 link, or you can enter IPv6 credentials manually;"
+
+msgid "3. 用miwifi.com也可以访问路由器管理页面"
+msgstr "3. miwifi.com can also be used to access the management page."
+
+msgid "3.中继模式下部分功能和插件将被屏蔽"
+msgstr "3. Some features and plugins are disabled in Relay mode."
+
+msgid "3.开启VPN功能后，游戏网口的优先转发特性将无法生效。"
+msgstr "3. When VPN is active, the gaming port's priority forwarding is disabled."
+
+msgid "3、点击开始搜索"
+msgstr "3. Click 'Start Search'"
+
+msgid "3、路由器局域网IP地址：登陆Web配置后台的地址。"
+msgstr "3. Router LAN IP: Address used to log in to the Web management backend."
+
+msgid "4. 静态IP模式：通过手动填写IPv6相关信息配置静态IPv6上网方式；"
+msgstr "4. Static IP Mode: Manually enter IPv6 details to configure static access;"
+
+msgid "40/20MHz"
+msgstr "40/20MHz"
+
+msgid "4、默认网关：路由器下接入设备的默认网关，默认是路由器内网IP。"
+msgstr "4. Default Gateway: The gateway for connected devices, usually the router's internal IP."
+
+msgid "5. Passthrogh：此模式透传IPv6数据，启用后相应数据将在路由器WAN侧和LAN侧之间点对点传输。"
+msgstr "5. Passthrough: Transparently passes IPv6 data point-to-point between WAN and LAN."
+
+msgid "5000M"
+msgstr "5000M"
+
+msgid "512MB"
+msgstr "512MB"
+
+msgid "5G Wi-Fi"
+msgstr "5G Wi-Fi"
+
+msgid "5G Wi-Fi启动失败，"
+msgstr "5G Wi-Fi failed to start,"
+
+msgid "5G Wi-Fi是运行在5GHz以上的高频段的独立Wi-Fi比较2.4G Wi-Fi速度更快更稳定，适合电视、盒子包括距离路由器较近的设备"
+msgstr "5G Wi-Fi operates on higher frequencies for faster, more stable speeds than 2.4G. Ideal for TVs, boxes, and nearby devices."
+
+msgid "5G 漫游"
+msgstr "5G Roaming"
+
+msgid "5G 选项"
+msgstr "5G Options"
+
+msgid "5GHz 连网设备"
+msgstr "5GHz Connected Devices"
+
+msgid "5GHz-Game 连网设备"
+msgstr "5GHz-Game Connected Devices"
+
+msgid "5GHz-Game 选项"
+msgstr "5GHz-Game Options"
+
+msgid "5GHz连网设备"
+msgstr "5GHz Connected Devices"
+
+msgid "5、静态 IP 地址绑定：通常您计算机的 IP 地址由路由器动态分配。如果您希望计算机拥有静态 IP 地址，您可以在静态 IP 地址绑定列表中手动添加您计算机的 MAC 地址和希望使用的静态 IP 地址。注意，静态 IP 地址需与路由器的局域网 IP 地址在同一网段。"
+msgstr "5. Static IP Binding: Manually link a MAC address to a specific IP. Note: The static IP must be in the same subnet as the router's LAN IP."
+
+msgid "80/40/20MHz"
+msgstr "80/40/20MHz"
+
+msgid "802.11k/v/r"
+msgstr "802.11k/v/r"
+
+msgid "AIoT智能天线自动扫描"
+msgstr "AIoT Smart Antenna Auto-scan"
+
+msgid "AIoT智能天线自动扫描功能可以自动发现未初始化的小米智能设备，通过米家APP快速入网。"
+msgstr "AIoT Auto-scan finds uninitialized Mi devices for quick pairing via the Mi Home App."
+
+msgid "ALL"
+msgstr "ALL"
+
+msgid "APN配置错误"
+msgstr "APN Config Error"
+
+msgid "Add"
+msgstr "Add"
+
+msgid "Add and edit..."
+msgstr "Add and edit..."
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "Auto Refresh"
+msgstr "Auto Refresh"
+
+msgid "CPE放置位置信号过差"
+msgstr "CPE signal is too weak in this location"
+
+msgid "CPU核心数"
+msgstr "CPU Core Count"
+
+msgid "Changes"
+msgstr "Changes"
+
+msgid "DDNS"
+msgstr "DDNS"
+
+msgid "DDNS（Dynamic Domain Name Server）是动态域名服务的缩写。"
+msgstr "DDNS stands for Dynamic Domain Name Server."
+
+msgid "DHCP服务"
+msgstr "DHCP Service"
+
+msgid "DHCP服务异常"
+msgstr "DHCP Service Error"
+
+msgid "DHCP服务没有响应"
+msgstr "DHCP Service No Response"
+
+msgid "DHCP选项"
+msgstr "DHCP Options"
+
+msgid "DHCP静态IP分配"
+msgstr "DHCP Static IP Assignment"
+
+msgid "DMZ IP地址"
+msgstr "DMZ IP Address"
+
+msgid "DMZ状态："
+msgstr "DMZ Status:"
+
+msgid "DNS"
+msgstr "DNS"
+
+msgid "DNS1"
+msgstr "DNS1"
+
+msgid "DNS2"
+msgstr "DNS2"
+
+msgid "DNS服务器无响应"
+msgstr "DNS Server Not Responding"
+
+msgid "DNS服务器无法服务，可以尝试自定义DNS解决（114.114.114.114, 114.114.115.115 国外8.8.8.8 8.8.4.4)"
+msgstr "DNS error. Try custom DNS: 114.114.114.114 or 8.8.8.8 (Intl)."
+
+msgid "DNS："
+msgstr "DNS:"
+
+msgid "DOCKER"
+msgstr "DOCKER"
+
+msgid "Destination zone"
+msgstr "Destination zone"
+
+msgid "Do not rewrite"
+msgstr "Do not rewrite"
+
+msgid "Docker卸载"
+msgstr "Uninstall Docker"
+
+msgid "Docker安装"
+msgstr "Install Docker"
+
+msgid "Docker安装成功后，需要通过安装第三方管理来对它进行使用和管理。"
+msgstr "After installing Docker, use a third-party management tool for control."
+
+msgid "Dyndns.com"
+msgstr "Dyndns.com"
+
+msgid "External port"
+msgstr "External port"
+
+msgid "External zone"
+msgstr "External zone"
+
+msgid "FTP"
+msgstr "FTP"
+
+msgid "Go to password configuration..."
+msgstr "Go to password configuration..."
+
+msgid "H.323"
+msgstr "H.323"
+
+msgid "HTTPS开关"
+msgstr "HTTPS Toggle"
+
+msgid "IPSec"
+msgstr "IPSec"
+
+msgid "IPTV"
+msgstr "IPTV"
+
+msgid "IPTV VLAN ID"
+msgstr "IPTV VLAN ID"
+
+msgid "IPTV VLAN优先级"
+msgstr "IPTV VLAN Priority"
+
+msgid "IPV6网络设置"
+msgstr "IPv6 Network Settings"
+
+msgid "IPv4任播地址"
+msgstr "IPv4 Anycast Address"
+
+msgid "IPv4信息"
+msgstr "IPv4 Info"
+
+msgid "IPv4网关地址："
+msgstr "IPv4 Gateway Address:"
+
+msgid "IPv6信息"
+msgstr "IPv6 Info"
+
+msgid "IPv6前缀长度"
+msgstr "IPv6 Prefix Length"
+
+msgid "IPv6地址由8组四个十六进制数组成，每组之间用:区隔"
+msgstr "IPv6 addresses consist of 8 groups of hex numbers separated by ':'"
+
+msgid "IPv6宽带密码"
+msgstr "IPv6 Broadband Password"
+
+msgid "IPv6宽带账号"
+msgstr "IPv6 Broadband Account"
+
+msgid "IPv6网关地址："
+msgstr "IPv6 Gateway Address:"
+
+msgid "IPv6网络方式设置"
+msgstr "IPv6 Network Mode Settings"
+
+msgid "IPv6网络方式设置中，请稍等..."
+msgstr "Setting IPv6 mode, please wait..."
+
+msgid "IPv6网络设置"
+msgstr "IPv6 Network Settings"
+
+msgid "IPv6自动配置模式应用中"
+msgstr "Applying IPv6 Auto-config"
+
+msgid "IPv6设置介绍"
+msgstr "About IPv6 Settings"
+
+msgid "IPv6连接类型："
+msgstr "IPv6 Connection Type:"
+
+msgid "IPv6防火墙"
+msgstr "IPv6 Firewall"
+
+msgid "IP和MAC"
+msgstr "IP & MAC"
+
+msgid "IP地址"
+msgstr "IP Address"
+
+msgid "IP地址最后一位"
+msgstr "Last segment of IP"
+
+msgid "IP地址："
+msgstr "IP Address:"
+
+msgid "Internal IP address"
+msgstr "Internal IP address"
+
+msgid "Internal Server Error"
+msgstr "Internal Server Error"
+
+msgid "Internal port"
+msgstr "Internal port"
+
+msgid "Internal zone"
+msgstr "Internal zone"
+
+msgid "Java Script required!"
+msgstr "Java Script required!"
+
+msgid "L2TP"
+msgstr "L2TP"
+
+msgid "LAN IPv6前缀"
+msgstr "LAN IPv6 Prefix"
+
+msgid "LAN IPv6前缀长度"
+msgstr "LAN IPv6 Prefix Length"
+
+msgid "LAN IPv6前缀需要以::结尾"
+msgstr "LAN IPv6 prefix must end with ::"
+
+msgid "LAN IPv6前缀："
+msgstr "LAN IPv6 Prefix:"
+
+msgid "LAN IPv6地址："
+msgstr "LAN IPv6 Address:"
+
+msgid "LAN口聚合"
+msgstr "LAN Port Aggregation"
+
+msgid "LAN口聚合成功"
+msgstr "LAN Port Aggregation Successful"
+
+msgid "LAN口聚合注意事项"
+msgstr "LAN Aggregation Notes"
+
+msgid "Load"
+msgstr "Load"
+
+msgid "MAC地址"
+msgstr "MAC Address"
+
+msgid "MAC地址克隆"
+msgstr "MAC Address Clone"
+
+msgid "MAC地址克隆设置"
+msgstr "MAC Address Clone Settings"
+
+msgid "MAC地址格式有误，如ab:cd:ef:11:22:33"
+msgstr "Invalid MAC format (e.g., ab:cd:ef:11:22:33)"
+
+msgid "MAC地址白名单"
+msgstr "MAC Whitelist"
+
+msgid "MAC客户端"
+msgstr "MAC Client"
+
+msgid "MLO设置"
+msgstr "MLO Settings"
+
+msgid "MTU"
+msgstr "MTU"
+
+msgid "MU-MIMO"
+msgstr "MU-MIMO"
+
+msgid "MU-MIMO/Beamforming"
+msgstr "MU-MIMO/Beamforming"
+
+msgid "MU-MIMO“多用户多入多出”技术，与其依赖的Beamforming“波束成形”技术结合，可以让路由器与多台终端同时通信，极大改善无线资源利用效率，提升Wi-Fi体验。该功能生效需要路由器和终端同时支持。开启开关会同时启用MU-MIMO和Beamforming。"
+msgstr "MU-MIMO and Beamforming allow simultaneous communication with multiple devices for better Wi-Fi. Both router and terminal must support it."
+
+msgid "Malaysia-Maxis"
+msgstr "Malaysia-Maxis"
+
+msgid "Malaysia-Unifi"
+msgstr "Malaysia-Unifi"
+
+msgid "Mesh组网"
+msgstr "Mesh Networking"
+
+msgid "Mesh组网设备"
+msgstr "Mesh Networking Devices"
+
+msgid "Mesh网络扩展失败"
+msgstr "Mesh expansion failed"
+
+msgid "Mesh网络扩展成功"
+msgstr "Mesh expansion successful"
+
+msgid "NAT6开关"
+msgstr "NAT6 Switch"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Navigation"
+msgstr "Navigation"
+
+msgid "New SNAT rule"
+msgstr "New SNAT rule"
+
+msgid "New forward rule"
+msgstr "New forward rule"
+
+msgid "New input rule"
+msgstr "New input rule"
+
+msgid "New port forward"
+msgstr "New port forward"
+
+msgid "New source NAT"
+msgstr "New source NAT"
+
+msgid "No password set!"
+msgstr "No password set!"
+
+msgid "No-ip.com"
+msgstr "No-ip.com"
+
+msgid "Not Found"
+msgstr "Not Found"
+
+msgid "Open ports on router"
+msgstr "Open ports on router"
+
+msgid "Other..."
+msgstr "Other..."
+
+msgid "PC客户端"
+msgstr "PC Client"
+
+msgid "PC：打开文件资源管理器，输入\\\\"
+msgstr "PC: Open File Explorer and enter \\\\"
+
+msgid "PPPOE设置页面"
+msgstr "PPPoE Setup Page"
+
+msgid "PPPoE拨号失败(错误码678)"
+msgstr "PPPoE dial-up failed (Error 678)"
+
+msgid "PPPoE拨号失败(错误码691)"
+msgstr "PPPoE dial-up failed (Error 691)"
+
+msgid "PPPoE拨号被关闭(错误码250)"
+msgstr "PPPoE dial-up closed (Error 250)"
+
+msgid "PPTP"
+msgstr "PPTP"
+
+msgid "PPTP（Point to Point Tunneling Protocol）和L2TP（Layer 2 Tunneling Protocol）为两种互联网隧道协议，都属于VPN（Virtual Private Network）虚拟专用网络的不同协议分类方式。"
+msgstr "PPTP and L2TP are two types of VPN protocols."
+
+msgid "Portugal-Vodafone"
+msgstr "Portugal-Vodafone"
+
+msgid "Protocol"
+msgstr "Protocol"
+
+msgid "QoS是一种智能带宽分配功能，可以帮助你自动为各设备设置限速，让在线视频与网络游戏同时享有畅快体验！"
+msgstr "QoS intelligently allocates bandwidth and sets speed limits for a smooth video and gaming experience."
+
+msgid "QoS智能分配"
+msgstr "Intelligent QoS Allocation"
+
+msgid "QoS智能限速"
+msgstr "Intelligent QoS Speed Limit"
+
+msgid "RTSP"
+msgstr "RTSP"
+
+msgid "Redmi路由器"
+msgstr "Redmi Router"
+
+msgid "Redmi路由器 AX3000"
+msgstr "Redmi Router AX3000"
+
+msgid "SFP+网口设置"
+msgstr "SFP+ Port Settings"
+
+msgid "SIM卡损坏"
+msgstr "SIM card damaged"
+
+msgid "SIM卡欠费"
+msgstr "SIM card balance empty"
+
+msgid "SIM卡流量超过运营商套餐"
+msgstr "SIM data exceeded"
+
+msgid "SIM卡需要验证PIN码"
+msgstr "SIM PIN verification required"
+
+msgid "SIM卡需要验证PUK码"
+msgstr "SIM PUK verification required"
+
+msgid "SIM卡验证问题"
+msgstr "SIM verification issue"
+
+msgid "SIP"
+msgstr "SIP"
+
+msgid "SLAAC+RDNSS"
+msgstr "SLAAC+RDNSS"
+
+msgid "SLAAC+Stateless DHCPv6"
+msgstr "SLAAC+Stateless DHCPv6"
+
+msgid "SN"
+msgstr "SN"
+
+msgid "Samba功能"
+msgstr "Samba Function"
+
+msgid "Singapore-ExStream"
+msgstr "Singapore-ExStream"
+
+msgid "Singapore-Singtel"
+msgstr "Singapore-Singtel"
+
+msgid "Skip to content"
+msgstr "Skip to content"
+
+msgid "Skip to navigation"
+msgstr "Skip to navigation"
+
+msgid "Sorry, the object you requested was not found."
+msgstr "Sorry, the object you requested was not found."
+
+msgid "Sorry, the server encountered an unexpected error."
+msgstr "Sorry, the server encountered an unexpected error."
+
+msgid "Source zone"
+msgstr "Source zone"
+
+msgid "TCP和UDP"
+msgstr "TCP & UDP"
+
+msgid "TFTP"
+msgstr "TFTP"
+
+msgid "TWT节能模式"
+msgstr "TWT Power Saving"
+
+msgid "TWT节能模式兼容性问题解决办法"
+msgstr "TWT Mode Compatibility Solutions"
+
+msgid "There is no password set on this router. Please configure a root password to protect the web interface and enable SSH."
+msgstr "There is no password set on this router. Please configure a root password to protect the web interface and enable SSH."
+
+msgid "To source IP"
+msgstr "To source IP"
+
+msgid "To source port"
+msgstr "To source port"
+
+msgid "UPnP未开启"
+msgstr "UPnP Disabled"
+
+msgid "UPnP状态"
+msgstr "UPnP Status"
+
+msgid "UPnP设备列表："
+msgstr "UPnP Device List:"
+
+msgid "USB3.0"
+msgstr "USB3.0"
+
+msgid "Unable to dispatch"
+msgstr "Unable to dispatch"
+
+msgid "Unsaved Changes"
+msgstr "Unsaved Changes"
+
+msgid "VPN"
+msgstr "VPN"
+
+msgid "VPN 服务列表:"
+msgstr "VPN Service List:"
+
+msgid "VPN属于远程访问技术，应用举例：出差员工在外地通过VPN服务访问企业内部网络。"
+msgstr "VPN allows remote access to internal networks."
+
+msgid "VPN设置失败"
+msgstr "VPN Setup Failed"
+
+msgid "Vietnam-Viettel"
+msgstr "Vietnam-Viettel"
+
+msgid "WAN IPv4地址："
+msgstr "WAN IPv4 Address:"
+
+msgid "WAN IPv6地址"
+msgstr "WAN IPv6 Address"
+
+msgid "WAN IPv6地址前缀长度默认为128位"
+msgstr "WAN IPv6 prefix length defaults to 128-bit"
+
+msgid "WAN IPv6地址："
+msgstr "WAN IPv6 Address:"
+
+msgid "WAN IPv6网关"
+msgstr "WAN IPv6 Gateway"
+
+msgid "WAN IPv6网关："
+msgstr "WAN IPv6 Gateway:"
+
+msgid "WAN1"
+msgstr "WAN1"
+
+msgid "WAN1:"
+msgstr "WAN1:"
+
+msgid "WAN1优先"
+msgstr "WAN1 Priority"
+
+msgid "WAN1优先，WAN2备份"
+msgstr "WAN1 Primary, WAN2 Backup"
+
+msgid "WAN1口/WAN2口转发比例设置"
+msgstr "WAN1/WAN2 Forwarding Ratio"
+
+msgid "WAN1口带宽"
+msgstr "WAN1 Bandwidth"
+
+msgid "WAN2"
+msgstr "WAN2"
+
+msgid "WAN2:"
+msgstr "WAN2:"
+
+msgid "WAN2优先"
+msgstr "WAN2 Priority"
+
+msgid "WAN2优先，WAN1备份"
+msgstr "WAN2 Primary, WAN1 Backup"
+
+msgid "WAN2口带宽"
+msgstr "WAN2 Bandwidth"
+
+msgid "WAN口协商速率设置"
+msgstr "WAN Negotiation Speed"
+
+msgid "WAN口参数异常"
+msgstr "WAN Parameter Error"
+
+msgid "WAN口策略"
+msgstr "WAN Strategy"
+
+msgid "WAN口转发规则列表："
+msgstr "WAN Forwarding Rules List:"
+
+msgid "WAN口转发规则设置"
+msgstr "WAN Forwarding Rules Settings"
+
+msgid "WAN口选择"
+msgstr "WAN Port Selection"
+
+msgid "WAN口速率"
+msgstr "WAN Port Speed"
+
+msgid "WPA-PSK-AES"
+msgstr "WPA-PSK-AES"
+
+msgid "WPA-PSK-AES/TKIP"
+msgstr "WPA-PSK-AES/TKIP"
+
+msgid "WPA-PSK-TKIP"
+msgstr "WPA-PSK-TKIP"
+
+msgid "WPA/WPA2-PSK-AES"
+msgstr "WPA/WPA2-PSK-AES"
+
+msgid "WPA/WPA2-PSK-AES/TKIP"
+msgstr "WPA/WPA2-PSK-AES/TKIP"
+
+msgid "WPA/WPA2-PSK-TKIP"
+msgstr "WPA/WPA2-PSK-TKIP"
+
+msgid "WPA2-PSK-AES"
+msgstr "WPA2-PSK-AES"
+
+msgid "WPA2-PSK-AES/TKIP"
+msgstr "WPA2-PSK-AES/TKIP"
+
+msgid "WPA2-PSK-AS/TKIP"
+msgstr "WPA2-PSK-AS/TKIP"
+
+msgid "WPA2-PSK-TKIP"
+msgstr "WPA2-PSK-TKIP"
+
+msgid "WPA3为新一代加密技术，可使安全性大大加强，但选择该选项后部分旧设备会存在兼容性问题而无法接入"
+msgstr "WPA3 improves security but may cause compatibility issues for older devices."
+
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+msgid "Wi-Fi 5 兼容模式"
+msgstr "Wi-Fi 5 Compatibility Mode"
+
+msgid "Wi-Fi 信号强度设置"
+msgstr "Wi-Fi Signal Strength"
+
+msgid "Wi-Fi 连网设备"
+msgstr "Wi-Fi Connected Devices"
+
+msgid "Wi-Fi信息"
+msgstr "Wi-Fi Info"
+
+msgid "Wi-Fi双频合一"
+msgstr "Wi-Fi Dual-band Merge"
+
+msgid "Wi-Fi名称"
+msgstr "Wi-Fi Name"
+
+msgid "Wi-Fi多频合一"
+msgstr "Wi-Fi Multi-band Merge"
+
+msgid "Wi-Fi密码"
+msgstr "Wi-Fi Password"
+
+msgid "Wi-Fi模式切换"
+msgstr "Wi-Fi Mode Switch"
+
+msgid "Wi-Fi设置"
+msgstr "Wi-Fi Settings"
+
+msgid "Wi-Fi连网设备"
+msgstr "Wi-Fi Connected Devices"
+
+msgid "WiFi双频合一关闭，5GHz会默认使用2.4GHz相同的网络名称（加后缀_5G）和密码，如需设成不一样，请进行修改。"
+msgstr "Dual-band off: 5GHz uses 2.4GHz name (with _5G) and password by default. Modify if needed."
+
+msgid "WiFi双频合一关闭，5G会默认使用2.4G相同的网络名称（加后缀_5G） and password，如需设成不一样，请进行修改。"
+msgstr "Dual-band off: 5G uses 2.4G name (with _5G) and password by default. Modify if needed."
+
+msgid "WiFi名称"
+msgstr "WiFi Name"
+
+msgid "WiFi多频合一关闭，5GHz和5GHz-2 Wi-Fi会默认使用2.4GHz相同的网络名称（加后缀）和密码，如需设成不一样，请进行修改。"
+msgstr "Multi-band off: 5GHz/5GHz-2 use 2.4GHz name (with suffix) and password. Modify if needed."
+
+msgid "WiFi多频合一关闭，5GHz和5GHz-Game Wi-Fi会默认使用2.4GHz相同的网络名称（加后缀）和密码，如需设成不一样，请进行修改。"
+msgstr "Multi-band off: 5GHz/5GHz-Game use 2.4GHz name (with suffix) and password. Modify if needed."
+
+msgid "WiFi密码"
+msgstr "WiFi Password"
+
+msgid "Xiaomi HomeWiFi"
+msgstr "Xiaomi HomeWiFi"
+
+msgid "Xiaomi万兆路由器"
+msgstr "Xiaomi 10Gbps Router"
+
+msgid "Xiaomi路由器6500 Pro"
+msgstr "Xiaomi Router 6500 Pro"
+
+msgid "Xiaomi路由器BE3600  2.5G版"
+msgstr "Xiaomi Router BE3600 2.5G Edition"
+
+msgid "Xiaomi路由器BE3600 2.5G版"
+msgstr "Xiaomi Router BE3600 2.5G Edition"
+
+msgid "Xiaomi路由器BE7000"
+msgstr "Xiaomi Router BE7000"
+
+msgid "You must enable Java Script in your browser or LuCI will not work properly."
+msgstr "You must enable Java Script in your browser or LuCI will not work properly."
+
+msgid "netMode header="
+msgstr "netMode header="
+
+msgid "netmod apindexd01="
+msgstr "netmod apindexd01="
+
+msgid "off"
+msgstr "off"
+
+msgid "on"
+msgstr "on"
+
+msgid "s后才能开启，请稍候..."
+msgstr "s before opening, please wait..."
+
+msgid "s完成USB模式切换"
+msgstr "s to complete USB mode switch"
+
+msgid "yyyy年MM月dd日 hh:mm:ss"
+msgstr "yyyy-MM-dd hh:mm:ss"
+
+msgid "{$0}输入不完整."
+msgstr "{$0} input incomplete."
+
+msgid "{$year}年{$month}月{$day}日 {$hour}:{$min}:{$sec}"
+msgstr "{$year}-{$month}-{$day} {$hour}:{$min}:{$sec}"
+
+msgid "一旦清除，所有访问日志将丢失。仍清除？"
+msgstr "Once cleared, all access logs will be lost. Clear anyway?"
+
+msgid "一键无线中继"
+msgstr "One-click Wireless Relay"
+
+msgid "三频模式"
+msgstr "Tri-band Mode"
+
+msgid "三频模式覆盖明显弱于双频模式，该修改会导致路由器重启，所有设备会短暂失去连接，是否确认修改？"
+msgstr "Tri-band has weaker coverage than Dual-band. This will reboot the router and disconnect devices. Confirm?"
+
+msgid "三频模式：覆盖弱于双频。可支持WiFi7手机双5G MLO并联，大幅提升带宽。同时可作为独立电竞频段，减少其他设备干扰。"
+msgstr "Tri-band: Weaker coverage than Dual-band. Supports WiFi 7 dual-5G MLO for higher speed and has a dedicated gaming band."
+
+msgid "上传"
+msgstr "Upload"
+
+msgid "上传带宽"
+msgstr "Upload Bandwidth"
+
+msgid "上传并安装固件"
+msgstr "Upload and Install Firmware"
+
+msgid "上传日志"
+msgstr "Upload Logs"
+
+msgid "上传速度"
+msgstr "Upload Speed"
+
+msgid "上传限速"
+msgstr "Upload Speed Limit"
+
+msgid "上次测速"
+msgstr "Last Speed Test"
+
+msgid "上级网络IP与路由器局域网IP有冲突"
+msgstr "Upstream IP conflicts with router LAN IP"
+
+msgid "上级路由器"
+msgstr "Parent Router"
+
+msgid "上网信息"
+msgstr "Internet Info"
+
+msgid "上网方式"
+msgstr "Internet Mode"
+
+msgid "上网设置"
+msgstr "Internet Settings"
+
+msgid "下一步"
+msgstr "Next"
+
+msgid "下载"
+msgstr "Download"
+
+msgid "下载和家亲APP"
+msgstr "Download Hejiaqin App"
+
+msgid "下载失败"
+msgstr "Download Failed"
+
+msgid "下载客户端"
+msgstr "Download Client"
+
+msgid "下载小翼管家APP"
+msgstr "Download Xiaoyi Guanjia App"
+
+msgid "下载带宽"
+msgstr "Download Bandwidth"
+
+msgid "下载日志"
+msgstr "Download Logs"
+
+msgid "下载米家APP"
+msgstr "Download Mi Home App"
+
+msgid "下载速度"
+msgstr "Download Speed"
+
+msgid "下载限速"
+msgstr "Download Speed Limit"
+
+msgid "不再提示"
+msgstr "Don't show again"
+
+msgid "不可用，请先运行docker并安装第三方管理"
+msgstr "Unavailable; please run Docker and install management tools first."
+
+msgid "不支持手机端网页管理路由器4"
+msgstr "Mobile web management not supported 4"
+
+msgid "东部时间(美国和加拿大)"
+msgstr "Eastern Time (US & Canada)"
+
+msgid "两次输入不一致。"
+msgstr "Inputs do not match."
+
+msgid "中"
+msgstr "Medium"
+
+msgid "中国澳门，上海，中国台北"
+msgstr "Macau, Shanghai, Taipei"
+
+msgid "中科光电"
+msgstr "ZKGD"
+
+msgid "中继服务出现异常"
+msgstr "Relay service error"
+
+msgid "中继模式下不允许关闭"
+msgstr "Cannot disable in Relay mode"
+
+msgid "中继状态"
+msgstr "Relay Status"
+
+msgid "中继目标切换"
+msgstr "Switch Relay Target"
+
+msgid "中继设置"
+msgstr "Relay Settings"
+
+msgid "中继路由器切换"
+msgstr "Switch Relay Router"
+
+msgid "中继连接出现异常"
+msgstr "Relay connection error"
+
+msgid "中途岛，帕果帕果"
+msgstr "Midway, Pago Pago"
+
+msgid "中部时间(美国和加拿大)"
+msgstr "Central Time (US & Canada)"
+
+msgid "为保证正常上网，请在“常用设置”-“上网设置”中进行WAN口配置"
+msgstr "For internet access, configure WAN in 'Common Settings' -> 'Internet Settings'."
+
+msgid "主机名称"
+msgstr "Host Name"
+
+msgid "主机名称为从运营商申请的域名；"
+msgstr "Host name is the domain from the ISP;"
+
+msgid "主路由器"
+msgstr "Main Router"
+
+msgid "互联网"
+msgstr "Internet"
+
+msgid "亚松森"
+msgstr "Asuncion"
+
+msgid "亚的斯亚贝巴，阿斯马拉，达累斯萨拉姆，内罗毕，塔那那利佛"
+msgstr "Addis Ababa, Asmara, Dar es Salaam, Nairobi, Antananarivo"
+
+msgid "什么是DDNS？"
+msgstr "What is DDNS?"
+
+msgid "什么是DHCP？"
+msgstr "What is DHCP?"
+
+msgid "什么是VPN"
+msgstr "What is VPN?"
+
+msgid "什么是端口触发功能？"
+msgstr "What is Port Triggering?"
+
+msgid "什么是虚拟服务器功能?"
+msgstr "What is Virtual Server?"
+
+msgid "什么是访问协议控制？"
+msgstr "What is Access Protocol Control?"
+
+msgid "仅DHCPv6"
+msgstr "DHCPv6 Only"
+
+msgid "仅支持WPA加密方式的设备将无法连接"
+msgstr "Devices supporting only WPA will not be able to connect"
+
+msgid "从在线列表添加"
+msgstr "Add from online list"
+
+msgid "从备份恢复路由器设置"
+msgstr "Restore settings from backup"
+
+msgid "从设备列表添加设备"
+msgstr "Add device from device list"
+
+msgid "仰光，科科斯"
+msgstr "Yangon, Cocos"
+
+msgid "任务名称"
+msgstr "Task Name"
+
+msgid "任务管理器"
+msgstr "Task Manager"
+
+msgid "优"
+msgstr "Excellent"
+
+msgid "优先保证打游戏的网速，不卡顿不掉线"
+msgstr "Prioritize gaming speed: no lag, no disconnection"
+
+msgid "优先保证浏览网页的网速，大图秒打开"
+msgstr "Prioritize browsing: open large images instantly"
+
+msgid "优先保证看视频的网速，高清也流畅"
+msgstr "Prioritize video: smooth HD streaming"
+
+msgid "优先级"
+msgstr "Priority"
+
+msgid "优先级模式"
+msgstr "Priority Mode"
+
+msgid "优先级模式下路由器会动态调整带宽分配，保证优先级较高的设备网络体验流畅"
+msgstr "In Priority Mode, the router dynamically adjusts bandwidth for high-priority devices."
+
+msgid "伯利兹，哥斯达黎加，萨尔瓦多，危地马拉，马那瓜"
+msgstr "Belize, Costa Rica, El Salvador, Guatemala, Managua"
+
+msgid "伯尔尼，柏林，哥本哈根，马德里，巴黎，罗马"
+msgstr "Bern, Berlin, Copenhagen, Madrid, Paris, Rome"
+
+msgid "但是，小米路由器在没有硬盘的情况下无法支持更多功能。"
+msgstr "However, Xiaomi routers cannot support more features without a hard drive."
+
+msgid "位置"
+msgstr "Location"
+
+msgid "低"
+msgstr "Low"
+
+msgid "佛得角"
+msgstr "Cape Verde"
+
+msgid "你什么都没改变，提交什么啊"
+msgstr "Nothing changed, nothing to submit."
+
+msgid "你可以自定义哪些服务或设备会走VPN的流量"
+msgstr "You can customize which services or devices use VPN traffic."
+
+msgid "你手工选择的当前信道有可能造成部分机型较旧的设备无法连接"
+msgstr "The manual channel selected may cause connection issues for older devices."
+
+msgid "你有新短信，"
+msgstr "You have a new SMS,"
+
+msgid "你未选择文件，请重新选择"
+msgstr "No file selected; please try again."
+
+msgid "你的浏览器禁止了Javascript功能，会造成无法使用系统进行路由器管理，请开启。"
+msgstr "JavaScript is disabled; please enable it to manage the router."
+
+msgid "你的版本是最新的，无需升级。"
+msgstr "Your version is up to date."
+
+msgid "你确定要删除此项吗？"
+msgstr "Are you sure you want to delete this?"
+
+msgid "你确定要解除此项绑定？"
+msgstr "Are you sure you want to unbind this?"
+
+msgid "你确认要关闭自己？"
+msgstr "Confirm shutdown?"
+
+msgid "你还未选择任何设备"
+msgstr "No device selected yet."
+
+msgid "使用小米WiFi APP管理您的路由器"
+msgstr "Use Mi WiFi App to manage your router"
+
+msgid "使用方法：将剩余空间大于2GB的U盘或者移动硬盘（推荐NTFS/FAT32/exFAT/EXT4等主流格式）插入此路由USB接口，路由器识别到此存储设备后，选择预扩展内存大小来创建虚拟内存。"
+msgstr "Usage: Insert a USB drive (>2GB) into the router's port. Select the size to create virtual memory."
+
+msgid "使用流量超过设定的流量上限"
+msgstr "Data usage exceeded the set limit"
+
+msgid "保存"
+msgstr "Save"
+
+msgid "保存中..."
+msgstr "Saving..."
+
+msgid "保存并生效"
+msgstr "Save and apply"
+
+msgid "保存成功"
+msgstr "Saved successfully"
+
+msgid "信号强度"
+msgstr "Signal Strength"
+
+msgid "修复中…"
+msgstr "Repairing..."
+
+msgid "修改 Wi-Fi 设置"
+msgstr "Modify Wi-Fi Settings"
+
+msgid "修改WAN口选择"
+msgstr "Modify WAN Port Selection"
+
+msgid "修改Wi-Fi设置"
+msgstr "Modify Wi-Fi Settings"
+
+msgid "修改上网设置"
+msgstr "Modify Internet Settings"
+
+msgid "修改局域网IP地址网段"
+msgstr "Modify LAN IP segment"
+
+msgid "修改端口设置"
+msgstr "Modify Port Settings"
+
+msgid "修改管理密码"
+msgstr "Modify Admin Password"
+
+msgid "修改路由器名称"
+msgstr "Modify Router Name"
+
+msgid "停用"
+msgstr "Disable"
+
+msgid "克丽顿，道森克里克，纳尔逊堡，赫莫西略，凤凰城"
+msgstr "Creston, Dawson Creek, Fort Nelson, Hermosillo, Phoenix"
+
+msgid "克隆"
+msgstr "Clone"
+
+msgid "全LAN口"
+msgstr "All LAN Ports"
+
+msgid "全盘访问"
+msgstr "Full Disk Access"
+
+msgid "公云（3322.org）"
+msgstr "PubYun (3322.org)"
+
+msgid "关岛，塞班岛"
+msgstr "Guam, Saipan"
+
+msgid "关机"
+msgstr "Shutdown"
+
+msgid "关机中，请等待路由器指示灯熄灭后再断开电源"
+msgstr "Shutting down; wait for lights to turn off before unplugging."
+
+msgid "关闭"
+msgstr "Close / Disable"
+
+msgid "关闭2.4G Wi-Fi会同时关闭访客Wi-Fi"
+msgstr "Disabling 2.4G will also disable Guest Wi-Fi"
+
+msgid "关闭IPv6设置失败"
+msgstr "Failed to disable IPv6"
+
+msgid "关闭IPv6设置成功"
+msgstr "Successfully disabled IPv6"
+
+msgid "关闭MLO多链路加速将会重启Wi-Fi模块，此期间所有接入此路由器的设备都会断开Wi-Fi连接，请确认是否继续。"
+msgstr "Disabling MLO will restart Wi-Fi and disconnect devices. Continue?"
+
+msgid "关闭Wi-Fi会同时关闭访客Wi-Fi"
+msgstr "Disabling Wi-Fi will also disable Guest Wi-Fi"
+
+msgid "关闭成功，生效中，请稍候..."
+msgstr "Disabled; applying changes, please wait..."
+
+msgid "关闭路由器"
+msgstr "Shutdown Router"
+
+msgid "关闭路由器将断开其他设备的数据访问和网络连接，之后便可以安全的断开电源。（再次启动需要手工连接电源）"
+msgstr "Shutdown will disconnect all devices. You can then safely unplug."
+
+msgid "其他"
+msgstr "Other"
+
+msgid "内存"
+msgstr "Memory"
+
+msgid "内存容量"
+msgstr "Memory Capacity"
+
+msgid "内存类型"
+msgstr "Memory Type"
+
+msgid "内存频率"
+msgstr "Memory Frequency"
+
+msgid "内测版"
+msgstr "Beta Version"
+
+msgid "内部IP地址"
+msgstr "Internal IP Address"
+
+msgid "内部IP地址："
+msgstr "Internal IP Address:"
+
+msgid "内部端口"
+msgstr "Internal Port"
+
+msgid "出于安全考虑，不允许选择低于当前版本号的固件进行升级"
+msgstr "Security: Cannot downgrade to a version lower than the current one."
+
+msgid "出现异常，请刷新页面"
+msgstr "Error occurred; please refresh the page."
+
+msgid "分"
+msgstr "min"
+
+msgid "分区名称"
+msgstr "Partition Name"
+
+msgid "分钟"
+msgstr "Minutes"
+
+msgid "切换"
+msgstr "Switch"
+
+msgid "切换为无线中继模式后，您的访客wifi将被关闭"
+msgstr "Guest Wi-Fi will be disabled in Wireless Relay mode."
+
+msgid "切换为有线中继模式后，您的访客wifi将被关闭"
+msgstr "Guest Wi-Fi will be disabled in Wired Relay mode."
+
+msgid "切换其他路由器为中继目标"
+msgstr "Switch to another relay target"
+
+msgid "切换国家或地区"
+msgstr "Switch Country or Region"
+
+msgid "切换国家或地区将会变更路由器的无线网络工作信道，需要重启后生效，是否确定？"
+msgstr "Switching region changes Wi-Fi channels and requires a reboot. Confirm?"
+
+msgid "创建端口触发规则"
+msgstr "Create Port Trigger Rule"
+
+msgid "创建虚拟内存"
+msgstr "Create Virtual Memory"
+
+msgid "删除"
+msgstr "Delete"
+
+msgid "删除虚拟内存"
+msgstr "Delete Virtual Memory"
+
+msgid "别担心，小米路由器很坚强，当前的安全恢复模式也可以一样正常上网！"
+msgstr "Don't worry, Xiaomi routers are resilient; you can still access the internet in Recovery Mode."
+
+msgid "刷写失败"
+msgstr "Flashing failed"
+
+msgid "前往上网设置配置"
+msgstr "Go to Internet Settings"
+
+msgid "前往上网配置设置"
+msgstr "Go to Internet Config"
+
+msgid "前缀"
+msgstr "Prefix"
+
+msgid "前缀授权"
+msgstr "Prefix Delegation"
+
+msgid "前缀长度"
+msgstr "Prefix Length"
+
+msgid "办法1:尝试关闭调制解调器(猫)和路由器，几分钟后重新通电再次尝试拨号"
+msgstr "Method 1: Power off the modem and router, wait a few minutes, then power on and try dialing again."
+
+msgid "办法2:使用电脑或者旧路由器完成拨号，然后手工选择“结束连接”或“关闭连接”，再尝试使用Redmi路由器拨号。"
+msgstr "Method 2: Use a PC or old router to dial, manually disconnect, then try dialing with the Redmi Router."
+
+msgid "办法2:使用电脑或者旧路由器完成拨号，然后手工选择“结束连接”或“关闭连接”，再尝试使用小米路由器拨号。"
+msgstr "Method 2: Use a PC or old router to dial, manually disconnect, then try dialing with the Xiaomi Router."
+
+msgid "办法3:尝试在路由器上网设置中进行mac地址克隆，然后重新拨号"
+msgstr "Method 3: Try MAC address cloning in Internet Settings, then re-dial."
+
+msgid "办法4:尝试调整WAN口协商速率，然后重新拨号"
+msgstr "Method 4: Adjust WAN negotiation speed, then re-dial."
+
+msgid "办法:访问路由器管理后台miwifi.com手工点击重接；或重启路由器自动重连"
+msgstr "Method: Visit miwifi.com to manually reconnect, or reboot the router to auto-reconnect."
+
+msgid "加密方式"
+msgstr "Encryption Method"
+
+msgid "加德满都"
+msgstr "Kathmandu"
+
+msgid "加拉帕戈斯"
+msgstr "Galapagos"
+
+msgid "加沙，希伯伦"
+msgstr "Gaza, Hebron"
+
+msgid "加载中..."
+msgstr "Loading..."
+
+msgid "加那利，法罗，马德拉，里斯本"
+msgstr "Canary, Faroe, Madeira, Lisbon"
+
+msgid "勃朗萨布隆，格林纳达，西班牙港，波多黎各，圣多明各"
+msgstr "Blanc-Sablon, Grenada, Port of Spain, Puerto Rico, Santo Domingo"
+
+msgid "北京,重庆,香港特别行政区,乌鲁木齐"
+msgstr "Beijing, Chongqing, Hong Kong SAR, Urumqi"
+
+msgid "升级包校验失败"
+msgstr "Upgrade package verification failed"
+
+msgid "升级失败"
+msgstr "Upgrade failed"
+
+msgid "升级失败，系统错误或路由硬盘已满。"
+msgstr "Upgrade failed: system error or disk full."
+
+msgid "升级检测"
+msgstr "Check for Updates"
+
+msgid "升级注意"
+msgstr "Upgrade Notice"
+
+msgid "升级过程中请勿断开CPE电源"
+msgstr "Do not disconnect CPE power during upgrade"
+
+msgid "升级过程中请勿断开路由器电源，避免对路由器造成永久性损坏"
+msgstr "Do not disconnect router power during upgrade to avoid permanent damage."
+
+msgid "升级过程大概需要5-10分钟，等待Wi-Fi指示灯重新变白后，可通过miwifi.com管理更多功能"
+msgstr "Upgrade takes 5-10 minutes. When the Wi-Fi LED turns white again, manage settings at miwifi.com."
+
+msgid "升级过程大约需要2-3分钟，路由器指示灯重新变为白色常亮后，可以通过miwifi.com进入管理后台"
+msgstr "Upgrade takes 2-3 minutes. When the LED turns solid white, access admin at miwifi.com."
+
+msgid "升级过程大约需要2-3分钟，路由器指示灯重新变蓝后，可以通过cmcc.wifi/进入管理后台"
+msgstr "Upgrade takes 2-3 minutes. When the LED turns blue, access admin at cmcc.wifi/"
+
+msgid "升级过程大约需要2-3分钟，路由器指示灯重新变蓝后，可以通过miwifi.com进入管理后台"
+msgstr "Upgrade takes 2-3 minutes. When the LED turns blue, access admin at miwifi.com."
+
+msgid "升级过程大约需要2-3分钟，路由器指示灯重新变蓝后，可以通过router.ctc/进入管理后台"
+msgstr "Upgrade takes 2-3 minutes. When the LED turns blue, access admin at router.ctc/"
+
+msgid "升级过程大约需要{$time}分钟，路由器指示灯重新变{$color}后，可以通过{$url}进入管理后台"
+msgstr "Upgrade takes about {$time} minutes. When the LED turns {$color}, access admin at {$url}."
+
+msgid "协议"
+msgstr "Protocol"
+
+msgid "协议类型"
+msgstr "Protocol Type"
+
+msgid "协调世界时"
+msgstr "UTC"
+
+msgid "博伊西，剑桥湾，丹佛，埃德蒙顿，奥吉纳加"
+msgstr "Boise, Cambridge Bay, Denver, Edmonton, Ojinaga"
+
+msgid "博扬"
+msgstr "Boyang"
+
+msgid "卡拉奇"
+msgstr "Karachi"
+
+msgid "卡萨布兰卡，阿伊恩"
+msgstr "Casablanca, El Aaiun"
+
+msgid "卸载Docker"
+msgstr "Uninstall Docker"
+
+msgid "卸载超时，请稍候重试"
+msgstr "Uninstall timeout, please try again later."
+
+msgid "原因，路由器设置备份失败！"
+msgstr "Reason: router settings backup failed!"
+
+msgid "原密码"
+msgstr "Old Password"
+
+msgid "去小米网购买5G智能设备"
+msgstr "Buy 5G smart devices at mi.com"
+
+msgid "双WAN模式下，不支持在此处设置外网带宽"
+msgstr "In Dual WAN mode, external bandwidth cannot be set here."
+
+msgid "双WAN设置"
+msgstr "Dual WAN Settings"
+
+msgid "双WAN设置中，请稍等..."
+msgstr "Configuring Dual WAN, please wait..."
+
+msgid "双频模式"
+msgstr "Dual-Band Mode"
+
+msgid "双频模式：具有更好的覆盖能力，适合大部分的应用场景。"
+msgstr "Dual-Band Mode: Has better coverage capability, suitable for most application scenarios."
+
+msgid "发现新版本,升级包大小为{$size}，请立即升级。"
+msgstr "New version found, upgrade package size is {$size}, please upgrade now."
+
+msgid "发生未知错误，测速失败"
+msgstr "An unknown error occurred, speed test failed"
+
+msgid "取消"
+msgstr "Cancel"
+
+msgid "取消升级"
+msgstr "Cancel Upgrade"
+
+msgid "取消连接"
+msgstr "Cancel Connection"
+
+msgid "只能同时开启一个DDNS服务。"
+msgstr "Only one DDNS service can be enabled at a time."
+
+msgid "可以通过内置的DDNS运营商去该运营商官网去注册账号及申请域名；"
+msgstr "You can go to the built-in DDNS provider's official website to register an account and apply for a domain name;"
+
+msgid "可以通过添加服务地址来限定哪些服务流量会经过VPN"
+msgstr "You can restrict which service traffic goes through the VPN by adding service addresses"
+
+msgid "可以通过添加设备来限定哪些设备可以使用VPN流量"
+msgstr "You can restrict which devices can use VPN traffic by adding devices"
+
+msgid "可先用手机检测信号强度，将CPE放置在信号更好的地方再试"
+msgstr "You can first use your phone to check signal strength, place the CPE in a location with better signal and try again"
+
+msgid "可咨询运营商确认话费或流量，若未欠费或流量超额，请重置设备后再试"
+msgstr "Please check with your ISP regarding balance or data usage. If not in arrears or over data limit, reset the device and try again"
+
+msgid "可在此模块中了解访问配置页面的时间和人员。最多可记录 10 个最近的访问日志。"
+msgstr "In this module you can view the time and person who accessed the configuration page. Up to 10 recent access logs can be recorded."
+
+msgid "可在此设置路由器的风扇转速模式"
+msgstr "You can set the router's fan speed mode here"
+
+msgid "可用"
+msgstr "Available"
+
+msgid "可用端口不足，请先关闭其他端口功能后再试"
+msgstr "Insufficient available ports, please disable other port functions first and try again"
+
+msgid "可能原因"
+msgstr "Possible Causes"
+
+msgid "可能是DNS服务器设置错误"
+msgstr "Possible DNS server configuration error"
+
+msgid "可能是出现了宽带同帐号多播问题"
+msgstr "Possible multi-session issue with the same broadband account"
+
+msgid "可选备份"
+msgstr "Optional Backup"
+
+msgid "可选恢复的项目"
+msgstr "Optional Restore Items"
+
+msgid "台"
+msgstr "unit(s)"
+
+msgid "台终端接入支持。"
+msgstr " devices."
+
+msgid "台终端接入？"
+msgstr " devices?"
+
+msgid "名称"
+msgstr "Name"
+
+msgid "启用"
+msgstr "Enable"
+
+msgid "启用与智能网关的无线配置同步"
+msgstr "Enable wireless configuration sync with smart gateway"
+
+msgid "启用此功能后，小米路由器将开启IPv6上网功能（使用前请咨询网络运营商是否支持IPv6）"
+msgstr "After enabling this feature, the Xiaomi Router will enable IPv6 Internet access (please consult your ISP whether IPv6 is supported before use)"
+
+msgid "启用此功能后，小米路由器将自动从运营商家庭网关同步Wi-Fi设置"
+msgstr "After enabling this feature, the Xiaomi Router will automatically sync Wi-Fi settings from the ISP home gateway"
+
+msgid "和IP访问（"
+msgstr "and IP access ("
+
+msgid "哈瓦那"
+msgstr "Havana"
+
+msgid "哎呀，竟然启动失败了……"
+msgstr "Oops, startup failed..."
+
+msgid "喀布尔"
+msgstr "Kabul"
+
+msgid "固定SFP+网口为10G、2.5G或1G速率，如插入的SFP+光/电模块与设置的速率没有完全一致，SFP+网口将无法正常工作。"
+msgstr "Fix the SFP+ port to 10G, 2.5G or 1G speed. If the inserted SFP+ optical/electrical module does not exactly match the set speed, the SFP+ port will not work properly."
+
+msgid "固定WAN口"
+msgstr "Fixed WAN Port"
+
+msgid "国际日期变更线西"
+msgstr "International Date Line West"
+
+msgid "圣地亚哥"
+msgstr "Santiago"
+
+msgid "圣约翰斯"
+msgstr "St. John's"
+
+msgid "在线"
+msgstr "Online"
+
+msgid "在路由器工作模式和中继工作模式之间进行切换"
+msgstr "Switch between Router mode and Repeater mode"
+
+msgid "地区与时间"
+msgstr "Region and Time"
+
+msgid "地址"
+msgstr "Address"
+
+msgid "地址前缀："
+msgstr "Address Prefix:"
+
+msgid "均衡模式"
+msgstr "Balanced Mode"
+
+msgid "坎波格兰德，加拉加斯，圭亚那，拉巴斯，波尔图韦略"
+msgstr "Campo Grande, Caracas, Guyana, La Paz, Porto Velho"
+
+msgid "基希讷乌"
+msgstr "Chisinau"
+
+msgid "基里蒂马蒂"
+msgstr "Kiritimati"
+
+msgid "增加一项"
+msgstr "Add One"
+
+msgid "处理中"
+msgstr "Processing"
+
+msgid "处理中..."
+msgstr "Processing..."
+
+msgid "备份与恢复"
+msgstr "Backup and Restore"
+
+msgid "备份路由器的配置，重新刷机或重置路由器后可以用来恢复。"
+msgstr "Back up the router configuration, which can be used to restore after re-flashing or resetting the router."
+
+msgid "备份路由器设置"
+msgstr "Backup Router Settings"
+
+msgid "复活节岛"
+msgstr "Easter Island"
+
+msgid "复用IPv4拨号链路"
+msgstr "Reuse IPv4 Dial-up Link"
+
+msgid "夏威夷－阿留申标准时间"
+msgstr "Hawaii-Aleutian Standard Time"
+
+msgid "外接存储器格式"
+msgstr "External Storage Format"
+
+msgid "外网带宽"
+msgstr "External Network Bandwidth"
+
+msgid "外网带宽检测"
+msgstr "External Network Bandwidth Detection"
+
+msgid "外网状态"
+msgstr "External Network Status"
+
+msgid "外网状态："
+msgstr "External Network Status:"
+
+msgid "外网速度"
+msgstr "External Network Speed"
+
+msgid "外部协议"
+msgstr "External Protocol"
+
+msgid "外部端口"
+msgstr "External Port"
+
+msgid "多次密码错误，将禁止继续尝试"
+msgstr "Multiple incorrect password attempts, further attempts will be blocked"
+
+msgid "多频合一情况下，此路由器会默认开启MLO多链路连接，由Wi-Fi7终端自主选择并发频段接入，提高速率降低延迟。"
+msgstr "When band steering is enabled, this router will enable MLO multi-link operation by default, allowing Wi-Fi 7 devices to autonomously select concurrent bands for connection, improving speed and reducing latency."
+
+msgid "大西洋时间(加拿大)"
+msgstr "Atlantic Time (Canada)"
+
+msgid "大阪,札幌,东京"
+msgstr "Osaka, Sapporo, Tokyo"
+
+msgid "大马士革"
+msgstr "Damascus"
+
+msgid "天"
+msgstr "Day(s)"
+
+msgid "太平洋时间(美国和加拿大)"
+msgstr "Pacific Time (US & Canada)"
+
+msgid "奇塔，帝力，坎迪加，雅库茨克，帕劳"
+msgstr "Chita, Dili, Kandiga, Yakutsk, Palau"
+
+msgid "奇瓦瓦，马萨特兰"
+msgstr "Chihuahua, Mazatlan"
+
+msgid "如何使用Docker？"
+msgstr "How to use Docker?"
+
+msgid "如何使用Samba功能？"
+msgstr "How to use the Samba feature?"
+
+msgid "如何扩展"
+msgstr "Expand to "
+
+msgid "如何正确设置SFP+网口速率"
+msgstr "How to correctly set SFP+ port speed"
+
+msgid "如何正确设置SFP+网口速率？"
+msgstr "How to correctly set SFP+ port speed?"
+
+msgid "如何自定义及定时控制路由器灯效"
+msgstr "How to customize and schedule router lighting effects"
+
+msgid "如何设置DDNS？"
+msgstr "How to set up DDNS?"
+
+msgid "如何设置VPN"
+msgstr "How to set up VPN"
+
+msgid "如何设置合适的风扇模式"
+msgstr "How to set the appropriate fan mode"
+
+msgid "如因故无法进行系统OTA升级，或者您需要将路由器软件降级到前一版本时，您可以使用手工方式上传并安装固件。"
+msgstr "If system OTA upgrade cannot be performed for any reason, or you need to downgrade the router software to a previous version, you can manually upload and install the firmware."
+
+msgid "如果出现老旧终端在此路由开启TWT节能模式后出现兼容性问题，建议尝试以下方法："
+msgstr "If older devices experience compatibility issues after enabling TWT power saving mode on this router, it is recommended to try the following methods:"
+
+msgid "如果因为下载导致路由器卡慢，建议你点击 “暂停所有下载” 来解决。若使用结束任务，路由下载功能将被停用，下次使用时你需要在当前界面再次开启"
+msgstr "If downloads cause the router to become slow, it is recommended to click \"Pause All Downloads\" to resolve. If you use end task, the router download function will be disabled and you will need to re-enable it on this page next time"
+
+msgid "如果您已开启访客wifi，切换为无线中继模式后，访客wifi将会关闭"
+msgstr "If you have enabled guest Wi-Fi, switching to wireless repeater mode will turn off guest Wi-Fi"
+
+msgid "如果您已开启访客wifi，切换为有线中继模式后，访客wifi将会关闭"
+msgstr "If you have enabled guest Wi-Fi, switching to wired repeater mode will turn off guest Wi-Fi"
+
+msgid "如果您已配置了以下内容，掩码的更改将会导致以下内容需重新配置："
+msgstr "If you have configured the following items, changing the mask will cause the following items to need reconfiguration:"
+
+msgid "子Mesh状态"
+msgstr "Sub-Mesh Status"
+
+msgid "子Mesh设置"
+msgstr "Sub-Mesh Settings"
+
+msgid "子网掩码"
+msgstr "Subnet Mask"
+
+msgid "子网掩码："
+msgstr "Subnet Mask:"
+
+msgid "字节（网络正常情况下不建议修改）"
+msgstr "bytes (not recommended to modify under normal network conditions)"
+
+msgid "存储位置选择"
+msgstr "Storage Location Selection"
+
+msgid "存储功能"
+msgstr "Storage Function"
+
+msgid "存储设置"
+msgstr "Storage Settings"
+
+msgid "存在IP冲突，请检查输入项"
+msgstr "IP conflict exists, please check input items"
+
+msgid "安克雷奇，朱诺，梅特拉卡特拉，诺姆，西特卡，雅库塔特"
+msgstr "Anchorage, Juneau, Metlakatla, Nome, Sitka, Yakutat"
+
+msgid "安全中心"
+msgstr "Security Center"
+
+msgid "安全移除磁盘"
+msgstr "Safely Remove Disk"
+
+msgid "安曼"
+msgstr "Amman"
+
+msgid "安装失败！"
+msgstr "Installation failed!"
+
+msgid "安装失败，系统错误或路由器空间不足。"
+msgstr "Installation failed, system error or insufficient router storage space."
+
+msgid "安装成功！"
+msgstr "Installation successful!"
+
+msgid "安装第三方管理"
+msgstr "Install Third-Party Management"
+
+msgid "安装超时，请稍候重试"
+msgstr "Installation timed out, please wait and try again"
+
+msgid "完成"
+msgstr "Done"
+
+msgid "官方微信"
+msgstr "Official WeChat"
+
+msgid "官方微博"
+msgstr "Official Weibo"
+
+msgid "官方网站"
+msgstr "Official Website"
+
+msgid "定时重启"
+msgstr "Scheduled Reboot"
+
+msgid "定时重启时间列表："
+msgstr "Scheduled Reboot Time List:"
+
+msgid "客户端IP"
+msgstr "Client IP"
+
+msgid "家庭WiFi限速"
+msgstr "Home Wi-Fi Bandwidth Control"
+
+msgid "宽带因欠费无法继续使用"
+msgstr "Broadband service suspended due to unpaid balance"
+
+msgid "宽带拨号出现多播异常"
+msgstr "Broadband dial-up multi-session anomaly"
+
+msgid "宽带拨号帐号密码输入错误"
+msgstr "Incorrect broadband dial-up account or password"
+
+msgid "宽带拨号服务无响应"
+msgstr "Broadband dial-up service not responding"
+
+msgid "宽带运营商机房故障"
+msgstr "Broadband ISP equipment room failure"
+
+msgid "密码"
+msgstr "Password"
+
+msgid "密码应同时包含数字、英文字母和特殊字符(~!@#$等)"
+msgstr "Password must contain numbers, letters, and special characters (~!@#$, etc.)"
+
+msgid "密码应同时包含数字、英文字母和英文字符"
+msgstr "Password must contain numbers and letters"
+
+msgid "密码输入有误"
+msgstr "Incorrect password entered"
+
+msgid "密码错误"
+msgstr "Incorrect password"
+
+msgid "富纳富蒂，夸贾林，马朱罗，瑙鲁"
+msgstr "Funafuti, Kwajalein, Majuro, Nauru"
+
+msgid "将两个LAN口聚合，实现网口速率叠加"
+msgstr "Aggregate two LAN ports to achieve port speed stacking"
+
+msgid "将会一并移除此U盘的所有分区，请确认"
+msgstr "All partitions of this USB drive will be removed, please confirm"
+
+msgid "小时"
+msgstr "Hour(s)"
+
+msgid "小米AIoT路由器 AX1800"
+msgstr "Xiaomi AIoT Router AX1800"
+
+msgid "小米AIoT路由器 AX3600"
+msgstr "Xiaomi AIoT Router AX3600"
+
+msgid "小米Wi-Fi 7 路由器"
+msgstr "Xiaomi Wi-Fi 7 Router"
+
+msgid "小米服务走VPN"
+msgstr "Xiaomi Services via VPN"
+
+msgid "小米路由器"
+msgstr "Xiaomi Router"
+
+msgid "小米路由器 AX3000"
+msgstr "Xiaomi Router AX3000"
+
+msgid "小米路由器 AX6000"
+msgstr "Xiaomi Router AX6000"
+
+msgid "小米路由器1500"
+msgstr "Xiaomi Router 1500"
+
+msgid "小米路由器2"
+msgstr "Xiaomi Router 2"
+
+msgid "小米路由器2100"
+msgstr "Xiaomi Router 2100"
+
+msgid "小米路由器2600"
+msgstr "Xiaomi Router 2600"
+
+msgid "小米路由器3"
+msgstr "Xiaomi Router 3"
+
+msgid "小米路由器3 Pro"
+msgstr "Xiaomi Router 3 Pro"
+
+msgid "小米路由器3A"
+msgstr "Xiaomi Router 3A"
+
+msgid "小米路由器3C"
+msgstr "Xiaomi Router 3C"
+
+msgid "小米路由器3G"
+msgstr "Xiaomi Router 3G"
+
+msgid "小米路由器4"
+msgstr "Xiaomi Router 4"
+
+msgid "小米路由器4 v2"
+msgstr "Xiaomi Router 4 v2"
+
+msgid "小米路由器4A"
+msgstr "Xiaomi Router 4A"
+
+msgid "小米路由器4C"
+msgstr "Xiaomi Router 4C"
+
+msgid "小米路由器4Q"
+msgstr "Xiaomi Router 4Q"
+
+msgid "小米路由器AC2100"
+msgstr "Xiaomi Router AC2100"
+
+msgid "小米路由器HD"
+msgstr "Xiaomi Router HD"
+
+msgid "小米路由器MINI"
+msgstr "Xiaomi Router Mini"
+
+msgid "小米路由器Mesh"
+msgstr "Xiaomi Router Mesh"
+
+msgid "小米路由器后台"
+msgstr "Xiaomi Router Admin Panel"
+
+msgid "小米路由器已启动安全恢复模式"
+msgstr "Xiaomi Router has entered safe recovery mode"
+
+msgid "小米路由器支持IPv6网络，该路由器提供如下设置方式："
+msgstr "Xiaomi Router supports IPv6 network, this router provides the following configuration methods:"
+
+msgid "小米路由器正在下载升级包"
+msgstr "Xiaomi Router is downloading the upgrade package"
+
+msgid "小米路由器的管理后台IP为"
+msgstr "The Xiaomi Router admin panel IP is"
+
+msgid "小米路由器网络拓扑图"
+msgstr "Xiaomi Router Network Topology Diagram"
+
+msgid "小米路由器网络诊断中..."
+msgstr "Xiaomi Router Network Diagnostics in progress..."
+
+msgid "小米路由器青春版"
+msgstr "Xiaomi Router Youth Edition"
+
+msgid "少数设备可能不支持中文或特殊字符"
+msgstr "Some devices may not support Chinese or special characters"
+
+msgid "尝试工作模式切换失败了"
+msgstr "Attempt to switch work mode failed"
+
+msgid "尝试无线中继失败了"
+msgstr "Attempt to set up wireless repeater failed"
+
+msgid "尝试有线中继失败了"
+msgstr "Attempt to set up wired repeater failed"
+
+msgid "尝试重启一下调制解调器（猫）再拨号"
+msgstr "Try restarting the modem and then dial again"
+
+msgid "尤克拉"
+msgstr "Eucla"
+
+msgid "局域网IP"
+msgstr "LAN IP"
+
+msgid "局域网IP地址"
+msgstr "LAN IP Address"
+
+msgid "局域网设备获取IP地址方式："
+msgstr "LAN device IP address acquisition method:"
+
+msgid "局域网设置"
+msgstr "LAN Settings"
+
+msgid "山地时间(美国和加拿大)"
+msgstr "Mountain Time (US & Canada)"
+
+msgid "工作模式"
+msgstr "Work Mode"
+
+msgid "工作模式切换"
+msgstr "Work Mode Switch"
+
+msgid "差"
+msgstr "Poor"
+
+msgid "已取消安装"
+msgstr "Installation Cancelled"
+
+msgid "已启用"
+msgstr "Enabled"
+
+msgid "已断开"
+msgstr "Disconnected"
+
+msgid "已生效"
+msgstr "Effective"
+
+msgid "已用"
+msgstr "Used"
+
+msgid "已绑定的设备列表："
+msgstr "Bound Device List:"
+
+msgid "已连接"
+msgstr "Connected"
+
+msgid "巴伊亚班德拉斯，梅里达，墨西哥城，蒙特雷"
+msgstr "Bahia Banderas, Merida, Mexico City, Monterrey"
+
+msgid "巴格达，科威特，卡塔尔，利雅得，伊斯坦布尔"
+msgstr "Baghdad, Kuwait, Qatar, Riyadh, Istanbul"
+
+msgid "巴西利亚"
+msgstr "Brasilia"
+
+msgid "布兰太尔，布琼布拉，哈博罗内，哈拉雷"
+msgstr "Blantyre, Bujumbura, Gaborone, Harare"
+
+msgid "布宜诺斯艾利斯，圣路易斯，马塞奥，蒙得维的亚，帕拉马里博"
+msgstr "Buenos Aires, San Luis, Maceio, Montevideo, Paramaribo"
+
+msgid "布里斯班，林德曼"
+msgstr "Brisbane, Lindeman"
+
+msgid "带宽"
+msgstr "Bandwidth"
+
+msgid "带宽聚合"
+msgstr "Bandwidth Aggregation"
+
+msgid "常用设置"
+msgstr "Common Settings"
+
+msgid "常见问题"
+msgstr "FAQ"
+
+msgid "平壤，首尔"
+msgstr "Pyongyang, Seoul"
+
+msgid "年"
+msgstr "Year(s)"
+
+msgid "库亚巴"
+msgstr "Cuiaba"
+
+msgid "应用"
+msgstr "App"
+
+msgid "应用名称"
+msgstr "App Name"
+
+msgid "底特律，拿骚，纽约，太子港，多伦多"
+msgstr "Detroit, Nassau, New York, Port-au-Prince, Toronto"
+
+msgid "建议您安全断开电源，重新连接硬盘之后再次进入安全恢复模式，可以一键恢复系统。"
+msgstr "It is recommended to safely disconnect power, reconnect the hard drive, and then enter safe recovery mode again to restore the system with one click."
+
+msgid "建议重启调制解调器（猫）和路由器重新尝试拨号"
+msgstr "It is recommended to restart the modem and router and try dialing again"
+
+msgid "开关"
+msgstr "Switch"
+
+msgid "开发版"
+msgstr "Development Version"
+
+msgid "开启"
+msgstr "Enable"
+
+msgid "开启802.11k/v/r技术后可实现与周边无线路由器设备以及不同频段之间的负载均衡，支持客户端设备在无线路由器设备以及不同频段之间的无缝漫游。"
+msgstr "After enabling 802.11k/v/r technology, load balancing between nearby wireless router devices and across different bands can be achieved, supporting seamless roaming of client devices between wireless router devices and different bands."
+
+msgid "开启DMZ功能可以将内网某一个设备的IP映射到外网，方便从外网访问到该设备。"
+msgstr "Enabling the DMZ function can map the IP of a device on the internal network to the external network, making it convenient to access that device from the external network."
+
+msgid "开启IPv6后，MTU取值范围为[1280-1492]，如需打开IPv6，请在上网设置中修改MTU值"
+msgstr "After enabling IPv6, the MTU value range is [1280-1492]. To enable IPv6, please modify the MTU value in Internet settings"
+
+msgid "开启IPv6防火墙后，将禁止所有外网对局域网设备的主动访问，提高网络安全性"
+msgstr "After enabling IPv6 firewall, all active access from the external network to LAN devices will be blocked, improving network security"
+
+msgid "开启Samba功能后，可以让所有接入此路由器支持Samba协议的终端设备在局域网中访问路由器或其外接U盘/移动硬盘上的共享文件。"
+msgstr "After enabling Samba, all terminal devices connected to this router that support the Samba protocol can access shared files on the router or its connected USB flash drive/portable hard drive within the LAN."
+
+msgid "开启TWT节能模式后，可通过TWT节能技术降低接入此路由器的Wi-Fi6终端设备功耗，部分老旧终端可能会有兼容性问题。"
+msgstr "After enabling TWT power saving mode, the power consumption of Wi-Fi 6 terminal devices connected to this router can be reduced through TWT power saving technology. Some older devices may have compatibility issues."
+
+msgid "开启及关闭此路由器的氛围灯"
+msgstr "Turn on/off this router's ambient light"
+
+msgid "开启及关闭此路由器的网口灯"
+msgstr "Turn on/off this router's Ethernet port LEDs"
+
+msgid "开启及关闭此路由器的网络/系统状态指示灯"
+msgstr "Turn on/off this router's network/system status indicator"
+
+msgid "开启后会自动生成一个独立的WiFi，这样在亲朋到好友到来时，独立的WiFi账号和家庭网络彼此隔离，也不用担心家庭网络中的任何隐私会泄露出去"
+msgstr "After enabling, an independent Wi-Fi will be automatically generated, so that when friends and family visit, the independent Wi-Fi account and home network are isolated from each other, and you don't have to worry about any privacy on your home network being leaked"
+
+msgid "开启后访问协议将自动重定向为https，需要重新登录Web管理后台。确认开启？"
+msgstr "After enabling, the access protocol will be automatically redirected to HTTPS, and you will need to re-login to the web admin panel. Confirm to enable?"
+
+msgid "开启后，2.4GHz、5GHz和5GHz-2将合并显示为同一个名称，路由器将优先为终端选择最佳Wi-Fi网络。合并名称后部分终端可能离线，需重新连接。"
+msgstr "After enabling, 2.4GHz, 5GHz and 5GHz-2 will be merged and displayed under the same name, and the router will prioritize selecting the best Wi-Fi network for devices. After merging names, some devices may go offline and need to reconnect."
+
+msgid "开启后，2.4GHz、5GHz和5GHz-Game将合并显示为同一个名称，路由器将优先为终端选择最佳Wi-Fi网络。合并名称后部分终端可能离线，需重新连接。"
+msgstr "After enabling, 2.4GHz, 5GHz and 5GHz-Game will be merged and displayed under the same name, and the router will prioritize selecting the best Wi-Fi network for devices. After merging names, some devices may go offline and need to reconnect."
+
+msgid "开启后，2.4GHz和5GHz将合并显示为同一个名称，路由器将优先为终端选择最佳Wi-Fi网络。合并名称后部分终端可能离线，需重新连接。"
+msgstr "After enabling, 2.4GHz and 5GHz will be merged and displayed under the same name, and the router will prioritize selecting the best Wi-Fi network for devices. After merging names, some devices may go offline and need to reconnect."
+
+msgid "开启后，2.4G和5G会使用同一名称，路由器会自动为终端选择最佳WiFi网络，如离路由器较近，会切换至5G网络，反之会切换至2.4G网络。但由于终端设备存在差异，可能存在：自动切换信号源时网络会短暂中断，甚至频繁掉线等问题。"
+msgstr "After enabling, 2.4G and 5G will use the same name, and the router will automatically select the best Wi-Fi network for devices. If close to the router, it will switch to 5G; otherwise, it will switch to 2.4G. However, due to differences in terminal devices, issues may arise such as brief network interruption during automatic signal source switching or even frequent disconnections."
+
+msgid "开启后，Web后台访问将强制重定向为https协议"
+msgstr "After enabling, web admin panel access will be forcibly redirected to HTTPS protocol"
+
+msgid "开启此功能，路由器可自动发现支持畅快连的未初始化Wi-Fi设备，通过米家APP快速配网；修改路由器密码也将自动同步给支持畅快连的设备。"
+msgstr "After enabling this feature, the router can automatically discover uninitialized Wi-Fi devices that support Quick Connect, and quickly configure them via the Mi Home app; router password changes will also be automatically synced to devices that support Quick Connect."
+
+msgid "开启此功能，路由将关闭所有Wi-Fi功能。 *路由器重启后，该模式将自动关闭，Wi-Fi将自动打开。"
+msgstr "After enabling this feature, the router will turn off all Wi-Fi functions. *After the router reboots, this mode will automatically turn off and Wi-Fi will automatically turn on."
+
+msgid "开启白名单功能后，将只允许名单中的设备访问管理后台，每次开启会将本机自动添加至白名单。"
+msgstr "After enabling the whitelist feature, only devices in the list will be allowed to access the admin panel. Each time it is enabled, the current device will be automatically added to the whitelist."
+
+msgid "开启访客Wi-Fi"
+msgstr "Enable Guest Wi-Fi"
+
+msgid "开启该功能后，需要您重新连接VPN方可生效，且智能分流功能将关闭。若开启后发现路由器App远程访问出现异常，请您关闭。是否确认开启？"
+msgstr "After enabling this feature, you need to reconnect to the VPN for it to take effect, and the smart split tunneling feature will be disabled. If you experience abnormal remote access to the router app after enabling, please disable it. Confirm to enable?"
+
+msgid "开始IP"
+msgstr "Start IP"
+
+msgid "开始升级"
+msgstr "Start Upgrade"
+
+msgid "开始备份"
+msgstr "Start Backup"
+
+msgid "开始安装"
+msgstr "Start Installation"
+
+msgid "开始恢复"
+msgstr "Start Restore"
+
+msgid "开始测速"
+msgstr "Start Speed Test"
+
+msgid "开机自动连接"
+msgstr "Auto-connect on Startup"
+
+msgid "开罗，特里波利，加里宁格勒"
+msgstr "Cairo, Tripoli, Kaliningrad"
+
+msgid "强制更新"
+msgstr "Force Update"
+
+msgid "强制更新为域名与IP强制更新的时间，如无特殊需求，建议使用默认配置；"
+msgstr "Force update is the interval for forced domain name and IP updates. If there are no special requirements, it is recommended to use the default configuration;"
+
+msgid "强制更新的小时间隔"
+msgstr "Force Update Interval (Hours)"
+
+msgid "强制检查为WAN口IP的检查时间，如无特殊需求，建议使用默认配置；"
+msgstr "Force check is the check time for WAN port IP. If there are no special requirements, it is recommended to use the default configuration;"
+
+msgid "强加密(WPA2个人版)"
+msgstr "Strong Encryption (WPA2 Personal)"
+
+msgid "强混合加密(WPA3/WPA2个人版)"
+msgstr "Strong Mixed Encryption (WPA3/WPA2 Personal)"
+
+msgid "当你需要通过VPN使用外网时，可以开启此功能保证小米路由器APP远程服务可用，其他情况下关闭此功能"
+msgstr "When you need to use the external network via VPN, you can enable this feature to ensure the Xiaomi Router app remote service is available. In other cases, disable this feature"
+
+msgid "当刷回较低版本时，建议您同时清除掉用户配置，以防止版本兼容性引起的异常故障"
+msgstr "When flashing back to a lower version, it is recommended to also clear user configuration to prevent abnormal failures caused by version incompatibility"
+
+msgid "当前CPU状态"
+msgstr "Current CPU Status"
+
+msgid "当前CPU负载："
+msgstr "Current CPU Load:"
+
+msgid "当前MTU小于1280，开启IPv6后将自动设置为1280"
+msgstr "Current MTU is less than 1280. After enabling IPv6, it will be automatically set to 1280"
+
+msgid "当前QoS服务暂未开启"
+msgstr "QoS service is currently not enabled"
+
+msgid "当前wan口为SFP口，速率取决于您插入的模块，无法设置。"
+msgstr "The current WAN port is an SFP port. The speed depends on the module you insert and cannot be set."
+
+msgid "当前为无线中继模式，中继质量为"
+msgstr "Currently in wireless repeater mode, repeater quality is"
+
+msgid "当前使用的MAC地址是"
+msgstr "The currently used MAC address is"
+
+msgid "当前内存占用："
+msgstr "Current Memory Usage:"
+
+msgid "当前内存状态"
+msgstr "Current Memory Status"
+
+msgid "当前处于禁止上网时段"
+msgstr "Currently in Internet access prohibition period"
+
+msgid "当前工作模式切换为普通路由器会恢复为之前路由器的所有设置"
+msgstr "Switching the current work mode to normal router will restore all previous router settings"
+
+msgid "当前工作模式只能切换到普通路由器模式"
+msgstr "The current work mode can only be switched to normal router mode"
+
+msgid "当前接入的网络可能不支持DHCP连接模式"
+msgstr "The currently connected network may not support DHCP connection mode"
+
+msgid "当前时间"
+msgstr "Current Time"
+
+msgid "当前未开启访客模式"
+msgstr "Guest mode is currently not enabled"
+
+msgid "当前未有5G连网设备"
+msgstr "No 5G connected devices currently"
+
+msgid "当前正在连接的VPN将被断开，重新连接后该设置将生效。"
+msgstr "The currently connected VPN will be disconnected. This setting will take effect after reconnecting."
+
+msgid "当前没有访客设备连入"
+msgstr "No guest devices currently connected"
+
+msgid "当前版本{$romVersion}，{$ret}"
+msgstr "Current version {$romVersion}, {$ret}"
+
+msgid "当前管理终端的MAC地址，可以手动更改为其他MAC地址"
+msgstr "The MAC address of the current management terminal, which can be manually changed to another MAC address"
+
+msgid "当前网速"
+msgstr "Current Network Speed"
+
+msgid "当前虚拟内存状态"
+msgstr "Current Virtual Memory Status"
+
+msgid "当前路由器内存状态"
+msgstr "Current Router Memory Status"
+
+msgid "当前频宽不支持将要切换的信道，系统已自动选择可用的频宽"
+msgstr "The current bandwidth does not support the channel to be switched to. The system has automatically selected an available bandwidth"
+
+msgid "当外网下载带宽超过50Mbps时，建议无需开启QoS功能"
+msgstr "When the external network download bandwidth exceeds 50Mbps, it is recommended not to enable QoS"
+
+msgid "当安装失败或需要降级到前一版本时使用手动安装插件。"
+msgstr "Use manual plugin installation when installation fails or when you need to downgrade to a previous version."
+
+msgid "德黑兰"
+msgstr "Tehran"
+
+msgid "必填"
+msgstr "Required"
+
+msgid "必须是完整的URL,如 http://miwifi.com"
+msgstr "Must be a complete URL, e.g. http://miwifi.com"
+
+msgid "总容量"
+msgstr "Total Capacity"
+
+msgid "恢复"
+msgstr "Restore"
+
+msgid "恢复出厂设置"
+msgstr "Factory Reset"
+
+msgid "恢复出厂设置操作会抹掉当前路由器的所有设置，建议您先进行配置备份再恢复出厂设置。"
+msgstr "Factory reset will erase all current router settings. It is recommended to back up the configuration first before performing a factory reset."
+
+msgid "恩德伯里，法考福，通塔普"
+msgstr "Enderbury, Fakaofo, Tongatapu"
+
+msgid "恭喜！网络连接正常"
+msgstr "Congratulations! Network connection is normal"
+
+msgid "恭喜，小米路由器一键中继设置成功！"
+msgstr "Congratulations, Xiaomi Router one-click repeater setup successful!"
+
+msgid "恭喜，小米路由器一键有线中继模式设置成功！"
+msgstr "Congratulations, Xiaomi Router one-click wired repeater mode setup successful!"
+
+msgid "恭喜，小米路由器切换为普通路由器工作模式成功！"
+msgstr "Congratulations, Xiaomi Router successfully switched to normal router work mode!"
+
+msgid "您可以选择以下两种方式来新增Mesh子路由"
+msgstr "You can choose the following two methods to add a Mesh sub-router"
+
+msgid "您将当前设备添加至黑名单，保存后本机将无法访问网络！"
+msgstr "You are adding the current device to the blacklist. After saving, this device will not be able to access the network!"
+
+msgid "您已经全部添加过了"
+msgstr "You have already added all of them"
+
+msgid "您没有在列表中添加任何设备，保存后所有设备将无法访问网络！请返回修改"
+msgstr "You have not added any devices to the list. After saving, all devices will not be able to access the network! Please go back and modify"
+
+msgid "您没有将当前设备添加至白名单，保存后本机将无法访问网络！"
+msgstr "You have not added the current device to the whitelist. After saving, this device will not be able to access the network!"
+
+msgid "您输入的范围不合理。"
+msgstr "The range you entered is invalid."
+
+msgid "您还可以一键恢复系统，和升级一样简单。"
+msgstr "You can also restore the system with one click, as simple as upgrading."
+
+msgid "惠灵顿，麦克默多，奥克兰"
+msgstr "Wellington, McMurdo, Auckland"
+
+msgid "慧谷"
+msgstr "Hui Gu"
+
+msgid "戈塔布"
+msgstr "Gotab"
+
+msgid "我已安装，现在打开"
+msgstr "I have installed it, open now"
+
+msgid "我已接好网线，继续"
+msgstr "I have connected the cable, continue"
+
+msgid "或\\"
+msgstr "or \\"
+
+msgid "或者"
+msgstr "or"
+
+msgid "截止日期不能小于起始日期。"
+msgstr "The end date cannot be earlier than the start date."
+
+msgid "所罗门群岛,新喀里多尼亚"
+msgstr "Solomon Islands, New Caledonia"
+
+msgid "手动升级"
+msgstr "Manual Upgrade"
+
+msgid "手动安装"
+msgstr "Manual Installation"
+
+msgid "手动安装插件"
+msgstr "Manual Plugin Installation"
+
+msgid "手动更新"
+msgstr "Manual Update"
+
+msgid "手动配置"
+msgstr "Manual Configuration"
+
+msgid "手动配置DNS"
+msgstr "Manual DNS Configuration"
+
+msgid "手工模式下路由器会根据您设置的速度调整带宽分配"
+msgstr "In manual mode, the router will adjust bandwidth allocation according to the speed you set"
+
+msgid "手工添加"
+msgstr "Manual Add"
+
+msgid "手工设置"
+msgstr "Manual Setup"
+
+msgid "手工设置外网带宽"
+msgstr "Manual External Network Bandwidth Setup"
+
+msgid "手工输入网络名称"
+msgstr "Manually Enter Network Name"
+
+msgid "手工限速模式"
+msgstr "Manual Bandwidth Control Mode"
+
+msgid "手机客户端"
+msgstr "Mobile Client"
+
+msgid "手机扫描二维码安装和家亲APP"
+msgstr "Scan QR code with mobile phone to install Hejiaqin APP"
+
+msgid "手机扫描二维码安装小翼管家APP"
+msgstr "Scan QR code with mobile phone to install Xiaoyi Manager APP"
+
+msgid "手机扫描二维码安装米家APP"
+msgstr "Scan QR code with mobile phone to install Mi Home APP"
+
+msgid "打开此功能后，小米路由器Web后台的域名访问（router.miwifi.com）"
+msgstr "After enabling this feature, domain name access to the Xiaomi Router web admin panel (router.miwifi.com)"
+
+msgid "打开访客Wi-Fi会同时打开Wi-Fi"
+msgstr "Enabling guest Wi-Fi will also enable Wi-Fi"
+
+msgid "执行此操作将删除与路由器直连的存储器中扩展的虚拟内存，如果此时Docker服务正在运行，Docker服务将会被重启"
+msgstr "Performing this operation will delete the extended virtual memory in the storage directly connected to the router. If the Docker service is running at this time, the Docker service will be restarted"
+
+msgid "执行此操作，局域网IP将会变更为"
+msgstr "Performing this operation, the LAN IP will be changed to"
+
+msgid "扫描二维码，下载米家APP"
+msgstr "Scan QR code to download Mi Home APP"
+
+msgid "找不到要中继的网络"
+msgstr "Cannot find the network to repeat"
+
+msgid "拉罗汤加，塔希提岛"
+msgstr "Rarotonga, Tahiti"
+
+msgid "拒绝阈值"
+msgstr "Rejection Threshold"
+
+msgid "拨号失败"
+msgstr "Dial-up Failed"
+
+msgid "拨号成功"
+msgstr "Dial-up Successful"
+
+msgid "拨号状态异常"
+msgstr "Dial-up Status Abnormal"
+
+msgid "按服务地址分流"
+msgstr "Split by Service Address"
+
+msgid "按设备分流"
+msgstr "Split by Device"
+
+msgid "接入到运营商宽带的网线可以插在任意网口"
+msgstr "The Ethernet cable connected to the ISP broadband can be plugged into any network port"
+
+msgid "接入路由器的网线损坏了"
+msgstr "The Ethernet cable connected to the router is damaged"
+
+msgid "控制模式"
+msgstr "Control Mode"
+
+msgid "推荐使用自动(80M)频宽，以获得更好的覆盖及抗干扰性能"
+msgstr "Auto (80MHz) bandwidth is recommended for better coverage and anti-interference performance"
+
+msgid "提示"
+msgstr "Tip"
+
+msgid "提示信息"
+msgstr "Tip Message"
+
+msgid "提示：中继模式下部分功能和插件将被屏蔽"
+msgstr "Note: Some features and plugins will be disabled in Repeater mode"
+
+msgid "插件安装"
+msgstr "Plugin Installation"
+
+msgid "插件安装成功"
+msgstr "Plugin Installation Successful"
+
+msgid "搜索要添加的Mesh子路由"
+msgstr "Search for Mesh Sub-routers to Add"
+
+msgid "操作"
+msgstr "Operation"
+
+msgid "操作生效,重启成功！"
+msgstr "Operation applied, restart successful!"
+
+msgid "操作生效，等待修复完成…"
+msgstr "Operation applied, waiting for repair to complete..."
+
+msgid "操作生效，等待设备重启..."
+msgstr "Operation applied, waiting for device restart..."
+
+msgid "放弃"
+msgstr "Abandon"
+
+msgid "散热优先"
+msgstr "Cooling Priority"
+
+msgid "散热优先，风扇转速较快，噪音较大（建议高负载时使用）"
+msgstr "Cooling priority, fan speed is faster with louder noise (recommended for high load)"
+
+msgid "数字前面好像有多余的\"0\"。"
+msgstr "There seems to be an extra \"0\" before the number."
+
+msgid "数字输入格式为\"{$0}\"。"
+msgstr "Number input format is \"{$0}\"."
+
+msgid "文件格式错误，请重新选择"
+msgstr "File format error, please reselect"
+
+msgid "文莱，伊尔库茨克，吉隆坡，新加坡，乌兰巴托"
+msgstr "Brunei, Irkutsk, Kuala Lumpur, Singapore, Ulaanbaatar"
+
+msgid "斐济"
+msgstr "Fiji"
+
+msgid "断开"
+msgstr "Disconnect"
+
+msgid "断开连接"
+msgstr "Disconnect"
+
+msgid "斯科尔斯比松德，亚速尔群岛"
+msgstr "Scoresbysund, Azores"
+
+msgid "新密码"
+msgstr "New Password"
+
+msgid "新密码与原密码相同"
+msgstr "New password is the same as the old password"
+
+msgid "新建备份"
+msgstr "Create Backup"
+
+msgid "新建的有线中继无线网络名称为"
+msgstr "The new wired repeater wireless network name is"
+
+msgid "新建端口转发规则"
+msgstr "Create Port Forwarding Rule"
+
+msgid "新建范围转发规则"
+msgstr "Create Range Forwarding Rule"
+
+msgid "无加密(允许所有人连接)"
+msgstr "No Encryption (Allow all to connect)"
+
+msgid "无可添加设备"
+msgstr "No devices available to add"
+
+msgid "无效的手机号"
+msgstr "Invalid Phone Number"
+
+msgid "无线MAC地址过滤"
+msgstr "Wireless MAC Address Filtering"
+
+msgid "无线中继"
+msgstr "Wireless Repeater"
+
+msgid "无线中继工作模式（扩展现有的无线网络）"
+msgstr "Wireless Repeater Mode (Extend existing wireless network)"
+
+msgid "无线信道"
+msgstr "Wireless Channel"
+
+msgid "无线组网："
+msgstr "Wireless Networking:"
+
+msgid "无线网络所在区域"
+msgstr "Wireless Network Region"
+
+msgid "无线网络的名称密码与目标路由器一致"
+msgstr "The wireless network name and password are the same as the target router"
+
+msgid "无线访问控制"
+msgstr "Wireless Access Control"
+
+msgid "无限制"
+msgstr "Unlimited"
+
+msgid "无限速阈值，请先进行限速设置"
+msgstr "No speed limit threshold, please set speed limit first"
+
+msgid "日"
+msgstr "Day"
+
+msgid "日志上传成功"
+msgstr "Log Upload Successful"
+
+msgid "日志管理"
+msgstr "Log Management"
+
+msgid "日期"
+msgstr "Date"
+
+msgid "日期太早，最早允许{$0}。"
+msgstr "Date is too early, the earliest allowed is {$0}."
+
+msgid "日期太晚，最晚允许{$0}。"
+msgstr "Date is too late, the latest allowed is {$0}."
+
+msgid "日期输入格式为\"YYYY-MM-DD\"。"
+msgstr "Date input format is \"YYYY-MM-DD\"."
+
+msgid "时"
+msgstr "Hour"
+
+msgid "时区设置"
+msgstr "Timezone Settings"
+
+msgid "时间"
+msgstr "Time"
+
+msgid "时间设置"
+msgstr "Time Settings"
+
+msgid "时间跨度不得超过{$0}天。"
+msgstr "Time span must not exceed {$0} days."
+
+msgid "是否提交?"
+msgstr "Submit?"
+
+msgid "是否确定关闭路由器，操作将断开和小米路由器的连接。"
+msgstr "Are you sure you want to shut down the router? This will disconnect from the Xiaomi router."
+
+msgid "是否确定切换路由器的工作模式？"
+msgstr "Are you sure you want to switch the router's operating mode?"
+
+msgid "是否确认卸载？"
+msgstr "Confirm uninstall?"
+
+msgid "是否确认移除？"
+msgstr "Confirm removal?"
+
+msgid "普通路由器工作模式（创建一个无线网络）"
+msgstr "Standard Router Mode (Create a wireless network)"
+
+msgid "智能VPN分流"
+msgstr "Smart VPN Split"
+
+msgid "智能平衡散热与噪音(推荐)"
+msgstr "Smart balance between cooling and noise (Recommended)"
+
+msgid "智能识别网口\"{$wanPort}\"作为WAN口"
+msgstr "Smart detection of network port \"{$wanPort}\" as WAN port"
+
+msgid "智能选择WAN口（推荐）"
+msgstr "Smart WAN Port Selection (Recommended)"
+
+msgid "暂停所有下载"
+msgstr "Pause All Downloads"
+
+msgid "暂无更新"
+msgstr "No updates available"
+
+msgid "暂无设备接入"
+msgstr "No devices connected"
+
+msgid "更换一根网线再尝试连接"
+msgstr "Replace the Ethernet cable and try connecting again"
+
+msgid "更换了接入宽带"
+msgstr "Changed broadband access"
+
+msgid "更改时区"
+msgstr "Change Timezone"
+
+msgid "更改时间"
+msgstr "Change Time"
+
+msgid "更新"
+msgstr "Update"
+
+msgid "更新成功"
+msgstr "Update Successful"
+
+msgid "更新日志"
+msgstr "Changelog"
+
+msgid "最多允许{$0}个字。"
+msgstr "Maximum {$0} characters allowed."
+
+msgid "最多允许{$0}个字节。"
+msgstr "Maximum {$0} bytes allowed."
+
+msgid "最多接入设备为1000台，请重新设置"
+msgstr "Maximum connected devices is 1000, please reconfigure"
+
+msgid "最大终端数量"
+msgstr "Maximum Client Count"
+
+msgid "最大速度"
+msgstr "Maximum Speed"
+
+msgid "最近更新"
+msgstr "Latest Update"
+
+msgid "最高上传速度"
+msgstr "Maximum Upload Speed"
+
+msgid "最高下载速度"
+msgstr "Maximum Download Speed"
+
+msgid "最高速度设置"
+msgstr "Maximum Speed Settings"
+
+msgid "月"
+msgstr "Month"
+
+msgid "有线中继"
+msgstr "Wired Repeater"
+
+msgid "有线中继工作模式说明"
+msgstr "Wired Repeater Mode Description"
+
+msgid "有线中继工作模式（扩展现有的网络）"
+msgstr "Wired Repeater Mode (Extend existing network)"
+
+msgid "有线中继模式"
+msgstr "Wired Repeater Mode"
+
+msgid "有线组网："
+msgstr "Wired Networking:"
+
+msgid "有线网络"
+msgstr "Wired Network"
+
+msgid "服务列表："
+msgstr "Service List:"
+
+msgid "服务名"
+msgstr "Service Name"
+
+msgid "服务器"
+msgstr "Server"
+
+msgid "服务器IPv4地址"
+msgstr "Server IPv4 Address"
+
+msgid "服务器地址"
+msgstr "Server Address"
+
+msgid "服务提供商"
+msgstr "Service Provider"
+
+msgid "服务提供商及主机名称"
+msgstr "Service Provider and Host Name"
+
+msgid "服务热线"
+msgstr "Service Hotline"
+
+msgid "服务类型"
+msgstr "Service Type"
+
+msgid "望加锡"
+msgstr "Makassar"
+
+msgid "未启动无法强制更新"
+msgstr "Cannot force update if not started"
+
+msgid "未启用"
+msgstr "Not Enabled"
+
+msgid "未开启数据网络"
+msgstr "Data network not enabled"
+
+msgid "未开启漫游"
+msgstr "Roaming not enabled"
+
+msgid "未找到可用的Mesh子路由"
+msgstr "No available Mesh sub-routers found"
+
+msgid "未插入SIM卡"
+msgstr "SIM card not inserted"
+
+msgid "未检测到"
+msgstr "Not Detected"
+
+msgid "未检测到IPv6信息"
+msgstr "No IPv6 information detected"
+
+msgid "未检测到可用的外接存储器，请确保分区格式为EXT4且可用容量大于32GB"
+msgstr "No usable external storage detected. Please ensure the partition format is EXT4 and available capacity is greater than 32GB"
+
+msgid "未检测到存储设备，请将USB存储设备连接到你的小米路由器"
+msgstr "No storage device detected. Please connect a USB storage device to your Xiaomi router"
+
+msgid "未检测到宽带网线接入"
+msgstr "No broadband Ethernet cable connection detected"
+
+msgid "未检测到宽带网线接入，请将网线连接到任意高亮网口"
+msgstr "No broadband Ethernet cable connection detected. Please connect the cable to any highlighted network port"
+
+msgid "未生效"
+msgstr "Not Applied"
+
+msgid "未能扫描到Wi-Fi,请确保射频开启"
+msgstr "Unable to scan Wi-Fi, please ensure the radio is enabled"
+
+msgid "未设置"
+msgstr "Not Set"
+
+msgid "未连接"
+msgstr "Not Connected"
+
+msgid "本地管理小米路由器"
+msgstr "Local Management of Xiaomi Router"
+
+msgid "本机"
+msgstr "This Device"
+
+msgid "杜蒙特杜尔维尔，乌斯特内拉，弗拉迪沃斯托克，楚克，莫尔斯比港"
+msgstr "Dumont d'Urville, Ust-Nera, Vladivostok, Chuuk, Port Moresby"
+
+msgid "查亚普拉"
+msgstr "Jayapura"
+
+msgid "查塔姆岛"
+msgstr "Chatham Islands"
+
+msgid "查看完整网络"
+msgstr "View Full Network"
+
+msgid "查看网络拓扑图"
+msgstr "View Network Topology"
+
+msgid "查询中..."
+msgstr "Querying..."
+
+msgid "柯里，霍巴特，墨尔本，悉尼"
+msgstr "Currie, Hobart, Melbourne, Sydney"
+
+msgid "标准"
+msgstr "Standard"
+
+msgid "核心频率"
+msgstr "Core Frequency"
+
+msgid "根据应用优先级分配网速"
+msgstr "Distribute network speed based on application priority"
+
+msgid "根西岛，马恩岛，泽西岛，伦敦"
+msgstr "Guernsey, Isle of Man, Jersey, London"
+
+msgid "格拉斯湾，鹅湾，哈利法克斯，百慕大"
+msgstr "Glasgow Bay, Goose Bay, Halifax, Bermuda"
+
+msgid "格陵兰"
+msgstr "Greenland"
+
+msgid "桥接模式"
+msgstr "Bridge Mode"
+
+msgid "检查WAN口接入的宽带是否已经变更"
+msgstr "Check if the broadband connected to the WAN port has changed"
+
+msgid "检查失败，网络繁忙请刷新页面重试。"
+msgstr "Check failed, network is busy. Please refresh the page and try again."
+
+msgid "检测到与上级路由器存在IP冲突，建议切换到"
+msgstr "IP conflict detected with the upstream router, switch to recommended"
+
+msgid "检测到与上级路由器存在IP冲突，请"
+msgstr "IP conflict detected with upstream router, please"
+
+msgid "检测到最新版本为{$version}"
+msgstr "Latest version detected: {$version}"
+
+msgid "检测到未启用Wi-Fi多频合一，无法打开MLO开关。"
+msgstr "Wi-Fi Multi-Band is not enabled, unable to turn on MLO."
+
+msgid "模式"
+msgstr "Mode"
+
+msgid "欢迎使用小米路由器"
+msgstr "Welcome to Xiaomi Router"
+
+msgid "正在升级中"
+msgstr "Upgrading..."
+
+msgid "正在扩展Mesh网络"
+msgstr "Expanding Mesh Network..."
+
+msgid "正在扫描附近的无线网络"
+msgstr "Scanning nearby wireless networks..."
+
+msgid "正在拨号..."
+msgstr "Dialing..."
+
+msgid "正在断开..."
+msgstr "Disconnecting..."
+
+msgid "正在查询中..."
+msgstr "Querying..."
+
+msgid "正在检测上网连接方式，请稍等..."
+msgstr "Detecting Internet connection type, please wait..."
+
+msgid "正在检测更新，请稍候..."
+msgstr "Checking for updates, please wait..."
+
+msgid "正在检测模式列表..."
+msgstr "Detecting mode list..."
+
+msgid "正在测速..."
+msgstr "Speed testing..."
+
+msgid "正在测速，请等待。"
+msgstr "Testing speed, please wait."
+
+msgid "正在设置中，请稍候..."
+msgstr "Configuring, please wait..."
+
+msgid "正在进行系统升级，请不要离开页面"
+msgstr "System upgrade in progress, please do not leave this page"
+
+msgid "正在进行网络诊断，请稍候"
+msgstr "Network diagnosis in progress, please wait"
+
+msgid "正在连接Mesh子路由..."
+msgstr "Connecting to Mesh sub-router..."
+
+msgid "此SSID会导致某些设备支持不佳"
+msgstr "This SSID may cause poor compatibility with some devices"
+
+msgid "此功能与双WAN功能冲突，若想使用，请您先关闭双WAN功能"
+msgstr "This feature conflicts with Dual WAN. To use it, please disable Dual WAN first"
+
+msgid "此功能可能在网络拥塞的环境下导致网络出现一定的丢包变多及延时提高的问题。"
+msgstr "This feature may cause increased packet loss and higher latency in network congestion environments."
+
+msgid "此操作需要重启才能生效"
+msgstr "This operation requires a restart to take effect"
+
+msgid "此操作需要重启才能生效，是否提交?"
+msgstr "This operation requires a restart to take effect. Submit?"
+
+msgid "此路由器提供以下SFP+网口速率模式："
+msgstr "This router provides the following SFP+ port speed modes:"
+
+msgid "此页面仅支持对路由器灯效进行简单管理，如需自定义或定时控制灯效请使用米家App绑定此路由器后进行管理"
+msgstr "This page only supports basic management of router lighting effects. For custom or scheduled lighting control, please use the Mi Home App after binding this router"
+
+msgid "氛围灯"
+msgstr "Ambient Light"
+
+msgid "沃斯托克，阿拉木图，达卡，鄂木斯克，廷布"
+msgstr "Vostok, Almaty, Dhaka, Omsk, Thimphu"
+
+msgid "没有UPnP设备"
+msgstr "No UPnP Devices"
+
+msgid "没有可清除的日志。"
+msgstr "No logs to clear."
+
+msgid "没有未添加的设备连接进来"
+msgstr "No unadded devices connected"
+
+msgid "没有磁盘空间"
+msgstr "No Disk Space"
+
+msgid "没有设置信息"
+msgstr "No Settings Information"
+
+msgid "没有运行中的任务"
+msgstr "No Running Tasks"
+
+msgid "河内，曼谷，巴瑙尔，胡志明，新西伯利亚"
+msgstr "Hanoi, Bangkok, Barnaul, Ho Chi Minh, Novosibirsk"
+
+msgid "波哥大，埃里伦佩，瓜亚基尔，利马，里奥布兰科"
+msgstr "Bogota, Eirunepe, Guayaquil, Lima, Rio Branco"
+
+msgid "注意事项"
+msgstr "Precautions"
+
+msgid "注意：升级过程中请勿断开路由器电源，否则将导致路由器损坏而无法使用；升级完成后，路由器将会自动重新启动。"
+msgstr "Note: Do not disconnect the router power during upgrade, otherwise the router will be damaged and unusable. After the upgrade, the router will restart automatically."
+
+msgid "注网失败"
+msgstr "Network Registration Failed"
+
+msgid "注销"
+msgstr "Logout"
+
+msgid "注：检测到已开启Wi-Fi5兼容模式，无法打开MLO开关。"
+msgstr "Note: Wi-Fi 5 compatibility mode is enabled, unable to turn on MLO."
+
+msgid "注：检测到已开启Wi-Fi5兼容模式，无法打开TWT开关。"
+msgstr "Note: Wi-Fi 5 compatibility mode is enabled, unable to turn on TWT."
+
+msgid "注：检测到未开启Wi-Fi多频合一，无法打开MLO开关。"
+msgstr "Note: Wi-Fi Multi-Band is not enabled, unable to turn on MLO."
+
+msgid "注：此时路由器管理网段将变为10.31前缀，已保存的DHCP静态绑定、端口转发、DMZ主机设置、QoS限速等需要重新配置。"
+msgstr "Note: The router management subnet will change to 10.31 prefix. Saved DHCP static bindings, port forwarding, DMZ host settings, QoS speed limits, etc. will need to be reconfigured."
+
+msgid "测速不准？"
+msgstr "Speed Test Inaccurate?"
+
+msgid "消息框"
+msgstr "Message Box"
+
+msgid "混合加密(WPA/WPA2个人版)"
+msgstr "Mixed Encryption (WPA/WPA2 Personal)"
+
+msgid "添加"
+msgstr "Add"
+
+msgid "添加Mesh子路由"
+msgstr "Add Mesh Sub-router"
+
+msgid "添加Mesh节点"
+msgstr "Add Mesh Node"
+
+msgid "添加服务"
+msgstr "Add Service"
+
+msgid "添加服务地址"
+msgstr "Add Service Address"
+
+msgid "添加要使用VPN的服务地址"
+msgstr "Add VPN Service Address"
+
+msgid "添加规则"
+msgstr "Add Rule"
+
+msgid "清除当前所有用户配置"
+msgstr "Clear All Current User Configurations"
+
+msgid "清除所有访问日志"
+msgstr "Clear All Access Logs"
+
+msgid "温馨提示"
+msgstr "Warm Reminder"
+
+msgid "游戏优先"
+msgstr "Game Priority"
+
+msgid "游戏网口"
+msgstr "Gaming Port"
+
+msgid "游戏网口传输的数据会被优先转发，使得延迟更低，更适用于游戏和语音场景"
+msgstr "Data transmitted through the gaming port will be forwarded with priority for lower latency, more suitable for gaming and voice scenarios"
+
+msgid "游戏网口注意事项"
+msgstr "Gaming Port Notes"
+
+msgid "澳大利亚远东标准时间"
+msgstr "Australian Far East Standard Time"
+
+msgid "火奴鲁鲁"
+msgstr "Honolulu"
+
+msgid "灯效控制"
+msgstr "Lighting Effect Control"
+
+msgid "点击此处查看"
+msgstr "Click here to view"
+
+msgid "点击此处立即升级"
+msgstr "Click here to upgrade now"
+
+msgid "点击进行网络检测"
+msgstr "Click to run network check"
+
+msgid "特殊拨号"
+msgstr "Special Dial-up"
+
+msgid "特罗尔"
+msgstr "Troll"
+
+msgid "状态"
+msgstr "Status"
+
+msgid "状态指示灯"
+msgstr "Status Indicator Light"
+
+msgid "状态检查"
+msgstr "Status Check"
+
+msgid "状态检查的分钟间隔"
+msgstr "Status Check Interval (Minutes)"
+
+msgid "现在安装"
+msgstr "Install Now"
+
+msgid "珀斯"
+msgstr "Perth"
+
+msgid "班吉，布拉柴维尔，杜阿拉，金沙萨，拉各斯"
+msgstr "Bangui, Brazzaville, Douala, Kinshasa, Lagos"
+
+msgid "甘比尔"
+msgstr "Gambier"
+
+msgid "用户名"
+msgstr "Username"
+
+msgid "用户名和密码为注册该运营商的用户名与密码；"
+msgstr "Username and password are those registered with the ISP;"
+
+msgid "用户社区"
+msgstr "User Community"
+
+msgid "用户端IPv6地址"
+msgstr "Client IPv6 Address"
+
+msgid "由于"
+msgstr "Due to"
+
+msgid "电视：找到此电视上的Samba入口，根据电视操作提示进行访问此路由器外接存储器上的共享文件"
+msgstr "TV: Find the Samba entry on this TV and follow the TV's prompts to access shared files on the router's external storage"
+
+msgid "畅快连"
+msgstr "Quick Connect"
+
+msgid "白名单模式（只允许列表中设备访问）"
+msgstr "Whitelist Mode (Only allow devices in the list)"
+
+msgid "白名单设备列表"
+msgstr "Whitelist Device List"
+
+msgid "皮特克恩"
+msgstr "Pitcairn"
+
+msgid "目前路由器拨号上网获得的多半都是动态IP，DDNS可以将路由器变化的外网IP和固定的域名绑定，从而用户可以在外网通过该固定域名来访问路由器。"
+msgstr "Currently, most IPs obtained by router dial-up are dynamic. DDNS can bind the router's changing public IP to a fixed domain name, allowing users to access the router remotely via that fixed domain name."
+
+msgid "目标IP"
+msgstr "Target IP"
+
+msgid "目标IP："
+msgstr "Target IP:"
+
+msgid "直接恢复出厂设置"
+msgstr "Direct Factory Reset"
+
+msgid "短信箱已满，"
+msgstr "SMS inbox is full,"
+
+msgid "确定"
+msgstr "OK"
+
+msgid "确定要删除这条规则吗？"
+msgstr "Are you sure you want to delete this rule?"
+
+msgid "确定要删除这项数据吗"
+msgstr "Are you sure you want to delete this data?"
+
+msgid "确定要恢复出厂设置让小米路由器回到初始状态？"
+msgstr "Are you sure you want to factory reset the Xiaomi router to its initial state?"
+
+msgid "确定重启路由器，重启将断开和小米路由器的连接。"
+msgstr "Are you sure you want to restart the router? This will disconnect from the Xiaomi router."
+
+msgid "确认"
+msgstr "Confirm"
+
+msgid "确认信息"
+msgstr "Confirmation Information"
+
+msgid "确认密码"
+msgstr "Confirm Password"
+
+msgid "确认是否关闭游戏网口功能"
+msgstr "Confirm whether to disable the gaming port feature"
+
+msgid "确认要解除选中项目的绑定关系？"
+msgstr "Confirm unbinding of selected items?"
+
+msgid "碰碰连"
+msgstr "NFC Connect"
+
+msgid "碰碰连设置失败"
+msgstr "NFC Connect setup failed"
+
+msgid "离线"
+msgstr "Offline"
+
+msgid "科伦坡"
+msgstr "Colombo"
+
+msgid "秒"
+msgstr "Second"
+
+msgid "租约"
+msgstr "Lease"
+
+msgid "租约(分)"
+msgstr "Lease (Min)"
+
+msgid "移动网络"
+msgstr "Mobile Network"
+
+msgid "移除"
+msgstr "Remove"
+
+msgid "移除失败"
+msgstr "Removal Failed"
+
+msgid "移除成功"
+msgstr "Removal Successful"
+
+msgid "稳定版"
+msgstr "Stable Version"
+
+msgid "穿墙"
+msgstr "Wall Penetration"
+
+msgid "立即修复"
+msgstr "Repair Now"
+
+msgid "立即升级"
+msgstr "Upgrade Now"
+
+msgid "立即恢复"
+msgstr "Restore Now"
+
+msgid "立即测速"
+msgstr "Speed Test Now"
+
+msgid "立即连接"
+msgstr "Connect Now"
+
+msgid "端口触发"
+msgstr "Port Triggering"
+
+msgid "端口触发功能可以在本地网络中建立一个规则，当一个固定内网端口尝试与外网建立连接时，该规则生效，可以将来自外网端口的请求转发给内网的设备，以此让外网可以访问到内网的设备"
+msgstr "Port triggering creates a rule in the local network. When a fixed internal port tries to establish a connection to the external network, this rule takes effect and forwards requests from external ports to internal devices, allowing external access to internal devices"
+
+msgid "端口触发规则列表："
+msgstr "Port Triggering Rule List:"
+
+msgid "端口转发"
+msgstr "Port Forwarding"
+
+msgid "端口转发开启了，不可以设置DMZ"
+msgstr "Port forwarding is enabled, DMZ cannot be set"
+
+msgid "端口转发规则列表："
+msgstr "Port Forwarding Rule List:"
+
+msgid "第一步：支持Samba协议的PC或电视连入此路由提供的网络；"
+msgstr "Step 1: Connect a PC or TV that supports the Samba protocol to the network provided by this router;"
+
+msgid "第三方管理工具："
+msgstr "Third-party Management Tool:"
+
+msgid "第二步：根据接入终端的情况进行文件访问"
+msgstr "Step 2: Access files based on the connected terminal type"
+
+msgid "第比利斯"
+msgstr "Tbilisi"
+
+msgid "管理Docker"
+msgstr "Manage Docker"
+
+msgid "管理后台访问控制"
+msgstr "Admin Backend Access Control"
+
+msgid "米克隆"
+msgstr "Micron"
+
+msgid "系统ROM版本"
+msgstr "System ROM Version"
+
+msgid "系统升级"
+msgstr "System Upgrade"
+
+msgid "系统启动失败，可一键恢复"
+msgstr "System startup failed, one-click recovery available"
+
+msgid "系统启动失败，无内置硬盘"
+msgstr "System startup failed, no internal hard drive"
+
+msgid "系统异常，请刷新重试"
+msgstr "System error, please refresh and try again"
+
+msgid "系统根据设备需要自动调配网速"
+msgstr "System automatically allocates network speed based on device needs"
+
+msgid "系统检测你的路由器未接入网线，请接好网线并继续"
+msgstr "The system detected that your router is not connected to an Ethernet cable. Please connect the cable and continue"
+
+msgid "系统版本"
+msgstr "System Version"
+
+msgid "系统自动"
+msgstr "System Auto"
+
+msgid "系统设置"
+msgstr "System Settings"
+
+msgid "系统语言"
+msgstr "System Language"
+
+msgid "系统错误，请重试"
+msgstr "System error, please try again"
+
+msgid "系统错误，请重试。"
+msgstr "System error, please try again."
+
+msgid "约翰内斯堡，马塞卢，姆巴巴内"
+msgstr "Johannesburg, Maseru, Mbabane"
+
+msgid "纽埃"
+msgstr "Niue"
+
+msgid "纽芬兰"
+msgstr "Newfoundland"
+
+msgid "终端数量"
+msgstr "Client Count"
+
+msgid "终端设备"
+msgstr "Client Devices"
+
+msgid "经过检测，你的WAN口无法连通，可能网线没插好"
+msgstr "After detection, your WAN port cannot connect. The Ethernet cable may not be properly plugged in"
+
+msgid "经过检测，建议使用DHCP方式(系统自动分配IP地址)"
+msgstr "After detection, DHCP method is recommended (system automatically assigns IP address)"
+
+msgid "经过检测，建议使用PPPoE方式(需要输入帐号与密码)"
+msgstr "After detection, PPPoE method is recommended (requires account and password)"
+
+msgid "经过检测，建议使用静态IP方式"
+msgstr "After detection, Static IP method is recommended"
+
+msgid "经过检测，无法识别你的上网类型，请手工选择上网方式"
+msgstr "After detection, unable to identify your Internet access type. Please manually select the connection method"
+
+msgid "绑定设备"
+msgstr "Bind Device"
+
+msgid "结束"
+msgstr "End"
+
+msgid "结束 {$pname} 后，相关功能将无法使用。如要再次使用，你需要在当前界面开启该任务。 你确认要结束 {$pname} 吗？"
+msgstr "After ending {$pname}, related features will be unavailable. To use them again, you need to start this task on the current page. Are you sure you want to end {$pname}?"
+
+msgid "结束IP"
+msgstr "End IP"
+
+msgid "结束IP须大于开始IP，请重新设置"
+msgstr "End IP must be greater than the start IP, please reconfigure"
+
+msgid "结束任务"
+msgstr "End Task"
+
+msgid "结束端口"
+msgstr "End Port"
+
+msgid "编号"
+msgstr "No."
+
+msgid "编辑"
+msgstr "Edit"
+
+msgid "编辑服务"
+msgstr "Edit Service"
+
+msgid "编辑端口转发规则"
+msgstr "Edit Port Forwarding Rule"
+
+msgid "编辑范围转发规则"
+msgstr "Edit Range Forwarding Rule"
+
+msgid "网关"
+msgstr "Gateway"
+
+msgid "网关不可达"
+msgstr "Gateway Unreachable"
+
+msgid "网关地址"
+msgstr "Gateway Address"
+
+msgid "网口"
+msgstr "Network Port"
+
+msgid "网口协商速率不同时，将无法聚合成功。对端网卡需开启LACP协议。"
+msgstr "When network port negotiation rates differ, aggregation will fail. The peer network card must have LACP protocol enabled."
+
+msgid "网口灯"
+msgstr "Port LED"
+
+msgid "网口自定义"
+msgstr "Custom Network Port"
+
+msgid "网线连网设备"
+msgstr "Wired Network Devices"
+
+msgid "网络名称"
+msgstr "Network Name"
+
+msgid "网络密码"
+msgstr "Network Password"
+
+msgid "网络异常，获取列表失败"
+msgstr "Network error, failed to get list"
+
+msgid "网络异常，请检查是否联网"
+msgstr "Network error, please check if connected to the internet"
+
+msgid "网络服务提供商配置"
+msgstr "ISP Configuration"
+
+msgid "网络访问出现异常"
+msgstr "Network access error"
+
+msgid "网络诊断完成，发现错误"
+msgstr "Network diagnosis complete, errors found"
+
+msgid "网络诊断完成，未发现错误"
+msgstr "Network diagnosis complete, no errors found"
+
+msgid "网络速度"
+msgstr "Network Speed"
+
+msgid "网页优先"
+msgstr "Web Priority"
+
+msgid "罗德豪维岛"
+msgstr "Lord Howe Island"
+
+msgid "耶路撒冷"
+msgstr "Jerusalem"
+
+msgid "联系客服检修"
+msgstr "Contact customer service for repair"
+
+msgid "联系运营商了解是否当地有线路故障"
+msgstr "Contact your ISP to check for local line faults"
+
+msgid "联系运营商查询宽带是否欠费"
+msgstr "Contact your ISP to check if broadband bill is overdue"
+
+msgid "联系运营商解决"
+msgstr "Contact your ISP to resolve"
+
+msgid "联网方式设置"
+msgstr "Internet Connection Settings"
+
+msgid "联网方式设置中，请稍等..."
+msgstr "Configuring internet connection, please wait..."
+
+msgid "聚合中，请确保接入聚合口的设备支持聚合功能"
+msgstr "Aggregating, please ensure devices connected to the aggregation ports support link aggregation"
+
+msgid "聚合口"
+msgstr "Aggregation Port"
+
+msgid "聚合失败，检测到聚合的LAN口未插入网线"
+msgstr "Aggregation failed, no network cable detected on aggregated LAN port"
+
+msgid "聚合失败，检测到选定的LAN口实际生效速率不同"
+msgstr "Aggregation failed, selected LAN ports have different effective speeds"
+
+msgid "聚合未开启，请配置聚合"
+msgstr "Aggregation not enabled, please configure aggregation"
+
+msgid "自动"
+msgstr "Auto"
+
+msgid "自动探测"
+msgstr "Auto Detect"
+
+msgid "自动探测插入SFP+光/电模块的速率，兼容性最好。"
+msgstr "Auto-detect the speed of the inserted SFP+ optical/electrical module for best compatibility."
+
+msgid "自动模式"
+msgstr "Automatic Mode"
+
+msgid "自动模式下路由器会根据当前网络使用情况动态调整带宽分配，保证网络体验流畅"
+msgstr "In auto mode, the router dynamically adjusts bandwidth allocation based on current network usage to ensure a smooth network experience"
+
+msgid "自动连接路由器失败，请检查无线或者网线是否连接正确。"
+msgstr "Failed to auto-connect to router. Please check if Wi-Fi or network cable is properly connected."
+
+msgid "自动配置"
+msgstr "Auto Configuration"
+
+msgid "自动配置DNS"
+msgstr "Auto Configure DNS"
+
+msgid "自定义"
+msgstr "Custom"
+
+msgid "自定义的DNS服务无响应"
+msgstr "Custom DNS service is not responding"
+
+msgid "至少选择1个"
+msgstr "Select at least 1"
+
+msgid "良"
+msgstr "Good"
+
+msgid "节能"
+msgstr "Power Saving"
+
+msgid "芝加哥，马塔莫罗斯，新塞勒姆，雷尼河，温尼伯"
+msgstr "Chicago, Matamoros, New Salem, Rainy River, Winnipeg"
+
+msgid "花生壳（oray.com）"
+msgstr "Oray (oray.com)"
+
+msgid "范围转发规则列表："
+msgstr "Port Range Forwarding Rule List:"
+
+msgid "莫斯科，辛菲罗波尔"
+msgstr "Moscow, Simferopol"
+
+msgid "获取中..."
+msgstr "Retrieving..."
+
+msgid "获取失败"
+msgstr "Failed to retrieve"
+
+msgid "萨摩亚"
+msgstr "Samoa"
+
+msgid "虚拟内存"
+msgstr "Virtual Memory"
+
+msgid "虚拟内存创建中"
+msgstr "Creating virtual memory"
+
+msgid "虚拟内存创建失败，未检测到可用的外接存储器"
+msgstr "Virtual memory creation failed, no available external storage detected"
+
+msgid "虚拟内存创建失败，未检测到满足大小的外接存储器"
+msgstr "Virtual memory creation failed, no external storage with sufficient capacity detected"
+
+msgid "虚拟内存创建失败，请确保与路由器直连的存储器剩余空间大于将要创建的虚拟内存值"
+msgstr "Virtual memory creation failed, ensure the storage directly connected to the router has more free space than the virtual memory size to be created"
+
+msgid "虚拟内存创建失败，请重新设置。"
+msgstr "Virtual memory creation failed, please reconfigure."
+
+msgid "虚拟内存删除失败"
+msgstr "Failed to delete virtual memory"
+
+msgid "虚拟内存删除成功！"
+msgstr "Virtual memory deleted successfully!"
+
+msgid "虚拟内存大小"
+msgstr "Virtual Memory Size"
+
+msgid "虚拟内存容量"
+msgstr "Virtual Memory Capacity"
+
+msgid "虚拟服务器功能可以在本地网络中建立一个规则，该规则可以将来自外网端口的请求转发给内网的设备，以此让外网可以访问到内网的设备"
+msgstr "The virtual server feature allows you to create a rule on the local network that forwards requests from external network ports to internal network devices, enabling external network access to internal devices"
+
+msgid "规则正在生效中，请等待..."
+msgstr "Rule is taking effect, please wait..."
+
+msgid "视频优先"
+msgstr "Video Priority"
+
+msgid "解决办法"
+msgstr "Solution"
+
+msgid "解绑选中"
+msgstr "Unbind Selected"
+
+msgid "解除绑定"
+msgstr "Unbind"
+
+msgid "触发协议"
+msgstr "Trigger Protocol"
+
+msgid "触发端口"
+msgstr "Trigger Port"
+
+msgid "设备IP"
+msgstr "Device IP"
+
+msgid "设备MAC地址"
+msgstr "Device MAC Address"
+
+msgid "设备信息"
+msgstr "Device Info"
+
+msgid "设备列表"
+msgstr "Device List"
+
+msgid "设备名称"
+msgstr "Device Name"
+
+msgid "设备限速状态"
+msgstr "Device Speed Limit Status"
+
+msgid "设置"
+msgstr "Settings"
+
+msgid "设置DMZ"
+msgstr "Set DMZ"
+
+msgid "设置QoS"
+msgstr "Set QoS"
+
+msgid "设置WiFi名称和密码"
+msgstr "Set Wi-Fi Name and Password"
+
+msgid "设置中，请稍等..."
+msgstr "Configuring, please wait..."
+
+msgid "设置失败"
+msgstr "Setup Failed"
+
+msgid "设置失败，请稍后再试"
+msgstr "Setup failed, please try again later"
+
+msgid "设置已经生效，等待30秒后 Wi-Fi 重启。"
+msgstr "Settings have taken effect, Wi-Fi will restart in 30 seconds."
+
+msgid "设置带宽"
+msgstr "Set Bandwidth"
+
+msgid "设置成功"
+msgstr "Setup Successful"
+
+msgid "设置成功正在重启，遵照国家法律法规，路由器正在做退避雷达信号探测，Wi-Fi信号要"
+msgstr "Setup successful, restarting. In compliance with national laws and regulations, the router is performing radar signal avoidance detection. Wi-Fi signal will"
+
+msgid "设置成功正在重启，需要30秒请等待..."
+msgstr "Setup successful, restarting. Please wait 30 seconds..."
+
+msgid "设置成功！请等待一段时间完成虚拟内存创建"
+msgstr "Setup successful! Please wait for virtual memory creation to complete"
+
+msgid "设置成功，正在重启，请等待…"
+msgstr "Setup successful, restarting, please wait..."
+
+msgid "设置成功，稍后生效，请等待一会刷新。"
+msgstr "Setup successful, will take effect shortly. Please wait and refresh."
+
+msgid "设置成功，请等待"
+msgstr "Setup successful, please wait"
+
+msgid "设置成功，请等待{$time}秒完成模式切换"
+msgstr "Setup successful, please wait {$time} seconds for mode switching to complete"
+
+msgid "设置有误，请重新输入"
+msgstr "Incorrect setting, please re-enter"
+
+msgid "设置系统语言"
+msgstr "Set System Language"
+
+msgid "访客SSID和2.4G SSID不能相同"
+msgstr "Guest SSID and 2.4G SSID cannot be the same"
+
+msgid "访客SSID和5G SSID不能相同"
+msgstr "Guest SSID and 5G SSID cannot be the same"
+
+msgid "访客Wi-Fi"
+msgstr "Guest Wi-Fi"
+
+msgid "访客WiFi限速"
+msgstr "Guest Wi-Fi Speed Limit"
+
+msgid "访客连网设备"
+msgstr "Guest Connected Devices"
+
+msgid "访问协议控制介绍"
+msgstr "Access Protocol Control Introduction"
+
+msgid "访问协议控制是小米路由器提供给用户的一种与服务器交互时的安全性提升方案。"
+msgstr "Access Protocol Control is a security enhancement solution provided by Xiaomi Router for user interaction with servers."
+
+msgid "访问外网"
+msgstr "Access External Network"
+
+msgid "访问控制"
+msgstr "Access Control"
+
+msgid "访问日志"
+msgstr "Access Log"
+
+msgid "诊断问题"
+msgstr "Diagnose Issue"
+
+msgid "该IP不在可用IP范围内，请重新输入。您可以参考DHCP服务可用IP段来设定。"
+msgstr "This IP is not within the available IP range. Please re-enter. You can refer to the DHCP service available IP range for configuration."
+
+msgid "该MAC地址与WAN1口MAC地址冲突，请输入其他MAC地址"
+msgstr "This MAC address conflicts with the WAN1 port MAC address. Please enter another MAC address"
+
+msgid "该MAC地址与WAN2口MAC地址冲突，请输入其他MAC地址"
+msgstr "This MAC address conflicts with the WAN2 port MAC address. Please enter another MAC address"
+
+msgid "该MAC地址与当前使用的MAC地址相同"
+msgstr "This MAC address is the same as the currently used MAC address"
+
+msgid "该修改会导致路由器重启，所有设备会短暂失去连接，是否确认修改？"
+msgstr "This change will cause the router to reboot. All devices will briefly lose connection. Are you sure you want to proceed?"
+
+msgid "该功能可为支持NFC的设备提供一碰入网服务。当前仅支持安卓手机，在使用前请确认："
+msgstr "This feature provides tap-to-connect service for NFC-enabled devices. Currently only supports Android phones. Before use, please confirm:"
+
+msgid "该地址由4个 0~255 之间的数字组成，数字之间用点区隔"
+msgstr "This address consists of 4 numbers between 0 and 255, separated by dots"
+
+msgid "该操作会关闭路由器所有指示灯及氛围灯，请确认"
+msgstr "This operation will turn off all router LED indicators and ambient lights. Please confirm"
+
+msgid "该操作将重启 Wi-Fi 并导致 Wi-Fi 下的所有设备失去连接，是否确认修改？"
+msgstr "This operation will restart Wi-Fi and cause all Wi-Fi connected devices to lose connection. Are you sure you want to proceed?"
+
+msgid "该网址被设置的关键字过滤"
+msgstr "This URL has been filtered by keyword settings"
+
+msgid "该访问已被家人上网保护拦截"
+msgstr "This access has been blocked by Family Internet Protection"
+
+msgid "该路由器可通过创建虚拟内存来调用外部存储资源充当内存。"
+msgstr "This router can use external storage resources as memory by creating virtual memory."
+
+msgid "该过程中网络将会重启，造成设备短暂掉线，请问是否提交？"
+msgstr "The network will restart during this process, causing devices to briefly disconnect. Do you want to submit?"
+
+msgid "该过程无线网络会重启，将出现短暂掉线。"
+msgstr "The wireless network will restart during this process, causing brief disconnection."
+
+msgid "该页面相关应用的今日使用时长已达上限"
+msgstr "The daily usage time limit for apps related to this page has been reached"
+
+msgid "请上传{$0}。"
+msgstr "Please upload {$0}."
+
+msgid "请不要关闭浏览器或断开路由器"
+msgstr "Please do not close the browser or disconnect the router"
+
+msgid "请使用小米路由器App进行管理"
+msgstr "Please use the Xiaomi Router app to manage"
+
+msgid "请修改DNS设置，若无特殊需求建议使用默认推荐设置"
+msgstr "Please modify DNS settings. If you have no special requirements, we recommend using the default recommended settings"
+
+msgid "请删除无用短信以保障短信功能正常"
+msgstr "Please delete unnecessary messages to ensure normal SMS function"
+
+msgid "请填写{$0}。"
+msgstr "Please fill in {$0}."
+
+msgid "请将网线连接到任意高亮网口"
+msgstr "Please connect the network cable to any highlighted network port"
+
+msgid "请手工选择需要的工作模式"
+msgstr "Please manually select the desired operating mode"
+
+msgid "请放置在主路由1米以外"
+msgstr "Please place at least 1 meter away from the main router"
+
+msgid "请查看SIM卡包装上的默认PIN码，或联系运营商咨询"
+msgstr "Please check the default PIN code on the SIM card packaging, or contact your carrier for assistance"
+
+msgid "请查看SIM卡包装上的默认PUK码，或联系运营商咨询"
+msgstr "Please check the default PUK code on the SIM card packaging, or contact your carrier for assistance"
+
+msgid "请查看设备频段，并咨询运营商何处具有对应频段的网络覆盖"
+msgstr "Please check the device frequency band and consult your carrier about where network coverage for that band is available"
+
+msgid "请检查DNS设置是否有误，若无特殊需求建议使用默认推荐设置。"
+msgstr "Please check if DNS settings are correct. If you have no special requirements, we recommend using the default recommended settings."
+
+msgid "请检查中继设置是否有误，并重新尝试中继"
+msgstr "Please check if repeater settings are correct and try reconnecting the repeater"
+
+msgid "请检查帐号密码是否输入正确"
+msgstr "Please check if the account and password are entered correctly"
+
+msgid "请检查您的输入。"
+msgstr "Please check your input."
+
+msgid "请检查您输入的Email格式。"
+msgstr "Please check your email format."
+
+msgid "请检查您输入的姓名。"
+msgstr "Please check the name you entered."
+
+msgid "请检查您输入的手机号码。"
+msgstr "Please check the phone number you entered."
+
+msgid "请检查您输入的时间格式。"
+msgstr "Please check the time format you entered."
+
+msgid "请检查您输入的电话分机号码。"
+msgstr "Please check the extension number you entered."
+
+msgid "请检查您输入的电话区号。"
+msgstr "Please check the area code you entered."
+
+msgid "请检查您输入的电话号码。"
+msgstr "Please check the phone number you entered."
+
+msgid "请检查您输入的身份证号码，目前只支持15位或者18位。"
+msgstr "Please check the ID number you entered. Currently only 15-digit or 18-digit IDs are supported."
+
+msgid "请检查您输入的邮政编码。"
+msgstr "Please check the postal code you entered."
+
+msgid "请检查您输入的银行账号。"
+msgstr "Please check the bank account number you entered."
+
+msgid "请检查您输入的验证码。"
+msgstr "Please check the verification code you entered."
+
+msgid "请检查您选择的图片文件路径，只支持jpg、jpeg、png、gif、tif、bmp格式。"
+msgstr "Please check the image file path you selected. Only jpg, jpeg, png, gif, tif, and bmp formats are supported."
+
+msgid "请检查是否需要修改外网连接方式"
+msgstr "Please check if you need to modify the WAN connection method"
+
+msgid "请检查路由器上级网络的连接和相关设置是否有误"
+msgstr "Please check if the upstream network connection and related settings of the router are correct"
+
+msgid "请检查路由器局域网IP地址设置"
+msgstr "Please check the router LAN IP address settings"
+
+msgid "请检查路由器是否已经插好网线"
+msgstr "Please check if the router's network cable is properly connected"
+
+msgid "请检查静态IP等设置是否有误"
+msgstr "Please check if settings such as static IP are correct"
+
+msgid "请注意，开启以下功能后游戏网口的优先转发功能将会失效："
+msgstr "Please note that after enabling the following features, the game port priority forwarding function will become invalid:"
+
+msgid "请注意：升级将会使所有已连接设备的网络中断，升级过程中请勿断开路由器电源或关闭本页面！"
+msgstr "Please note: The upgrade will disconnect all connected devices from the network. Do not power off the router or close this page during the upgrade!"
+
+msgid "请确认主路由器和中继路由器的Wi-Fi均已开启。"
+msgstr "Please ensure that the main router and repeater router Wi-Fi are both enabled."
+
+msgid "请联系小米客服解决"
+msgstr "Please contact Xiaomi customer service for assistance"
+
+msgid "请联系运营商更换SIM卡"
+msgstr "Please contact your carrier to replace the SIM card"
+
+msgid "请联系运营商解决"
+msgstr "Please contact your ISP to resolve"
+
+msgid "请至少输入{$0}个字。"
+msgstr "Please enter at least {$0} characters."
+
+msgid "请至少输入{$0}个字节。"
+msgstr "Please enter at least {$0} bytes."
+
+msgid "请至少选择一个设备"
+msgstr "Please select at least one device"
+
+msgid "请输入0~10000的正整数。"
+msgstr "Please enter a positive integer between 0 and 10000."
+
+msgid "请输入一个2位负整数。"
+msgstr "Please enter a 2-digit negative integer."
+
+msgid "请输入一个{$0}位以内正整数。"
+msgstr "Please enter a positive integer with at most {$0} digits."
+
+msgid "请输入地址"
+msgstr "Please enter address"
+
+msgid "请输入数字、英文字母或英文符号"
+msgstr "Please enter numbers, English letters, or English symbols"
+
+msgid "请输入有效的IP地址"
+msgstr "Please enter a valid IP address"
+
+msgid "请输入正确的服务器地址"
+msgstr "Please enter the correct server address"
+
+msgid "请输入正确的端口号。"
+msgstr "Please enter the correct port number."
+
+msgid "请输入正确的端口号（XXX、XXX-YYY）。"
+msgstr "Please enter the correct port number (XXX, XXX-YYY)."
+
+msgid "请输入设备的MAC地址"
+msgstr "Please enter the device MAC address"
+
+msgid "请输入路由器管理密码"
+msgstr "Please enter the router admin password"
+
+msgid "请进入上网设置页面开启"
+msgstr "Please go to the Internet Settings page to enable"
+
+msgid "请进入上网设置页面进行设置，具体APN配置信息可联系运营商确认"
+msgstr "Please go to the Internet Settings page for configuration. Contact your carrier for specific APN configuration details."
+
+msgid "请进入其他设置页面设置"
+msgstr "Please go to Other Settings page for configuration"
+
+msgid "请进入其他设置页面设置（建议改为全部频段)"
+msgstr "Please go to Other Settings page for configuration (recommended to set to all bands)"
+
+msgid "请选择Redmi路由器当前工作的国家/地区"
+msgstr "Please select the country/region where the Redmi Router is currently operating"
+
+msgid "请选择{$0}。"
+msgstr "Please select {$0}."
+
+msgid "请选择一个网口作为IPTV口"
+msgstr "Please select a network port as the IPTV port"
+
+msgid "请选择一个网口作为游戏网口"
+msgstr "Please select a network port as the gaming port"
+
+msgid "请选择合适的SIM卡插入设备"
+msgstr "Please insert a compatible SIM card into the device"
+
+msgid "请选择固件:"
+msgstr "Please select firmware:"
+
+msgid "请选择备份文件"
+msgstr "Please select backup file"
+
+msgid "请选择插件安装包:"
+msgstr "Please select plugin installation package:"
+
+msgid "请选择网口"
+msgstr "Please select network port"
+
+msgid "请选择网口作为WAN口，并在"
+msgstr "Please select a network port as the WAN port, and in"
+
+msgid "请选择要扩大范围的无线网络"
+msgstr "Please select the wireless network to extend coverage"
+
+msgid "请选择需要使用VPN的设备"
+msgstr "Please select the device that needs to use VPN"
+
+msgid "请选择需要聚合的两个LAN口"
+msgstr "Please select the two LAN ports to aggregate"
+
+msgid "请靠近主路由"
+msgstr "Please move closer to the main router"
+
+msgid "诺福克岛标准时间"
+msgstr "Norfolk Island Standard Time"
+
+msgid "诺罗尼亚，南乔治亚岛"
+msgstr "Noronha, South Georgia Island"
+
+msgid "调制解调器（猫）拨号异常"
+msgstr "Modem dial-up error"
+
+msgid "贝鲁特"
+msgstr "Beirut"
+
+msgid "账号"
+msgstr "Account"
+
+msgid "账户："
+msgstr "Account:"
+
+msgid "起始日期不能大于截止日期。"
+msgstr "Start date cannot be later than end date."
+
+msgid "起始端口"
+msgstr "Start Port"
+
+msgid "起始端口必须小于终止端口"
+msgstr "Start port must be less than end port"
+
+msgid "超出最大添加数量"
+msgstr "Maximum number of entries exceeded"
+
+msgid "超强加密(WPA3个人版)"
+msgstr "Strong Encryption (WPA3 Personal)"
+
+msgid "路由器USB3.0使用时会对2.4G WiFi有一定影响，如有需要可关闭USB3.0，系统将为您切换至USB2.0模式。（USB2.0对2.4G WiFi没有影响）"
+msgstr "Using router USB 3.0 may affect 2.4G Wi-Fi. If needed, you can disable USB 3.0 and the system will switch to USB 2.0 mode. (USB 2.0 has no impact on 2.4G Wi-Fi)"
+
+msgid "路由器WAN口没有网线接入"
+msgstr "No network cable connected to router WAN port"
+
+msgid "路由器位置"
+msgstr "Router Location"
+
+msgid "路由器信息"
+msgstr "Router Information"
+
+msgid "路由器关机"
+msgstr "Router Shutdown"
+
+msgid "路由器内存容量"
+msgstr "Router RAM Capacity"
+
+msgid "路由器名称"
+msgstr "Router Name"
+
+msgid "路由器固件手动升级"
+msgstr "Router Firmware Manual Upgrade"
+
+msgid "路由器型号"
+msgstr "Router Model"
+
+msgid "路由器外接存储器检测："
+msgstr "Router External Storage Detection:"
+
+msgid "路由器正常工作情况下建议使用系统升级检测进行升级。当系统无法升级时使用手动上传ROM包进行升级。"
+msgstr "Under normal router operation, it is recommended to use system upgrade detection for upgrades. When the system cannot upgrade, use manual ROM upload for upgrading."
+
+msgid "路由器没有检测到WAN口网线接入"
+msgstr "Router did not detect a network cable connected to the WAN port"
+
+msgid "路由器网络接口损坏了"
+msgstr "Router network interface is damaged"
+
+msgid "路由器设置恢复成功，重启路由器即可生效！"
+msgstr "Router settings restored successfully. Reboot the router for changes to take effect!"
+
+msgid "路由器重启需要等待十几秒或更多时间，重启过程中将会断开网络连接，稍后将自动重新连接网络。"
+msgstr "Router reboot takes ten or more seconds. The network connection will be disconnected during reboot and will automatically reconnect shortly after."
+
+msgid "路由状态"
+msgstr "Routing Status"
+
+msgid "踢除阈值"
+msgstr "Kick Threshold"
+
+msgid "输入"
+msgstr "Input"
+
+msgid "输入值太大，最大允许{$0}。"
+msgstr "Input value too large, maximum allowed is {$0}."
+
+msgid "输入值太小，最小允许{$0}。"
+msgstr "Input value too small, minimum allowed is {$0}."
+
+msgid "输入密码"
+msgstr "Enter Password"
+
+msgid "输入格式不正确,请输入标准字符"
+msgstr "Incorrect input format, please enter standard characters"
+
+msgid "达喀尔，蒙罗维亚，圣多美，丹马克斯沙文，雷克雅未克"
+msgstr "Dakar, Monrovia, São Tomé, Danmarkshavn, Reykjavik"
+
+msgid "达尔文"
+msgstr "Darwin"
+
+msgid "运行Docker"
+msgstr "Run Docker"
+
+msgid "返回"
+msgstr "Back"
+
+msgid "返回首页"
+msgstr "Back to Home"
+
+msgid "还未添加服务地址"
+msgstr "No service address added yet"
+
+msgid "还未添加设备"
+msgstr "No devices added yet"
+
+msgid "还没有服务添加进来"
+msgstr "No services added yet"
+
+msgid "还没有策略加入"
+msgstr "No policies added yet"
+
+msgid "还没有设备添加进来"
+msgstr "No devices added yet"
+
+msgid "还没有设备连接进来"
+msgstr "No devices connected yet"
+
+msgid "还没有进行测速"
+msgstr "Speed test not yet performed"
+
+msgid "这可能是因为："
+msgstr "This may be because:"
+
+msgid "连接"
+msgstr "Connect"
+
+msgid "连接中..."
+msgstr "Connecting..."
+
+msgid "连接失败"
+msgstr "Connection Failed"
+
+msgid "连接异常"
+msgstr "Connection Error"
+
+msgid "连接时长"
+msgstr "Connection Duration"
+
+msgid "连接正常"
+msgstr "Connection Normal"
+
+msgid "连接类型"
+msgstr "Connection Type"
+
+msgid "连接类型："
+msgstr "Connection Type:"
+
+msgid "连接错误"
+msgstr "Connection Error"
+
+msgid "迪拜，阿斯特拉罕，萨拉托夫，马海，毛里求斯"
+msgstr "Dubai, Astrakhan, Saratov, Mahé, Mauritius"
+
+msgid "选填"
+msgstr "Optional"
+
+msgid "选择已有网络"
+msgstr "Select Existing Network"
+
+msgid "选择放置的位置"
+msgstr "Select Placement Location"
+
+msgid "选择网络"
+msgstr "Select Network"
+
+msgid "选择要添加的Mesh子路由"
+msgstr "Select Mesh child router to add"
+
+msgid "通过MAC地址添加"
+msgstr "Add by MAC Address"
+
+msgid "通过MAC地址添加要使用VPN的设备"
+msgstr "Add devices to use VPN by MAC address"
+
+msgid "通过MAC地址添加设备"
+msgstr "Add Device by MAC Address"
+
+msgid "通过OTA恢复系统"
+msgstr "Restore System via OTA"
+
+msgid "速率"
+msgstr "Speed"
+
+msgid "速率为"
+msgstr "Speed:"
+
+msgid "道森，洛杉矶，蒂华纳，温哥华，怀特霍斯"
+msgstr "Dawson, Los Angeles, Tijuana, Vancouver, Whitehorse"
+
+msgid "避让IP冲突"
+msgstr "Avoid IP Conflicts"
+
+msgid "都柏林"
+msgstr "Dublin"
+
+msgid "配置中，请稍候..."
+msgstr "Configuring, please wait..."
+
+msgid "配置为C类IP地址时，请使用掩码255.255.255.0"
+msgstr "When configuring as a Class C IP address, please use subnet mask 255.255.255.0"
+
+msgid "配置成功，请稍候..."
+msgstr "Configuration successful, please wait..."
+
+msgid "配置生效过程中路由器会短暂断开网络, 确认是否关闭IPTV功能"
+msgstr "The router will briefly disconnect during configuration. Confirm whether to disable IPTV function"
+
+msgid "配置生效过程中路由器会短暂断开网络，请确认是否保存修改？"
+msgstr "The router will briefly disconnect during configuration. Confirm whether to save changes?"
+
+msgid "配置生效过程中连接在路由器上的有线设备会短暂断开网络，请确认是否保存修改？"
+msgstr "Wired devices connected to the router will briefly disconnect during configuration. Confirm whether to save changes?"
+
+msgid "配置错误"
+msgstr "Configuration Error"
+
+msgid "重启"
+msgstr "Reboot"
+
+msgid "重启中..."
+msgstr "Rebooting..."
+
+msgid "重启规则"
+msgstr "Restart Rule"
+
+msgid "重启路由器"
+msgstr "Reboot Router"
+
+msgid "重新测速"
+msgstr "Retest Speed"
+
+msgid "重新诊断"
+msgstr "Re-diagnose"
+
+msgid "重新连接vpn后该设置将生效，是否确认重新连接？"
+msgstr "This setting will take effect after reconnecting to VPN. Confirm whether to reconnect?"
+
+msgid "重试"
+msgstr "Retry"
+
+msgid "重连"
+msgstr "Reconnect"
+
+msgid "钦奈,加尔各答,孟买,新德里"
+msgstr "Chennai, Kolkata, Mumbai, New Delhi"
+
+msgid "错误：策略数量最大值为'+ MAX_ROUTER_POLICY_LIST_NUM +'"
+msgstr "Error: Maximum number of policies is '+ MAX_ROUTER_POLICY_LIST_NUM +'"
+
+msgid "错误：策略数量最大值为1000"
+msgstr "Error: Maximum number of policies is 1000"
+
+msgid "问题排查"
+msgstr "Troubleshooting"
+
+msgid "防火墙"
+msgstr "Firewall"
+
+msgid "阿克托贝，杜尚贝，撒马尔罕，塔什干，叶卡捷琳堡"
+msgstr "Aktobe, Dushanbe, Samarkand, Tashkent, Yekaterinburg"
+
+msgid "阿布贾，阿尔及尔，突尼斯"
+msgstr "Abuja, Algiers, Tunis"
+
+msgid "阿德莱德，布罗肯希尔"
+msgstr "Adelaide, Broken Hill"
+
+msgid "阿拉斯加"
+msgstr "Alaska"
+
+msgid "阿蒂科坎，坎昆，开曼，牙买加，巴拿马"
+msgstr "Atikokan, Cancún, Cayman, Jamaica, Panama"
+
+msgid "阿达克"
+msgstr "Adak"
+
+msgid "附近无法搜到设备锁定的频段"
+msgstr "Unable to find the frequency band locked by the device nearby"
+
+msgid "附近无设备支持的频段"
+msgstr "No device-supported frequency band nearby"
+
+msgid "降噪优先"
+msgstr "Noise Reduction Priority"
+
+msgid "降噪优先，风扇转速较慢，噪音较小（建议休息时使用）"
+msgstr "Noise reduction priority, fan speed is slower and noise is lower (recommended for rest time)"
+
+msgid "限速模式"
+msgstr "Speed Limit Mode"
+
+msgid "限速设置"
+msgstr "Speed Limit Settings"
+
+msgid "随时随地管理你的路由器"
+msgstr "Manage your router anytime, anywhere"
+
+msgid "隐藏网络不被发现"
+msgstr "Hide network from being discovered"
+
+msgid "雅典，布加勒斯特，赫尔辛基，基辅，马里利亚哈姆"
+msgstr "Athens, Bucharest, Helsinki, Kyiv, Mariehamn"
+
+msgid "雅加达，坤甸"
+msgstr "Jakarta, Pontianak"
+
+msgid "需在-100~-70范围内取值"
+msgstr "Value must be within -100 to -70"
+
+msgid "需在-85~-55范围内取值"
+msgstr "Value must be within -85 to -55"
+
+msgid "需在-90~-60范围内取值"
+msgstr "Value must be within -90 to -60"
+
+msgid "需在-95~-65范围内取值"
+msgstr "Value must be within -95 to -65"
+
+msgid "静态IP"
+msgstr "Static IP"
+
+msgid "静态IPv6"
+msgstr "Static IPv6"
+
+msgid "静态IP地址不合法"
+msgstr "Invalid Static IP Address"
+
+msgid "静默模式"
+msgstr "Silent Mode"
+
+msgid "频段带宽"
+msgstr "Bandwidth"
+
+msgid "风扇模式设置"
+msgstr "Fan Mode Settings"
+
+msgid "风扇调节"
+msgstr "Fan Adjustment"
+
+msgid "马克萨斯群岛"
+msgstr "Marquesas Islands"
+
+msgid "马尼拉"
+msgstr "Manila"
+
+msgid "高"
+msgstr "High"
+
+msgid "高级设置"
+msgstr "Advanced Settings"
+
+msgid "麦格理，马加丹，萨哈林，斯莱德内科林斯克，布干维尔"
+msgstr "Macquarie, Magadan, Sakhalin, Srednekolymsk, Bougainville"
+
+msgid "黑名单模式（不允许列表中设备访问）"
+msgstr "Blacklist Mode (devices in the list are not allowed to access)"
+
+msgid "黑名单设备列表"
+msgstr "Blacklist Device List"
+
+msgid "黑白名单名称不支持特殊字符$ & | ；‘ ·"
+msgstr "Blacklist/Whitelist names do not support special characters: $ & | ; ' ·"
+
+msgid "默认房间"
+msgstr "Default Room"
+
+msgid "默认网关"
+msgstr "Default Gateway"
+
+msgid "默认网关不合法"
+msgstr "Invalid Default Gateway"
+
+msgid "默认网关："
+msgstr "Default Gateway:"
+
+msgid "）都会被强制重定向为https协议。"
+msgstr ") will be forcibly redirected to HTTPS protocol."
+
+msgid "，回车后即可访问此路由器外接存储器上的文件"
+msgstr ", press Enter to access files on the router's external storage"
+
+msgid "，已断开"
+msgstr ", Disconnected"
+
+msgid "，正在尝试特殊拨号模式..."
+msgstr ", attempting special dial-up mode..."
+
+msgid "Wi-Fi名称"
+msgstr "Wi-Fi Name"
+
+msgid "Wi-Fi名称："
+msgstr "Wi-Fi Name:"
+
+msgid "Wi-Fi密码"
+msgstr "Wi-Fi Password"
+
+msgid "Wi-Fi密码："
+msgstr "Wi-Fi Password:"
+
+msgid "Wi-Fi密码: 未设置"
+msgstr "Wi-Fi Password: Not Set"
+
+msgid "未设置"
+msgstr "Not Set"
+
+msgid "连接设备数量"
+msgstr "Connected Devices"
+
+msgid "连接设备数量："
+msgstr "Connected Devices:"
+
+msgid "频段"
+msgstr "Band"
+
+msgid "某些老设备对Wi-Fi6协议支持不好，可能扫描不到信号或者连接不上等。开启此开关后，将会切换到Wi-Fi5模式，解决兼容问题。但同时会关闭Wi-Fi6的相关功能，如OFDMA、TWT、BSS Coloring等。"
+msgstr "Some older devices do not support Wi-Fi 6 protocol well and may not be able to scan for signals or connect. After enabling this option, it will switch to Wi-Fi 5 mode to resolve compatibility issues. However, it will also disable Wi-Fi 6 related features such as OFDMA, TWT, BSS Coloring, etc."
+
+msgid "当前系统时间："
+msgstr "Current System Time:"

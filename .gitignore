@@ -1,0 +1,7 @@
+.env
+router_templates/
+scripts/__pycache__/
+*.pyc
+i18n/base.en.lmo
+i18n/base.en.part*.po
+*.bak
