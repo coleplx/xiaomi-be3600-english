@@ -13,7 +13,7 @@ ROUTER_IP="${ROUTER_IP:-192.168.31.1}"
 ROUTER_USER="${ROUTER_USER:-root}"
 ROUTER_PASS="${ROUTER_PASS:-root}"
 
-SSHPASS_CMD="sshpass -p '$ROUTER_PASS'"
+SSHPASS_CMD="sshpass -p $ROUTER_PASS"
 
 SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa"
 
