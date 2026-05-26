@@ -274,6 +274,12 @@ tr:hover td { background: #fafafa; }
 .btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
 .btn-primary:hover { background: #e55d00; }
 .btn-sm { padding: 4px 12px; font-size: 12px; }
+.btn-start { background: #2e7d32; color: #fff; border-color: #2e7d32; }
+.btn-start:hover { background: #1b5e20; }
+.btn-stop { background: #c62828; color: #fff; border-color: #c62828; }
+.btn-stop:hover { background: #b71c1c; }
+.status-up { color: #2e7d32; font-weight: 600; }
+.status-down { color: #888; font-weight: 600; }
 .btn-icon { width: 32px; height: 32px; padding: 0; justify-content: center; border-radius: 50%; }
 
 /* ── Log Viewer ── */
@@ -544,12 +550,17 @@ tr:hover td { background: #fafafa; }
         <a class="nav-item" href="#trafficrules" onclick="navigate('trafficrules')">
             <span class="icon">&#9888;</span> Traffic Rules
         </a>
-        <a class="nav-item disabled"><span class="icon">&#9733;</span> Tailscale</a>
         <a class="nav-item" href="#diagnostics" onclick="navigate('diagnostics')">
             <span class="icon">&#9743;</span> Diagnostics
         </a>
 
         <div class="nav-section">System</div>
+        <a class="nav-item" href="#allservices" onclick="navigate('allservices')">
+            <span class="icon">&#9881;</span> Services
+        </a>
+        <a class="nav-item" href="#services" onclick="navigate('services')">
+            <span class="icon">&#9881;</span> Xiaomi Services
+        </a>
         <a class="nav-item" href="#settings" onclick="navigate('settings')">
             <span class="icon">&#9874;</span> Settings
         </a>
@@ -610,6 +621,8 @@ var pages = {
     connections:   { title: 'Connections',     render: renderConnections,    action: 'list_connections' },
     diagnostics:   { title: 'Diagnostics',     render: renderDiagnostics,    action: 'overview',         noApi: true },
     settings:      { title: 'Settings',        render: renderSettings,       action: 'system_config' },
+    allservices:   { title: 'Services',         render: renderAllServices,   action: 'ps_mem' },
+    services:      { title: 'Xiaomi Services', render: renderServices,      action: 'services' },
     reboot:        { title: 'Reboot',           render: renderReboot,         action: 'overview',         noApi: true },
 };
 
@@ -2465,9 +2478,90 @@ function doReboot() {
 }
 
 // ═══════════════════════════════════════════════════════════
-//  TAILSCALE
+//  ALL SERVICES (process monitor with memory)
 // ═══════════════════════════════════════════════════════════
 
+function renderAllServices(d) {
+    if (!d || !d.processes) {
+        document.getElementById('content').innerHTML = '<div class="card"><div class="card-body"><p class="error">Failed to load services.</p></div></div>';
+        return;
+    }
+
+    var totalMem = 0;
+    d.processes.forEach(function(p) { totalMem += p.rss; });
+
+    var html = '';
+    html += '<div class="card"><div class="card-header"><h2>Running Services</h2><span style="font-size:13px;color:var(--text-secondary)">' + d.processes.length + ' processes, ' + totalMem + ' KB total</span></div><div class="card-body">';
+    html += '<table><thead><tr><th>PID</th><th>Name</th><th>RSS</th><th>State</th><th>Command</th></tr></thead><tbody>';
+
+    d.processes.sort(function(a, b) { return b.rss - a.rss; });
+
+    d.processes.forEach(function(p) {
+        var memClass = p.rss > 1024 ? 'status-up' : '';
+        var memFmt = p.rss >= 1024 ? (p.rss/1024).toFixed(1) + ' MB' : p.rss + ' KB';
+        html += '<tr>';
+        html += '<td style="font-family:monospace">' + p.pid + '</td>';
+        html += '<td><strong>' + escHtml(p.name) + '</strong></td>';
+        html += '<td style="font-family:monospace;font-weight:600" class="' + memClass + '">' + memFmt + '</td>';
+        html += '<td>' + escHtml(p.state) + '</td>';
+        html += '<td style="font-family:monospace;font-size:11px;max-width:400px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="' + escHtml(p.cmd) + '">' + escHtml(p.cmd) + '</td>';
+        html += '</tr>';
+    });
+
+    html += '</tbody></table></div></div>';
+    document.getElementById('content').innerHTML = html;
+}
+
+// ═══════════════════════════════════════════════════════════
+//  XIAOMI SERVICES
+// ═══════════════════════════════════════════════════════════
+
+function renderServices(d) {
+    if (!d || !d.services) {
+        document.getElementById('content').innerHTML = '<div class="card"><div class="card-body"><p class="error">Failed to load services.</p></div></div>';
+        return;
+    }
+
+    var html = '';
+    html += '<div class="card"><div class="card-header"><h2>Xiaomi Background Services</h2></div><div class="card-body">';
+    html += '<p style="margin-bottom:16px;color:var(--text-secondary);line-height:1.5">Enable or disable Xiaomi telemetry, sync, and management services. Disabling reduces background traffic and log noise.</p>';
+    html += '<table><thead><tr><th>Service</th><th>Status</th><th>Memory</th><th>Boot</th><th>Actions</th></tr></thead><tbody>';
+
+    d.services.forEach(function(svc) {
+        var statusClass = svc.running ? 'status-up' : 'status-down';
+        var statusText = svc.running ? 'Running' : 'Stopped';
+        var bootText = svc.enabled ? 'Enabled' : 'Disabled';
+        var bootClass = svc.enabled ? 'status-up' : 'status-down';
+        var stopBtn = svc.running ? '<button class="btn btn-sm btn-stop" onclick="svcAction(\'' + svc.name + '\',\'stop\')">Stop</button>' : '';
+        var startBtn = svc.running ? '' : '<button class="btn btn-sm btn-start" onclick="svcAction(\'' + svc.name + '\',\'start\')">Start</button>';
+        var toggleBoot = svc.enabled
+            ? '<button class="btn btn-sm" onclick="svcAction(\'' + svc.name + '\',\'disable\')">Disable Boot</button>'
+            : '<button class="btn btn-sm" onclick="svcAction(\'' + svc.name + '\',\'enable\')">Enable Boot</button>';
+        var mem = svc.running ? (svc.rss + ' KB') : '-';
+
+        html += '<tr>';
+        html += '<td><strong>' + svc.label + '</strong><br><span style="font-size:11px;color:var(--text-secondary)">' + svc.name + '</span></td>';
+        html += '<td><span class="' + statusClass + '">' + statusText + '</span></td>';
+        html += '<td style="font-size:13px">' + mem + '</td>';
+        html += '<td><span class="' + bootClass + '">' + bootText + '</span></td>';
+        html += '<td style="white-space:nowrap">' + startBtn + ' ' + stopBtn + ' ' + toggleBoot + '</td>';
+        html += '</tr>';
+    });
+
+    html += '</tbody></table></div></div>';
+    document.getElementById('content').innerHTML = html;
+}
+
+function svcAction(name, action) {
+    apiCall('action=services&service_name=' + encodeURIComponent(name) + '&service_action=' + action, function(r) {
+        if (r && r.code === 0) {
+            toast(r.msg || (action + ' succeeded'));
+            refreshCurrent();
+        } else {
+            toast(r.msg || 'Action failed');
+        }
+    });
+}
 
 
 

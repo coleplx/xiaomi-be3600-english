@@ -343,7 +343,7 @@ action_syslog() {
 
     printf '{"code":0,"data":{"lines":['
     first=1
-    logread 2>/dev/null | tail -n "$nlines" | while read -r line; do
+    cat /tmp/messages 2>/dev/null | tail -n "$nlines" | while read -r line; do
         [ $first -eq 0 ] && printf ","
         first=0
         printf '"%s"' "$(json_esc "$line")"
@@ -381,6 +381,32 @@ action_processes() {
         printf '{"pid":%s,"user":"%s","vsz":"%s","stat":"%s","cmd":"%s"}' \
             "${pid:-0}" "$(json_esc "$user")" "$(json_esc "${vsz:-}")" \
             "$(json_esc "${stat:-}")" "$(json_esc "$cmd")"
+    done
+    printf ']}}'
+}
+
+# -- All Running Services with Memory --------------------------------
+action_ps_mem() {
+    printf '{"code":0,"data":{"processes":['
+    local first=1
+    for pid in $(ls /proc/ | grep -E "^[1-9][0-9]*$" | sort -n); do
+        [ -r /proc/$pid/status ] || continue
+        local name rss state
+        name=$(cat /proc/$pid/comm 2>/dev/null)
+        rss=$(grep "^VmRSS:" /proc/$pid/status 2>/dev/null | awk '{print $2}')
+        state=$(grep "^State:" /proc/$pid/status 2>/dev/null | awk '{print $2}')
+        [ -z "$rss" ] && rss=0
+        [ "$rss" = "0" ] && continue
+        local cmdline=""
+        if [ -r /proc/$pid/cmdline ]; then
+            cmdline=$(tr '\0\011\012\015' ' ' < /proc/$pid/cmdline 2>/dev/null | sed 's/  */ /g; s/^ *//; s/ *$//')
+        fi
+        [ -z "$cmdline" ] && cmdline="[$name]"
+        [ $first -eq 0 ] && printf ","
+        first=0
+        printf '{"pid":%s,"name":"%s","rss":%s,"state":"%s","cmd":"%s"}' \
+            "$pid" "$(json_esc "$name")" "$rss" \
+            "$(json_esc "$state")" "$(json_esc "$cmdline")"
     done
     printf ']}}'
 }
@@ -1550,7 +1576,107 @@ action_reboot() {
     reboot 2>/dev/null || /sbin/reboot 2>/dev/null || true
 }
 
+# -- Xiaomi Services ------------------------------------------------
+# Known init scripts (name:display label)
+SERVICES="tbusd:tbusd
+trafficd:trafficd
+miio_client:MiIO Client
+miot:MiOT LED
+xqbc:XQBC
+xq_info_sync_mqtt:XQ Info Sync
+messagingagent.sh:Messaging Agent
+mosquitto:MQTT Broker
+smartcontroller:Smart Controller
+cab_meshd:CAP Mesh Daemon
+xiaoqiang_sync:XiaoQiang Sync
+milog:MiLog
+miwifi-discovery:MiWiFi Discovery
+netapi:Net API"
 
+action_services() {
+    svc_action=$(get_param "service_action")
+    svc_name=$(get_param "service_name")
+
+    if [ -n "$svc_action" ] && [ -n "$svc_name" ]; then
+        if [ -f "/etc/init.d/${svc_name}" ]; then
+            case "$svc_action" in
+                start)
+                    /etc/init.d/${svc_name} start 2>/dev/null
+                    printf '{"code":0,"msg":"started %s"}' "$svc_name"
+                    ;;
+                stop)
+                    /etc/init.d/${svc_name} stop 2>/dev/null
+                    printf '{"code":0,"msg":"stopped %s"}' "$svc_name"
+                    ;;
+                restart)
+                    /etc/init.d/${svc_name} restart 2>/dev/null
+                    printf '{"code":0,"msg":"restarted %s"}' "$svc_name"
+                    ;;
+                enable)
+                    # Remove from persistent disabled list
+                    touch /data/dashboard/.disabled_services 2>/dev/null
+                    grep -v "^${svc_name}$" /data/dashboard/.disabled_services > /tmp/.ds_tmp 2>/dev/null
+                    cat /tmp/.ds_tmp 2>/dev/null > /data/dashboard/.disabled_services
+                    rm -f /tmp/.ds_tmp
+                    printf '{"code":0,"msg":"enabled %s at boot"}' "$svc_name"
+                    ;;
+                disable)
+                    # Add to persistent disabled list + stop now
+                    touch /data/dashboard/.disabled_services 2>/dev/null
+                    grep -q "^${svc_name}$" /data/dashboard/.disabled_services 2>/dev/null || \
+                        echo "$svc_name" >> /data/dashboard/.disabled_services
+                    # Stop the service now
+                    /etc/init.d/${svc_name} stop 2>/dev/null
+                    printf '{"code":0,"msg":"disabled %s at boot"}' "$svc_name"
+                    ;;
+                *)
+                    printf '{"code":1,"msg":"Unknown action: %s"}' "$svc_action"
+                    ;;
+            esac
+        else
+            printf '{"code":1,"msg":"Service %s not found"}' "$svc_name"
+        fi
+        return
+    fi
+
+    # Build disabled list for fast lookup
+    DISABLED_TMP=$(mktemp -t ds_XXXXXX 2>/dev/null || echo "/tmp/ds_$$")
+    > "$DISABLED_TMP"
+    [ -f /data/dashboard/.disabled_services ] && cat /data/dashboard/.disabled_services > "$DISABLED_TMP"
+
+    printf '{"code":0,"data":{"services":['
+    local first=1
+    echo "$SERVICES" | while IFS=':' read -r iname label; do
+        [ -z "$iname" ] && continue
+        local running=0 rss="0"
+        local pids=""
+        pids=$(pidof "$iname" 2>/dev/null)
+        if [ -n "$pids" ]; then
+            running=1
+            local total_rss=0 count=0
+            for p in $pids; do
+                local prss
+                prss=$(grep "^VmRSS:" /proc/$p/status 2>/dev/null | awk '{print $2}')
+                [ -z "$prss" ] && prss=0
+                total_rss=$((total_rss + prss))
+                count=$((count + 1))
+            done
+            [ "$count" -gt 0 ] && rss=$((total_rss / count))
+        else
+            local pcount
+            pcount=$(ps 2>/dev/null | grep -v grep | grep "$iname" | wc -l)
+            [ "$pcount" -gt 0 ] && running=1
+        fi
+        local enabled=1
+        grep -q "^${iname}$" "$DISABLED_TMP" 2>/dev/null && enabled=0
+        [ $first -eq 0 ] && printf ","
+        first=0
+        printf '{"name":"%s","label":"%s","running":%d,"rss":%s,"enabled":%d}' \
+            "$(json_esc "$iname")" "$(json_esc "$label")" "$running" "$rss" "$enabled"
+    done
+    rm -f "$DISABLED_TMP"
+    printf ']}}'
+}
 
 
 
@@ -1565,6 +1691,7 @@ case "$action" in
     firewall)        action_firewall ;;
     syslog)          action_syslog ;;
     processes)       action_processes ;;
+    ps_mem)          action_ps_mem ;;
     list_ifaces)     action_list_ifaces ;;
     edit_iface)      action_edit_iface ;;
     create_iface)    action_create_iface ;;
@@ -1591,5 +1718,6 @@ case "$action" in
     diag_traceroute)   action_diag_traceroute ;;
     diag_nslookup)     action_diag_nslookup ;;
     reboot)            action_reboot ;;
+    services)          action_services ;;
     *)               printf '{"code":1,"msg":"Unknown action: %s"}' "$action" ;;
 esac

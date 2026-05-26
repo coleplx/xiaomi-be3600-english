@@ -26,11 +26,12 @@ do_deploy() {
     $SCP_CMD "$SCRIPT_DIR/index.html"    "${ROUTER_USER}@${ROUTER_IP}:${REMOTE_BASE}/www/"
     $SCP_CMD "$SCRIPT_DIR/api.cgi"       "${ROUTER_USER}@${ROUTER_IP}:${REMOTE_BASE}/www/cgi-bin/"
     $SCP_CMD "$SCRIPT_DIR/boot_setup.sh" "${ROUTER_USER}@${ROUTER_IP}:${REMOTE_BASE}/"
+    $SCP_CMD "$SCRIPT_DIR/disable_xiaomi.sh" "${ROUTER_USER}@${ROUTER_IP}:${REMOTE_BASE}/"
 
-    # Copy apply_vap.sh from extra_wifi if available
+    # Copy apply_vap.sh from extra_wifi for Wireless tab VAP operations
     [ -f "$SCRIPT_DIR/../extra_wifi/apply_vap.sh" ] && $SCP_CMD "$SCRIPT_DIR/../extra_wifi/apply_vap.sh" "${ROUTER_USER}@${ROUTER_IP}:${REMOTE_BASE}/"
 
-    $SSH_CMD "chmod +x $REMOTE_BASE/www/cgi-bin/api.cgi $REMOTE_BASE/boot_setup.sh $REMOTE_BASE/apply_vap.sh 2>/dev/null"
+    $SSH_CMD "chmod +x $REMOTE_BASE/www/cgi-bin/api.cgi $REMOTE_BASE/boot_setup.sh $REMOTE_BASE/disable_xiaomi.sh $REMOTE_BASE/apply_vap.sh 2>/dev/null"
 
     # Setup authentication
     setup_auth
@@ -71,6 +72,17 @@ setup_persistence() {
         }
     "
 
+    # Firewall include for Xiaomi service killer
+    $SSH_CMD "
+        uci get firewall.disable_xiaomi > /dev/null 2>&1 || {
+            uci set firewall.disable_xiaomi=include
+            uci set firewall.disable_xiaomi.type='script'
+            uci set firewall.disable_xiaomi.path='${REMOTE_BASE}/disable_xiaomi.sh'
+            uci set firewall.disable_xiaomi.enabled='1'
+            uci commit firewall
+        }
+    "
+
     # Cron fallback (runs every 2 min, catches manual kills)
     $SSH_CMD "
         if ! grep -q 'dashboard/boot_setup' /etc/crontabs/root 2>/dev/null; then
@@ -92,6 +104,7 @@ do_uninstall() {
     log "Removing firewall include..."
     $SSH_CMD "
         uci delete firewall.dashboard 2>/dev/null
+        uci delete firewall.disable_xiaomi 2>/dev/null
         uci commit firewall
     "
 
