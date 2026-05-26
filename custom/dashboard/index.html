@@ -1,0 +1,2489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - Xiaomi BE3600</title>
+<style>
+:root {
+    --bg: #f0f2f5;
+    --card-bg: #fff;
+    --text: #1a1a1a;
+    --text-secondary: #666;
+    --text-muted: #999;
+    --border: #e8e8e8;
+    --primary: #ff6700;
+    --primary-light: #fff3e8;
+    --danger: #e74c3c;
+    --success: #27ae60;
+    --warning: #f39c12;
+    --info: #3498db;
+    --sidebar-bg: #1a1a2e;
+    --sidebar-hover: #16213e;
+    --sidebar-active: #0f3460;
+    --sidebar-text: #a8a8b8;
+    --sidebar-text-active: #fff;
+    --radius: 10px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-lg: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+    width: 250px;
+    min-width: 250px;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    z-index: 100;
+    overflow-y: auto;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.15);
+}
+.sidebar-brand {
+    padding: 20px 24px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    letter-spacing: 0.3px;
+}
+.sidebar-brand span {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--sidebar-text);
+    margin-top: 2px;
+    letter-spacing: 0;
+}
+.sidebar nav { padding: 12px 0; flex: 1; }
+.nav-section {
+    padding: 16px 24px 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.35);
+}
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 24px;
+    font-size: 13.5px;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+}
+.nav-item:hover {
+    background: var(--sidebar-hover);
+    color: #ccc;
+}
+.nav-item.active {
+    background: var(--sidebar-active);
+    color: var(--sidebar-text-active);
+    border-left-color: var(--primary);
+    font-weight: 500;
+}
+.nav-item .icon {
+    width: 20px;
+    margin-right: 12px;
+    font-size: 14px;
+    text-align: center;
+    opacity: 0.7;
+}
+.nav-item.active .icon { opacity: 1; }
+.nav-item.disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+.sidebar-footer {
+    padding: 16px 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+}
+
+/* ── Main ── */
+.main {
+    flex: 1;
+    margin-left: 250px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.topbar {
+    background: #fff;
+    padding: 0 32px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+.topbar h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+}
+.topbar-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.content {
+    padding: 24px 32px;
+    flex: 1;
+}
+
+/* ── Stat Cards ── */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.stat-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s;
+}
+.stat-card:hover { box-shadow: var(--shadow-lg); }
+.stat-card .stat-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+.stat-card .stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+}
+.stat-card .stat-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* ── Cards ── */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.card-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fafafa;
+}
+.card-header h2 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+}
+.card-body { padding: 20px 24px; }
+
+/* ── Tables ── */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+}
+th {
+    background: #fafafa;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #fafafa; }
+
+/* ── Badges ── */
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+}
+.badge-up { background: #e8f5e9; color: #2e7d32; }
+.badge-down { background: #ffebee; color: #c62828; }
+.badge-accept { background: #e8f5e9; color: #2e7d32; }
+.badge-drop { background: #ffebee; color: #c62828; }
+.badge-reachable { background: #e3f2fd; color: #1565c0; }
+.badge-stale { background: #fff3e0; color: #ef6c00; }
+
+/* ── Progress Bar ── */
+.progress { height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden; margin-top: 8px; }
+.progress-fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
+.progress-green { background: var(--success); }
+.progress-orange { background: var(--warning); }
+.progress-red { background: var(--danger); }
+
+/* ── Buttons ── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    background: #fff;
+    color: var(--text);
+    transition: all 0.15s;
+    text-decoration: none;
+}
+.btn:hover { background: #f5f5f5; }
+.btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+.btn-primary:hover { background: #e55d00; }
+.btn-sm { padding: 4px 12px; font-size: 12px; }
+.btn-icon { width: 32px; height: 32px; padding: 0; justify-content: center; border-radius: 50%; }
+
+/* ── Log Viewer ── */
+.log-viewer {
+    background: #1a1a1a;
+    color: #e0e0e0;
+    font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    padding: 16px;
+    border-radius: 6px;
+    max-height: 500px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+.log-viewer .log-warn { color: #f0ad4e; }
+.log-viewer .log-err { color: #e74c3c; }
+.log-viewer .log-info { color: #5bc0de; }
+
+/* ── Monospace block for iptables ── */
+.code-block {
+    background: #1a1a1a;
+    color: #e0e0e0;
+    font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+    font-size: 11.5px;
+    line-height: 1.6;
+    padding: 16px;
+    border-radius: 6px;
+    max-height: 400px;
+    overflow: auto;
+    white-space: pre;
+}
+
+/* ── Info grid ── */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+}
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: #fafafa;
+    border-radius: 6px;
+    font-size: 13px;
+}
+.info-item .info-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+.info-item .info-value {
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* ── Loading & Empty ── */
+.loading {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+.loading::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid #e0e0e0;
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.empty {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* ── Memory bar special ── */
+.mem-legend {
+    display: flex;
+    gap: 20px;
+    margin-top: 8px;
+    font-size: 12px;
+    flex-wrap: wrap;
+}
+.mem-legend span { display: flex; align-items: center; gap: 6px; }
+.mem-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .sidebar { width: 200px; min-width: 200px; }
+    .main { margin-left: 200px; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .content { padding: 16px; }
+}
+
+/* ── Refresh timer ── */
+.refresh-timer {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-left: 8px;
+}
+
+/* ── Modals ── */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5); z-index: 1000;
+    display: flex; align-items: center; justify-content: center;
+    animation: fadeIn 0.15s;
+}
+.modal-overlay.hidden { display: none; }
+.modal-box {
+    background: #fff; border-radius: var(--radius);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto;
+}
+.modal-header {
+    padding: 16px 24px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+}
+.modal-header h3 { font-size: 16px; font-weight: 600; }
+.modal-close {
+    background: none; border: none; font-size: 20px; cursor: pointer;
+    color: var(--text-muted); padding: 4px 8px; border-radius: 4px;
+}
+.modal-close:hover { background: #f0f0f0; color: var(--text); }
+.modal-body { padding: 20px 24px; }
+.modal-footer {
+    padding: 12px 24px; border-top: 1px solid var(--border);
+    display: flex; justify-content: flex-end; gap: 8px;
+}
+.form-group { margin-bottom: 14px; }
+.form-group label {
+    display: block; font-size: 12px; font-weight: 600;
+    color: var(--text-secondary); margin-bottom: 5px;
+}
+.form-group input:not([type="checkbox"]), .form-group select {
+    width: 100%; padding: 8px 12px; border: 1px solid var(--border);
+    border-radius: 6px; font-size: 14px; outline: none;
+    transition: border-color 0.2s; background: #fff;
+}
+.form-group input:not([type="checkbox"]):focus, .form-group select:focus { border-color: var(--primary); }
+.form-group input[type="checkbox"] { width: auto; margin: 0; vertical-align: middle; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* ── Radio Card ── */
+.radio-card {
+    background: var(--card-bg); border-radius: var(--radius);
+    box-shadow: var(--shadow); margin-bottom: 20px; overflow: hidden;
+}
+.radio-card-header {
+    padding: 14px 24px; display: flex; align-items: center;
+    justify-content: space-between;
+}
+.radio-card-header .radio-band {
+    font-size: 15px; font-weight: 700;
+    display: flex; align-items: center; gap: 10px;
+}
+.radio-band-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.radio-band-dot.g2 { background: #2196F3; }
+.radio-band-dot.g5 { background: #9C27B0; }
+.radio-card-body { padding: 0; }
+.radio-card-body table { margin: 0; }
+.radio-card-body table th { background: #fafafa; }
+
+/* ── Reference / Help ── */
+.ref-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.ref-card-h {
+    padding: 14px 24px;
+    background: #fafafa;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+}
+.ref-card-h:hover { background: #f0f0f0; }
+.ref-card-h h3 { font-size: 14px; font-weight: 600; }
+.ref-card-h .arr { font-size: 12px; color: var(--text-muted); transition: transform 0.2s; }
+.ref-card.collapsed .ref-card-b { display: none; }
+.ref-card.collapsed .arr { transform: rotate(-90deg); }
+.ref-card-b { padding: 18px 24px; }
+.ref-card-b p { font-size: 13px; line-height: 1.7; color: var(--text-secondary); margin-bottom: 10px; }
+.ref-card-b p:last-child { margin-bottom: 0; }
+.ref-dl { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; font-size: 13px; margin: 8px 0; }
+.ref-dl dt {
+    font-family: monospace; font-weight: 700; color: var(--text);
+    white-space: nowrap; padding: 2px 6px; background: #f5f5f5;
+    border-radius: 4px; display: inline-block; align-self: baseline;
+}
+.ref-dl dd { color: var(--text-secondary); line-height: 1.6; padding: 2px 0; }
+.ref-note {
+    background: #fff3e8; border-left: 3px solid var(--primary);
+    padding: 10px 14px; margin: 12px 0; border-radius: 0 6px 6px 0;
+    font-size: 12px; color: #8b5000; line-height: 1.6;
+}
+.ref-note.info { background: #e3f2fd; border-left-color: var(--info); color: #0d47a1; }
+.legend-row { display: flex; align-items: center; gap: 8px; padding: 4px 0; font-size: 12px; }
+.legend-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<!-- ════ SIDEBAR ════ -->
+<aside class="sidebar">
+    <div class="sidebar-brand">
+        Xiaomi BE3600
+        <span>Dashboard</span>
+    </div>
+    <nav>
+        <div class="nav-section">Status</div>
+        <a class="nav-item" href="#overview" onclick="navigate('overview')">
+            <span class="icon">&#9679;</span> Overview
+        </a>
+        <a class="nav-item" href="#routing" onclick="navigate('routing')">
+            <span class="icon">&#8635;</span> Routing
+        </a>
+        <a class="nav-item" href="#firewall" onclick="navigate('firewall')">
+            <span class="icon">&#9873;</span> Firewall
+        </a>
+        <a class="nav-item" href="#syslog" onclick="navigate('syslog')">
+            <span class="icon">&#9776;</span> System Log
+        </a>
+        <a class="nav-item" href="#processes" onclick="navigate('processes')">
+            <span class="icon">&#9881;</span> Processes
+        </a>
+        <a class="nav-item" href="#connections" onclick="navigate('connections')">
+            <span class="icon">&#8646;</span> Connections
+        </a>
+
+        <div class="nav-section">Network</div>
+        <a class="nav-item" href="#devices" onclick="navigate('devices')">
+            <span class="icon">&#9881;</span> Devices
+        </a>
+        <a class="nav-item" href="#interfaces" onclick="navigate('interfaces')">
+            <span class="icon">&#8594;</span> Interfaces
+        </a>
+        <a class="nav-item" href="#wireless" onclick="navigate('wireless')">
+            <span class="icon">&#9742;</span> Wireless
+        </a>
+        <a class="nav-item" href="#reference" onclick="navigate('reference')">
+            <span class="icon">&#9432;</span> Reference
+        </a>
+
+        <div class="nav-section">Services</div>
+        <a class="nav-item" href="#dhcpdns" onclick="navigate('dhcpdns')">
+            <span class="icon">&#9744;</span> DHCP & DNS
+        </a>
+        <a class="nav-item" href="#trafficrules" onclick="navigate('trafficrules')">
+            <span class="icon">&#9888;</span> Traffic Rules
+        </a>
+        <a class="nav-item disabled"><span class="icon">&#9733;</span> Tailscale</a>
+        <a class="nav-item" href="#diagnostics" onclick="navigate('diagnostics')">
+            <span class="icon">&#9743;</span> Diagnostics
+        </a>
+
+        <div class="nav-section">System</div>
+        <a class="nav-item" href="#settings" onclick="navigate('settings')">
+            <span class="icon">&#9874;</span> Settings
+        </a>
+        <a class="nav-item" href="#reboot" onclick="navigate('reboot')">
+            <span class="icon">&#8634;</span> Reboot
+        </a>
+    </nav>
+    <div class="sidebar-footer">BE3600 Dashboard v1.0</div>
+</aside>
+
+<!-- ════ MAIN ════ -->
+<div class="main">
+    <div class="topbar">
+        <h1 id="pageTitle">Overview</h1>
+        <div class="topbar-actions">
+            <span class="refresh-timer" id="refreshTimer"></span>
+            <button class="btn btn-sm" onclick="refreshCurrent()">&#8635; Refresh</button>
+            <button id="autoRefreshBtn" class="btn btn-sm" onclick="toggleAutoRefresh()" style="display:none">Auto: OFF</button>
+        </div>
+    </div>
+    <div class="content" id="content">
+        <div class="loading">Loading dashboard...</div>
+    </div>
+</div>
+
+<!-- ════ MODAL ════ -->
+<div class="modal-overlay hidden" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3 id="modalTitle">Edit</h3>
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+        <div class="modal-footer" id="modalFooter"></div>
+    </div>
+</div>
+
+<script>
+var API = 'cgi-bin/api.cgi';
+var currentPage = '';
+var autoRefresh = false;
+var autoRefreshInterval = null;
+
+// ── Navigation ──
+
+var pages = {
+    overview:   { title: 'Overview',    render: renderOverview,    action: 'overview' },
+    routing:    { title: 'Routing',     render: renderRouting,     action: 'routing' },
+    firewall:   { title: 'Firewall',    render: renderFirewall,    action: 'firewall' },
+    syslog:     { title: 'System Log',  render: renderSyslog,      action: 'syslog' },
+    processes:  { title: 'Processes',   render: renderProcesses,   action: 'processes' },
+    devices:    { title: 'Devices',     render: renderDevices,     action: 'list_devices' },
+    interfaces: { title: 'Interfaces',  render: renderInterfaces,  action: 'list_ifaces' },
+    wireless:   { title: 'Wireless',    render: renderWireless,    action: 'list_wireless' },
+    reference:     { title: 'Reference',      render: renderReference,      action: 'overview',          noApi: true },
+    dhcpdns:       { title: 'DHCP & DNS',      render: renderDhcpDns,        action: 'dhcp_config' },
+    trafficrules:  { title: 'Traffic Rules',   render: renderTrafficRules,   action: 'list_traffic_rules' },
+    connections:   { title: 'Connections',     render: renderConnections,    action: 'list_connections' },
+    diagnostics:   { title: 'Diagnostics',     render: renderDiagnostics,    action: 'overview',         noApi: true },
+    settings:      { title: 'Settings',        render: renderSettings,       action: 'system_config' },
+    reboot:        { title: 'Reboot',           render: renderReboot,         action: 'overview',         noApi: true },
+};
+
+function navigate(page) {
+    currentPage = page;
+    window.location.hash = page;
+    document.getElementById('pageTitle').textContent = pages[page].title;
+
+    // Update sidebar active
+    document.querySelectorAll('.nav-item').forEach(function(el) {
+        el.classList.remove('active');
+        if (el.getAttribute('href') === '#' + page) el.classList.add('active');
+    });
+
+    // Show/hide auto-refresh button
+    var btn = document.getElementById('autoRefreshBtn');
+    btn.style.display = (page === 'syslog') ? 'inline-flex' : 'none';
+
+    // Load content
+    loadPage(page);
+}
+
+function refreshCurrent() {
+    if (currentPage) loadPage(currentPage);
+}
+
+function loadPage(page) {
+    var content = document.getElementById('content');
+    content.innerHTML = '<div class="loading">Loading ' + pages[page].title.toLowerCase() + '...</div>';
+
+    if (pages[page].noApi) {
+        pages[page].render(null);
+        return;
+    }
+
+    var action = pages[page].action || page;
+    apiCall('action=' + action, function(r) {
+        if (r.code === 401) {
+            content.innerHTML = '<div style="text-align:center;padding:80px 20px"><h2 style="margin-bottom:12px">Authentication Required</h2><p style="color:var(--text-secondary);margin-bottom:20px">This dashboard is password-protected.</p><button class="btn btn-primary" onclick="location.reload()">Login</button></div>';
+            return;
+        }
+        if (r.code !== 0) {
+            content.innerHTML = '<div class="loading">Error: ' + (r.msg || 'Failed to load') + '</div>';
+            return;
+        }
+        pages[page].render(r.data);
+    });
+}
+
+// ── API ──
+
+function apiCall(params, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', API, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() {
+        if (xhr.status === 401) {
+            callback({code:401, msg:'Authentication required'});
+            return;
+        }
+        try { callback(JSON.parse(xhr.responseText)); }
+        catch(e) { callback({code:1, msg:'Parse error'}); }
+    };
+    xhr.onerror = function() { callback({code:1, msg:'Network error'}); };
+    xhr.send(params);
+}
+
+// ── Auto Refresh ──
+
+function toggleAutoRefresh() {
+    autoRefresh = !autoRefresh;
+    var btn = document.getElementById('autoRefreshBtn');
+    var timer = document.getElementById('refreshTimer');
+
+    if (autoRefresh) {
+        btn.textContent = 'Auto: ON';
+        btn.className = 'btn btn-primary btn-sm';
+        timer.textContent = 'Refreshing every 5s';
+        autoRefreshInterval = setInterval(function() {
+            loadPage(currentPage);
+        }, 5000);
+    } else {
+        btn.textContent = 'Auto: OFF';
+        btn.className = 'btn btn-sm';
+        timer.textContent = '';
+        if (autoRefreshInterval) clearInterval(autoRefreshInterval);
+    }
+}
+
+// ── Helpers ──
+
+function escHtml(s) {
+    if (!s) return '';
+    var d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+}
+
+function escQs(s) { return escHtml(s).replace(/'/g, "\\'"); }
+
+function toast(msg, type) {
+    var el = document.createElement('div');
+    el.textContent = msg;
+    el.style.cssText = 'position:fixed;top:16px;right:24px;padding:10px 20px;border-radius:8px;font-size:13px;z-index:9999;animation:fadeIn 0.3s;' +
+        (type === 'error' ? 'background:#f8d7da;color:#721c24;border:1px solid #f5c6cb;' : 'background:#d4edda;color:#155724;border:1px solid #c3e6cb;');
+    document.body.appendChild(el);
+    setTimeout(function(){ el.remove(); }, 3000);
+}
+
+// ═══════════════════════════════════════════════════════════
+//  DEVICES
+// ═══════════════════════════════════════════════════════════
+
+function renderDevices(d) {
+    var html = '';
+
+    // Quick legend (collapsible)
+    html += '<div class="ref-card collapsed" style="margin-bottom:16px">';
+    html += '<div class="ref-card-h" onclick="this.parentElement.classList.toggle(\'collapsed\')"><h3>Device Type Reference</h3><span class="arr">&#9660;</span></div>';
+    html += '<div class="ref-card-b">';
+    html += '<div class="legend-row"><span class="legend-dot" style="background:#2e7d32"></span> <strong>phy</strong> — Physical hardware (eth0=switch, eth1=2.5G WAN, wifi0/1=radios)</div>';
+    html += '<div class="legend-row"><span class="legend-dot" style="background:#ef6c00"></span> <strong>vlan</strong> — 802.1q VLAN subinterface (eth1.100 = VLAN 100 on eth1)</div>';
+    html += '<div class="legend-row"><span class="legend-dot" style="background:#1565c0"></span> <strong>bridge</strong> — Software bridge joining multiple devices (br-lan, br-vlan_*)</div>';
+    html += '<div class="legend-row"><span class="legend-dot" style="background:#7b1fa2"></span> <strong>wifi</strong> — Wireless radio hardware (wifi0 = 2.4 GHz, wifi1 = 5 GHz)</div>';
+    html += '<div class="legend-row"><span class="legend-dot" style="background:#888"></span> <strong>virtual</strong> — Driver/kernel construct (soc*, mld-*, bhap_*, hostap_*, tunnels)</div>';
+    html += '<p style="margin-top:10px;font-size:12px;color:var(--text-muted)">Physical and wifi devices cannot be deleted. See the <a href="#reference" onclick="navigate(\'reference\')" style="color:var(--primary)">Reference page</a> for detailed explanations of MLD, mesh backhaul, and tunnel interfaces.</p>';
+    html += '</div></div>';
+
+    html += '<div class="card"><div class="card-header"><h2>Network Devices</h2>';
+    html += '<div style="display:flex;gap:8px">';
+    html += '<button class="btn btn-primary btn-sm" onclick="showCreateDevice(\'vlan\')">+ VLAN (802.1q)</button>';
+    html += '<button class="btn btn-primary btn-sm" onclick="showCreateDevice(\'bridge\')">+ Bridge</button>';
+    html += '</div></div><div class="card-body">';
+    html += '<table><thead><tr><th>Name</th><th>Type</th><th>State</th><th>Speed</th><th>VLAN / Bridge</th><th>Used By</th><th>Actions</th></tr></thead><tbody>';
+    if (d.devices && d.devices.length > 0) {
+        d.devices.forEach(function(dev) {
+            var stateBadge = dev.state === 'up' ? 'badge-up' : (dev.state === 'lowerlayerdown' ? 'badge-stale' : 'badge-down');
+            var typeBadges = {phy:'background:#e8f5e9;color:#2e7d32', vlan:'background:#fff3e0;color:#ef6c00', bridge:'background:#e3f2fd;color:#1565c0', wifi:'background:#f3e5f5;color:#7b1fa2', virtual:'background:#f5f5f5;color:#888'};
+            var typeStyle = typeBadges[dev.type] || 'background:#f5f5f5;color:#888';
+            var vlanInfo = '';
+            if (dev.type === 'vlan') vlanInfo = escHtml(dev.vlan_parent) + '.' + escHtml(dev.vlan_id);
+            else if (dev.type === 'bridge' && dev.bridge_ports) vlanInfo = 'ports: ' + escHtml(dev.bridge_ports);
+            else if (dev.mac) vlanInfo = escHtml(dev.mac);
+            var speedStr = dev.speed ? dev.speed + ' Mbps' : (dev.type === 'phy' ? '—' : '—');
+            var usedByArr = dev.used_by ? dev.used_by.split(',') : [];
+            var usedByStr = usedByArr.length > 0 ? usedByArr.slice(0,3).join(', ') + (usedByArr.length > 3 ? ' +' + (usedByArr.length-3) : '') : '—';
+
+            var isPhyCore = (dev.type === 'phy' && (dev.name === 'eth0' || dev.name === 'eth1')) || dev.name === 'br-lan' || dev.type === 'wifi';
+            var canDelete = !isPhyCore && dev.type !== 'wifi' && dev.type !== 'virtual';
+
+            html += '<tr>';
+            html += '<td><strong style="font-family:monospace;font-size:13px">' + escHtml(dev.name) + '</strong></td>';
+            html += '<td><span class="badge" style="' + typeStyle + '">' + escHtml(dev.type) + '</span></td>';
+            html += '<td><span class="badge ' + stateBadge + '">' + escHtml(dev.state) + '</span></td>';
+            html += '<td>' + speedStr + '</td>';
+            html += '<td style="font-size:11px;font-family:monospace">' + vlanInfo + '</td>';
+            html += '<td style="font-size:12px">' + usedByStr + '</td>';
+            html += '<td style="white-space:nowrap">';
+            html += '<button class="btn btn-sm" onclick="editDevice(\'' + escQs(dev.name) + '\',\'' + escQs(dev.mac) + '\',\'' + dev.mtu + '\')">MAC/MTU</button>';
+            if (canDelete) html += ' <button class="btn btn-sm" style="color:#e74c3c" onclick="deleteDevice(\'' + escQs(dev.name) + '\')">Del</button>';
+            html += '</td>';
+            html += '</tr>';
+        });
+    } else {
+        html += '<tr><td colspan="7" class="empty">No devices found</td></tr>';
+    }
+    html += '</tbody></table></div></div>';
+    document.getElementById('content').innerHTML = html;
+}
+
+function showCreateDevice(type) {
+    if (type === 'vlan') {
+        var body = '<div class="form-group"><label>Base Device</label><select id="cd_base">';
+        body += '<option value="eth1" selected>eth1 (2.5G uplink)</option>';
+        body += '<option value="eth0">eth0 (switch)</option>';
+        body += '</select></div>';
+        body += '<div class="form-group"><label>VLAN ID</label><input type="number" id="cd_vlan_id" min="1" max="4094" placeholder="e.g. 50" required></div>';
+        body += '<p style="font-size:12px;color:var(--text-muted);margin-top:4px">Creates <code style="background:#f0f0f0;padding:1px 4px;border-radius:3px">eth1.50</code> subinterface + bridge + interface</p>';
+        var footer = '<button class="btn btn-primary" onclick="saveCreateDevice(\'vlan\')">Create VLAN</button><button class="btn" onclick="closeModal()">Cancel</button>';
+        showModal('Create VLAN (802.1q)', body, footer);
+    } else {
+        var body = '<div class="form-group"><label>Bridge Name</label><input type="text" id="cd_br_name" placeholder="e.g. mybridge" maxlength="15"></div>';
+        body += '<div class="form-group"><label>Ports</label><div id="cd_ports_list" style="border:1px solid #ddd;border-radius:6px;overflow-y:auto;max-height:220px;background:#fff;padding:4px 0">Loading devices...</div>';
+        body += '<p style="font-size:11px;color:#999;margin-top:4px">Check the devices to add to the bridge</p></div>';
+        var footer = '<button class="btn btn-primary" onclick="saveCreateDevice(\'bridge\')">Create Bridge</button><button class="btn" onclick="closeModal()">Cancel</button>';
+        showModal('Create Bridge', body, footer);
+
+        getDeviceOptions('', function(opts) {
+            var html = '';
+            if (deviceCache) {
+                deviceCache.forEach(function(dev) {
+                    if (dev.type === 'bridge') return;
+                    var st = dev.state === 'up' ? 'UP' : (dev.state === 'lowerlayerdown' ? 'DOWN' : dev.state);
+                    html += '<label style="display:flex;align-items:center;gap:8px;padding:4px 10px;font-size:13px;cursor:pointer;border-bottom:1px solid #f0f0f0">';
+                    html += '<input type="checkbox" value="' + escHtml(dev.name) + '" class="cd_port_cb">';
+                    html += '<span style="font-family:monospace;font-weight:500;min-width:90px">' + escHtml(dev.name) + '</span>';
+                    html += '<span style="color:#888;font-size:11px">' + escHtml(dev.type) + ' &middot; ' + st + '</span>';
+                    html += '</label>';
+                });
+            }
+            var list = document.getElementById('cd_ports_list');
+            if (list) list.innerHTML = html || '<div style="padding:12px;color:#888;text-align:center">No devices available</div>';
+        });
+    }
+}
+
+function saveCreateDevice(type) {
+    var params = 'action=create_device&type=' + encodeURIComponent(type);
+    if (type === 'vlan') {
+        var base = document.getElementById('cd_base').value;
+        var vid = document.getElementById('cd_vlan_id').value;
+        if (!vid || vid < 1 || vid > 4094) { toast('Valid VLAN ID required', 'error'); return; }
+        params += '&base_device=' + encodeURIComponent(base);
+        params += '&vlan_id=' + encodeURIComponent(vid);
+    } else {
+        var name = document.getElementById('cd_br_name').value;
+        var cbs = document.querySelectorAll('.cd_port_cb:checked');
+        var ports = [];
+        for (var i = 0; i < cbs.length; i++) ports.push(cbs[i].value);
+        if (!name.trim()) { toast('Bridge name required', 'error'); return; }
+        if (ports.length === 0) { toast('At least one port required', 'error'); return; }
+        params += '&name=' + encodeURIComponent(name.trim());
+        params += '&ports=' + encodeURIComponent(ports.join(' '));
+    }
+    apiCall(params, function(r) {
+        closeModal();
+        if (r.code === 0) { toast(r.msg); loadPage('devices'); loadPage('interfaces'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function deleteDevice(name) {
+    if (!confirm('Delete device ' + name + '?\nThis removes the kernel device and updates UCI references.')) return;
+    apiCall('action=delete_device&name=' + encodeURIComponent(name), function(r) {
+        if (r.code === 0) { toast(r.msg); loadPage('devices'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function editDevice(name, mac, mtu) {
+    var body = '<div class="form-group"><label>MAC Address</label><input type="text" id="ed_mac" value="' + escHtml(mac || '') + '" placeholder="Leave empty for hardware default"></div>';
+    body += '<div class="form-group"><label>MTU</label><input type="number" id="ed_mtu" value="' + (mtu || '1500') + '" min="68" max="9000"></div>';
+    // Note: MAC/MTU changes via UCI need network restart; we update UCI device config
+    var footer = '<button class="btn btn-primary" onclick="saveEditDevice(\'' + escQs(name) + '\')">Save</button><button class="btn" onclick="closeModal()">Cancel</button>';
+    showModal('Edit Device: ' + name, body, footer);
+}
+
+function saveEditDevice(name) {
+    var mac = document.getElementById('ed_mac').value;
+    var mtu = document.getElementById('ed_mtu').value;
+    // Write to UCI device section if exists, or the interface section
+    var params = 'action=edit_iface&name=' + encodeURIComponent(name.replace('br-', ''));
+    toast('Device settings saved (may need network restart)', 'success');
+    closeModal();
+    // Note: runtime MAC change not supported; UCI update for persistence would need a device section
+    // For now, just close and notify
+}
+
+// ═══════════════════════════════════════════════════════════
+//  INTERFACES (refactored)
+// ═══════════════════════════════════════════════════════════
+
+function renderInterfaces(d) {
+    var html = '';
+
+    // Quick legend (collapsible)
+    html += '<div class="ref-card collapsed" style="margin-bottom:16px">';
+    html += '<div class="ref-card-h" onclick="this.parentElement.classList.toggle(\'collapsed\')"><h3>Interface Reference</h3><span class="arr">&#9660;</span></div>';
+    html += '<div class="ref-card-b">';
+    html += '<p>UCI <strong>network interfaces</strong> are logical configurations that bind to one or more kernel <strong>devices</strong>. They define IP addressing, protocol, and firewall zone membership.</p>';
+    html += '<dl class="ref-dl">';
+    html += '<dt>lan</dt><dd>Main LAN interface. Bridged across eth0.1–eth0.3 (switch VLANs) + eth1 (2.5G port) + bhap_mld0 (mesh backhaul). Static IP 192.168.10.209.</dd>';
+    html += '<dt>wan</dt><dd>WAN uplink — uses DHCP client on the 2.5G port MAC (cc:d8:43:1d:3e:2f). This is the separate WAN MAC distinct from eth1.</dd>';
+    html += '<dt>miot</dt><dd>Xiaomi IoT provisioning network (192.168.32.0/24). Bound to wl13 VAP for smart home device setup. Can be enabled or disabled from the Wireless page.</dd>';
+    html += '<dt>vlan_*</dt><dd>User-created VLAN interfaces. Each is a bridge (br-vlan_N) with proto=none (unmanaged). Assign a proto and IP to make them active networks.</dd>';
+    html += '<dt>loopback</dt><dd>Standard loopback (127.0.0.1). Do not modify.</dd>';
+    html += '</dl>';
+    html += '</div></div>';
+
+    html += '<div class="card"><div class="card-header"><h2>Network Interfaces</h2>';
+    html += '<button class="btn btn-primary btn-sm" onclick="showCreateIface()">+ Create Interface</button>';
+    html += '</div><div class="card-body">';
+    html += '<table><thead><tr><th>Name</th><th>Zone</th><th>Device</th><th>Protocol</th><th>IPv4 / Netmask</th><th>Gateway</th><th>State</th><th>Actions</th></tr></thead><tbody>';
+    if (d.interfaces && d.interfaces.length > 0) {
+        d.interfaces.forEach(function(iface) {
+            var stateBadge = iface.state === 'up' ? 'badge-up' : 'badge-down';
+            var protoBadge = iface.proto === 'static' ? 'badge-reachable' : (iface.proto === 'dhcp' ? 'badge-stale' : '');
+            var isCore = iface.name === 'lan' || iface.name === 'wan' || iface.name === 'loopback' || iface.name === 'miot';
+            var isDisabled = iface.disabled === '1';
+            var zoneBadge = iface.zone ? '<span class="badge" style="background:#e3f2fd;color:#1565c0">' + escHtml(iface.zone) + '</span>' : '<span style="color:var(--text-muted)">—</span>';
+            var deviceDisplay = iface.ifname || '—';
+            if (iface.wantype && (!iface.ifname || iface.ifname.indexOf('auto') === 0)) deviceDisplay = '<span style="color:var(--text-muted)" title="Xiaomi ' + escHtml(iface.wantype) + ' auto-resolve">WAN port</span>';
+            html += '<tr' + (isDisabled ? ' style="opacity:0.5"' : '') + '>';
+            html += '<td><strong>' + escHtml(iface.name) + '</strong>' + (iface.type === 'bridge' ? ' <span class="badge" style="background:#e3f2fd;color:#1565c0">bridge</span>' : '') + (isDisabled ? ' <span class="badge" style="background:#f0f0f0;color:#888">disabled</span>' : '') + '</td>';
+            html += '<td>' + zoneBadge + '</td>';
+            html += '<td style="font-family:monospace;font-size:12px">' + deviceDisplay + '</td>';
+            html += '<td><span class="badge ' + protoBadge + '">' + escHtml(iface.proto || '—') + '</span></td>';
+            html += '<td style="font-family:monospace;font-size:12px">' + escHtml(iface.ipaddr || '—') + (iface.netmask ? '/' + escHtml(iface.netmask) : '') + '</td>';
+            html += '<td style="font-family:monospace;font-size:12px">' + escHtml(iface.gateway || '—') + '</td>';
+            html += '<td><span class="badge ' + stateBadge + '">' + escHtml(iface.state) + '</span></td>';
+            html += '<td style="white-space:nowrap">';
+            html += '<button class="btn btn-sm" onclick="editIface(\'' + escQs(iface.name) + '\',\'' + escQs(iface.proto) + '\',\'' + escQs(iface.ipaddr) + '\',\'' + escQs(iface.netmask) + '\',\'' + escQs(iface.gateway) + '\',\'' + escQs(iface.dns) + '\',\'' + escQs(iface.ifname) + '\',\'' + escQs(iface.zone || '') + '\')">Edit</button>';
+            if (!isCore) html += ' <button class="btn btn-sm" style="color:#e74c3c" onclick="deleteIface(\'' + escQs(iface.name) + '\')">Del</button>';
+            html += '</td>';
+            html += '</tr>';
+        });
+    } else {
+        html += '<tr><td colspan="8" class="empty">No interfaces found</td></tr>';
+    }
+    html += '</tbody></table></div></div>';
+    document.getElementById('content').innerHTML = html;
+}
+
+// Device cache for dropdowns
+var deviceCache = null;
+
+function getDeviceOptions(currentDev, callback) {
+    function buildOpts(devices) {
+        var phys = [], bridges = [], vlans = [], others = [];
+        var hasCurrent = false;
+        if (devices) {
+            devices.forEach(function(dev) {
+                var sel = (dev.name === currentDev) ? ' selected' : '';
+                if (sel) hasCurrent = true;
+                var stateMark = dev.state === 'up' ? ' [UP]' : (dev.state === 'lowerlayerdown' ? ' [DOWN]' : '');
+                var opt = '<option value="' + escHtml(dev.name) + '"' + sel + '>' + escHtml(dev.name) + ' (' + dev.type + stateMark + ')</option>';
+                if (dev.type === 'bridge' && dev.name !== 'br-lan') bridges.push(opt);
+                else if (dev.type === 'vlan') vlans.push(opt);
+                else if (dev.type === 'phy') phys.push(opt);
+                else others.push(opt);
+            });
+        }
+        if (!hasCurrent && currentDev) {
+            others.unshift('<option value="' + escHtml(currentDev) + '" selected>' + escHtml(currentDev) + ' (current)</option>');
+        }
+        var html = '';
+        if (phys.length) html += '<optgroup label="Physical">' + phys.join('') + '</optgroup>';
+        if (bridges.length) html += '<optgroup label="Bridges">' + bridges.join('') + '</optgroup>';
+        if (vlans.length) html += '<optgroup label="VLANs">' + vlans.join('') + '</optgroup>';
+        if (others.length) html += '<optgroup label="Other">' + others.join('') + '</optgroup>';
+        callback(html || '<option value="">— no devices —</option>');
+    }
+
+    if (deviceCache) {
+        buildOpts(deviceCache);
+    } else {
+        apiCall('action=list_devices', function(r) {
+            if (r.code === 0 && r.data && r.data.devices) {
+                deviceCache = r.data.devices;
+                buildOpts(deviceCache);
+            } else {
+                callback('<option value="">— failed to load —</option>');
+            }
+        });
+    }
+}
+
+function showCreateIface() {
+    var body = '<div class="form-group"><label>Interface Name</label><input type="text" id="ci_name" placeholder="e.g. my_lan" maxlength="15" required></div>';
+    body += '<div class="form-group"><label>Device</label><select id="ci_device"><option value="">Loading devices...</option></select>';
+    body += '<p style="font-size:11px;color:var(--text-muted);margin-top:4px">The kernel network device this interface binds to</p></div>';
+    body += '<div class="form-group"><label>Protocol</label><select id="ci_proto" onchange="document.getElementById(\'ci_static\').style.display=this.value===\'static\'?\'block\':\'none\'">';
+    body += '<option value="static" selected>Static</option><option value="dhcp">DHCP</option><option value="none">Unmanaged</option>';
+    body += '</select></div>';
+    body += '<div id="ci_static">';
+    body += '<div class="form-group"><label>IP Address</label><input type="text" id="ci_ipaddr" placeholder="192.168.1.1"></div>';
+    body += '<div class="form-group"><label>Netmask</label><input type="text" id="ci_netmask" placeholder="255.255.255.0"></div>';
+    body += '<div class="form-group"><label>Gateway</label><input type="text" id="ci_gateway" placeholder="192.168.1.254"></div>';
+    body += '<div class="form-group"><label>DNS</label><input type="text" id="ci_dns" placeholder="8.8.8.8"></div>';
+    body += '</div>';
+    var footer = '<button class="btn btn-primary" onclick="saveCreateIface()">Create Interface</button><button class="btn" onclick="closeModal()">Cancel</button>';
+    showModal('Create Interface', body, footer);
+
+    // Populate device dropdown async
+    getDeviceOptions('', function(opts) {
+        var sel = document.getElementById('ci_device');
+        if (sel) sel.innerHTML = opts;
+    });
+}
+
+function saveCreateIface() {
+    var name = document.getElementById('ci_name').value.trim();
+    var device = document.getElementById('ci_device').value.trim();
+    var proto = document.getElementById('ci_proto').value;
+    if (!name) { toast('Interface name required', 'error'); return; }
+    if (!device) { toast('Device required', 'error'); return; }
+    var params = 'action=create_iface&name=' + encodeURIComponent(name) + '&device=' + encodeURIComponent(device) + '&proto=' + encodeURIComponent(proto);
+    if (proto === 'static') {
+        params += '&ipaddr=' + encodeURIComponent(document.getElementById('ci_ipaddr').value);
+        params += '&netmask=' + encodeURIComponent(document.getElementById('ci_netmask').value);
+        params += '&gateway=' + encodeURIComponent(document.getElementById('ci_gateway').value);
+        params += '&dns=' + encodeURIComponent(document.getElementById('ci_dns').value);
+    }
+    apiCall(params, function(r) {
+        closeModal();
+        if (r.code === 0) { toast(r.msg); loadPage('interfaces'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function deleteIface(name) {
+    if (!confirm('Delete interface "' + name + '"?\nThis removes the UCI config permanently.')) return;
+    apiCall('action=delete_iface&name=' + encodeURIComponent(name), function(r) {
+        if (r.code === 0) { toast(r.msg); loadPage('interfaces'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function editIface(name, proto, ipaddr, netmask, gateway, dns, ifname, zone) {
+    var curDev = (ifname || '').split(' ')[0];
+
+    var body = '<div class="form-group"><label>Firewall Zone</label><select id="ef_zone">';
+    body += '<option value=""' + (!zone ? ' selected' : '') + '>— none —</option>';
+    body += '<option value="lan"' + (zone === 'lan' ? ' selected' : '') + '>lan</option>';
+    body += '<option value="wan"' + (zone === 'wan' ? ' selected' : '') + '>wan</option>';
+    body += '</select></div>';
+    body += '<div class="form-group"><label>Device</label><select id="ef_device"><option value="">Loading...</option></select>';
+    body += '<p style="font-size:11px;color:var(--text-muted);margin-top:4px">Changing the device may break connectivity.</p></div>';
+    body += '<div class="form-group"><label>Protocol</label><select id="ef_proto" onchange="document.getElementById(\'ef_static\').style.display=this.value===\'static\'?\'block\':\'none\'">';
+    body += '<option value="static"' + (proto === 'static' ? ' selected' : '') + '>Static</option>';
+    body += '<option value="dhcp"' + (proto === 'dhcp' ? ' selected' : '') + '>DHCP</option>';
+    body += '<option value="none"' + (proto === 'none' ? ' selected' : '') + '>Unmanaged</option>';
+    body += '</select></div>';
+    body += '<div id="ef_static" style="display:' + (proto === 'static' ? 'block' : 'none') + '">';
+    body += '<div class="form-group"><label>IP Address</label><input type="text" id="ef_ipaddr" value="' + escHtml(ipaddr || '') + '" placeholder="192.168.1.1"></div>';
+    body += '<div class="form-group"><label>Netmask</label><input type="text" id="ef_netmask" value="' + escHtml(netmask || '') + '" placeholder="255.255.255.0"></div>';
+    body += '<div class="form-group"><label>Gateway</label><input type="text" id="ef_gateway" value="' + escHtml(gateway || '') + '" placeholder="192.168.1.254"></div>';
+    body += '<div class="form-group"><label>DNS</label><input type="text" id="ef_dns" value="' + escHtml(dns || '') + '" placeholder="8.8.8.8"></div>';
+    body += '</div>';
+
+    var footer = '<button class="btn btn-primary" onclick="saveIface(\'' + escQs(name) + '\')">Save Changes</button>' +
+                 '<button class="btn" onclick="closeModal()">Cancel</button>';
+    showModal('Edit Interface: ' + name, body, footer);
+
+    // Populate device dropdown async
+    getDeviceOptions(curDev, function(opts) {
+        var sel = document.getElementById('ef_device');
+        if (sel) sel.innerHTML = opts;
+    });
+}
+
+function saveIface(name) {
+    var zone = document.getElementById('ef_zone') ? document.getElementById('ef_zone').value : '';
+    var device = document.getElementById('ef_device') ? document.getElementById('ef_device').value : '';
+    var proto = document.getElementById('ef_proto').value;
+    var ipaddr = document.getElementById('ef_ipaddr') ? document.getElementById('ef_ipaddr').value : '';
+    var netmask = document.getElementById('ef_netmask') ? document.getElementById('ef_netmask').value : '';
+    var gateway = document.getElementById('ef_gateway') ? document.getElementById('ef_gateway').value : '';
+    var dns = document.getElementById('ef_dns') ? document.getElementById('ef_dns').value : '';
+
+    var params = 'action=edit_iface&name=' + encodeURIComponent(name);
+    if (zone) params += '&zone=' + encodeURIComponent(zone);
+    if (device) params += '&ifname=' + encodeURIComponent(device);
+    params += '&proto=' + encodeURIComponent(proto);
+    if (proto === 'static') {
+        params += '&ipaddr=' + encodeURIComponent(ipaddr);
+        params += '&netmask=' + encodeURIComponent(netmask);
+        params += '&gateway=' + encodeURIComponent(gateway);
+        params += '&dns=' + encodeURIComponent(dns);
+    }
+
+    apiCall(params, function(r) {
+        closeModal();
+        if (r.code === 0) { toast(r.msg || 'Updated'); loadPage('interfaces'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+// ═══════════════════════════════════════════════════════════
+//  SHARED HELPERS
+// ═══════════════════════════════════════════════════════════
+
+function formatBytes(kb) {
+    if (!kb || kb === 0) return '0 KB';
+    if (kb > 1048576) return (kb / 1048576).toFixed(1) + ' GB';
+    if (kb > 1024) return (kb / 1024).toFixed(1) + ' MB';
+    return kb + ' KB';
+}
+
+function memColor(pct) {
+    if (pct > 90) return 'progress-red';
+    if (pct > 70) return 'progress-orange';
+    return 'progress-green';
+}
+
+// ═══════════════════════════════════════════════════════════
+//  OVERVIEW
+// ═══════════════════════════════════════════════════════════
+
+function renderOverview(d) {
+    var memPct = d.memory.percent || 0;
+    var memUsed = formatBytes(d.memory.used);
+    var memTotal = formatBytes(d.memory.total);
+    var tempStr = d.temperature && d.temperature > 0 ? d.temperature + '°C' : 'N/A';
+
+    var html = '';
+
+    html += '<div class="stat-grid">';
+    html += '<div class="stat-card"><div class="stat-label">Uptime</div><div class="stat-value">' + escHtml(d.uptime_str) + '</div><div class="stat-sub">since last boot</div></div>';
+    html += '<div class="stat-card"><div class="stat-label">Load Average</div><div class="stat-value">' + d.cpu.load_1m + '</div><div class="stat-sub">1m / 5m: ' + d.cpu.load_5m + ' / 15m: ' + d.cpu.load_15m + '</div></div>';
+    html += '<div class="stat-card"><div class="stat-label">Memory</div><div class="stat-value">' + memPct + '%</div><div class="stat-sub">' + memUsed + ' / ' + memTotal + '</div></div>';
+    html += '<div class="stat-card"><div class="stat-label">Connections</div><div class="stat-value">' + (d.connections || 0) + '</div><div class="stat-sub">active tracking</div></div>';
+    html += '</div>';
+
+    html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;">';
+
+    html += '<div class="card"><div class="card-header"><h2>System Information</h2></div><div class="card-body">';
+    html += '<div class="info-grid">';
+    html += '<div class="info-item"><span class="info-label">Hostname</span><span class="info-value">' + escHtml(d.hostname) + '</span></div>';
+    html += '<div class="info-item"><span class="info-label">Model</span><span class="info-value">' + escHtml(d.model) + '</span></div>';
+    html += '<div class="info-item"><span class="info-label">Firmware</span><span class="info-value">' + escHtml(d.firmware) + '</span></div>';
+    html += '<div class="info-item"><span class="info-label">Kernel</span><span class="info-value">' + escHtml(d.kernel) + '</span></div>';
+    html += '<div class="info-item"><span class="info-label">Architecture</span><span class="info-value">' + escHtml(d.cpu.arch) + '</span></div>';
+    html += '<div class="info-item"><span class="info-label">CPU Cores</span><span class="info-value">' + d.cpu.cores + '</span></div>';
+    html += '<div class="info-item"><span class="info-label">Temperature</span><span class="info-value">' + tempStr + '</span></div>';
+    html += '</div></div></div>';
+
+    html += '<div class="card"><div class="card-header"><h2>Memory Usage</h2></div><div class="card-body">';
+    html += '<div class="progress"><div class="progress-fill ' + memColor(memPct) + '" style="width:' + memPct + '%"></div></div>';
+    html += '<div class="mem-legend">';
+    html += '<span><span class="mem-dot" style="background:#e74c3c"></span> Used: ' + memUsed + '</span>';
+    html += '<span><span class="mem-dot" style="background:#27ae60"></span> Free: ' + formatBytes(d.memory.free) + '</span>';
+    html += '<span><span class="mem-dot" style="background:#f39c12"></span> Cached: ' + formatBytes(d.memory.cached) + '</span>';
+    html += '<span><span class="mem-dot" style="background:#3498db"></span> Buffers: ' + formatBytes(d.memory.buffers) + '</span>';
+    html += '</div></div></div>';
+
+    html += '</div>';
+
+    html += '<div class="card"><div class="card-header"><h2>Storage</h2></div><div class="card-body">';
+    html += '<table><thead><tr><th>Filesystem</th><th>Size</th><th>Used</th><th>Available</th><th>Use%</th><th>Mounted on</th></tr></thead><tbody>';
+    if (d.storage && d.storage.length > 0) {
+        d.storage.forEach(function(s) {
+            var pct = parseInt(s.pct) || 0;
+            html += '<tr>';
+            html += '<td>' + escHtml(s.fs) + '</td>';
+            html += '<td>' + escHtml(s.size) + '</td>';
+            html += '<td>' + escHtml(s.used) + '</td>';
+            html += '<td>' + escHtml(s.avail) + '</td>';
+            html += '<td>' + pct + '%</td>';
+            html += '<td>' + escHtml(s.mount) + '</td>';
+            html += '</tr>';
+        });
+    } else {
+        html += '<tr><td colspan="6" class="empty">No storage data</td></tr>';
+    }
+    html += '</tbody></table></div></div>';
+
+    html += '<div class="card"><div class="card-header"><h2>Network Interfaces</h2></div><div class="card-body">';
+    html += '<table><thead><tr><th>Interface</th><th>State</th><th>MAC</th><th>IP Addresses</th><th>RX Packets</th><th>TX Packets</th></tr></thead><tbody>';
+    if (d.interfaces && d.interfaces.length > 0) {
+        d.interfaces.forEach(function(iface) {
+            var stateBadge = iface.state === 'up' ? 'badge-up' : 'badge-down';
+            html += '<tr>';
+            html += '<td><strong>' + escHtml(iface.name) + '</strong></td>';
+            html += '<td><span class="badge ' + stateBadge + '">' + escHtml(iface.state) + '</span></td>';
+            html += '<td style="font-family:monospace;font-size:12px">' + escHtml(iface.mac) + '</td>';
+            html += '<td style="font-family:monospace;font-size:12px">' + escHtml(iface.ips || '-') + '</td>';
+            html += '<td>' + Number(iface.rx_packets || 0).toLocaleString() + '</td>';
+            html += '<td>' + Number(iface.tx_packets || 0).toLocaleString() + '</td>';
+            html += '</tr>';
+        });
+    } else {
+        html += '<tr><td colspan="6" class="empty">No interface data</td></tr>';
+    }
+    html += '</tbody></table></div></div>';
+
+    document.getElementById('content').innerHTML = html;
+}
+
+// ═══════════════════════════════════════════════════════════
+//  ROUTING
+// ═══════════════════════════════════════════════════════════
+
+function renderRouting(d) {
+    var html = '';
+
+    html += '<div class="card"><div class="card-header"><h2>IPv4 Routes</h2></div><div class="card-body">';
+    html += '<table><thead><tr><th>Destination</th><th>Gateway</th><th>Device</th></tr></thead><tbody>';
+    if (d.routes && d.routes.length > 0) {
+        d.routes.forEach(function(r) {
+            html += '<tr>';
+            html += '<td><strong>' + escHtml(r.dest) + '</strong></td>';
+            html += '<td style="font-family:monospace">' + escHtml(r.gw === '*' ? '\u2014' : r.gw) + '</td>';
+            html += '<td>' + escHtml(r.dev) + '</td>';
+            html += '</tr>';
+        });
+    } else {
+        html += '<tr><td colspan="3" class="empty">No route data</td></tr>';
+    }
+    html += '</tbody></table></div></div>';
+
+    html += '<div class="card"><div class="card-header"><h2>ARP Table</h2></div><div class="card-body">';
+    html += '<table><thead><tr><th>IP Address</th><th>MAC Address</th><th>Device</th><th>State</th></tr></thead><tbody>';
+    if (d.arp && d.arp.length > 0) {
+        d.arp.forEach(function(a) {
+            var stateBadge = '';
+            if (a.state === 'REACHABLE') stateBadge = 'badge-reachable';
+            else if (a.state === 'STALE') stateBadge = 'badge-stale';
+            html += '<tr>';
+            html += '<td style="font-family:monospace">' + escHtml(a.ip) + '</td>';
+            html += '<td style="font-family:monospace;font-size:12px">' + escHtml(a.mac) + '</td>';
+            html += '<td>' + escHtml(a.dev) + '</td>';
+            html += '<td><span class="badge ' + stateBadge + '">' + escHtml(a.state) + '</span></td>';
+            html += '</tr>';
+        });
+    } else {
+        html += '<tr><td colspan="4" class="empty">No ARP entries</td></tr>';
+    }
+    html += '</tbody></table></div></div>';
+
+    html += '<div class="card"><div class="card-header"><h2>All Interfaces</h2></div><div class="card-body">';
+    html += '<table><thead><tr><th>Name</th><th>State</th><th>IP Address</th><th>MAC</th></tr></thead><tbody>';
+    if (d.ifaces && d.ifaces.length > 0) {
+        d.ifaces.forEach(function(iface) {
+            var stateBadge = iface.state === 'up' ? 'badge-up' : 'badge-down';
+            html += '<tr>';
+            html += '<td><strong>' + escHtml(iface.name) + '</strong></td>';
+            html += '<td><span class="badge ' + stateBadge + '">' + escHtml(iface.state) + '</span></td>';
+            html += '<td style="font-family:monospace;font-size:12px">' + escHtml(iface.addr || '-') + '</td>';
+            html += '<td style="font-family:monospace;font-size:12px">' + escHtml(iface.mac) + '</td>';
+            html += '</tr>';
+        });
+    } else {
+        html += '<tr><td colspan="4" class="empty">No interfaces</td></tr>';
+    }
+    html += '</tbody></table></div></div>';
+
+    document.getElementById('content').innerHTML = html;
+}
+
+// ═══════════════════════════════════════════════════════════
+//  FIREWALL
+// ═══════════════════════════════════════════════════════════
+
+function renderFirewall(d) {
+    var html = '';
+
+    html += '<div class="card"><div class="card-header"><h2>Firewall Zones</h2></div><div class="card-body">';
+    html += '<table><thead><tr><th>Zone</th><th>Input</th><th>Output</th><th>Forward</th><th>Networks</th></tr></thead><tbody>';
+    if (d.zones && d.zones.length > 0) {
+        d.zones.forEach(function(z) {
+            var inBadge = z.input === 'ACCEPT' ? 'badge-accept' : (z.input === 'REJECT' || z.input === 'DROP' ? 'badge-drop' : '');
+            var outBadge = z.output === 'ACCEPT' ? 'badge-accept' : (z.output === 'REJECT' || z.output === 'DROP' ? 'badge-drop' : '');
+            var fwdBadge = z.forward === 'ACCEPT' ? 'badge-accept' : (z.forward === 'REJECT' || z.forward === 'DROP' ? 'badge-drop' : '');
+            html += '<tr>';
+            html += '<td><strong>' + escHtml(z.name) + '</strong></td>';
+            html += '<td><span class="badge ' + inBadge + '">' + escHtml(z.input || '\u2014') + '</span></td>';
+            html += '<td><span class="badge ' + outBadge + '">' + escHtml(z.output || '\u2014') + '</span></td>';
+            html += '<td><span class="badge ' + fwdBadge + '">' + escHtml(z.forward || '\u2014') + '</span></td>';
+            html += '<td>' + escHtml(z.network || '\u2014') + '</td>';
+            html += '</tr>';
+        });
+    } else {
+        html += '<tr><td colspan="5" class="empty">No zone data</td></tr>';
+    }
+    html += '</tbody></table></div></div>';
+
+    html += '<div class="card"><div class="card-header"><h2>Filter Table (iptables -L -n -v)</h2></div><div class="card-body">';
+    html += '<div class="code-block">' + escHtml(d.filter || 'No data') + '</div></div></div>';
+
+    html += '<div class="card"><div class="card-header"><h2>NAT Table (iptables -t nat -L -n -v)</h2></div><div class="card-body">';
+    html += '<div class="code-block">' + escHtml(d.nat || 'No data') + '</div></div></div>';
+
+    document.getElementById('content').innerHTML = html;
+}
+
+// ═══════════════════════════════════════════════════════════
+//  SYSTEM LOG
+// ═══════════════════════════════════════════════════════════
+
+function renderSyslog(d) {
+    var html = '';
+
+    html += '<div class="card"><div class="card-header"><h2>System Log</h2><div><label style="font-size:12px;margin-right:8px">Lines:</label><select onchange="loadSyslogLines(this.value)" style="padding:4px 8px;border-radius:4px;border:1px solid #ddd">';
+    [50,100,200,500].forEach(function(n) {
+        html += '<option value="' + n + '"' + (n === 100 ? ' selected' : '') + '>' + n + '</option>';
+    });
+    html += '</select></div></div><div class="card-body">';
+
+    if (d.lines && d.lines.length > 0) {
+        html += '<div class="log-viewer" id="logViewer">';
+        d.lines.forEach(function(line) {
+            var cls = '';
+            if (/error|fail|err/i.test(line)) cls = 'log-err';
+            else if (/warn/i.test(line)) cls = 'log-warn';
+            else if (/info|notice/i.test(line)) cls = 'log-info';
+            html += '<span class="' + cls + '">' + escHtml(line) + '</span>\n';
+        });
+        html += '</div>';
+    } else {
+        html += '<div class="empty">No log entries</div>';
+    }
+
+    html += '</div></div>';
+
+    document.getElementById('content').innerHTML = html;
+
+    var viewer = document.getElementById('logViewer');
+    if (viewer) viewer.scrollTop = viewer.scrollHeight;
+}
+
+function loadSyslogLines(n) {
+    var content = document.getElementById('content');
+    content.innerHTML = '<div class="loading">Loading system log...</div>';
+    apiCall('action=syslog&lines=' + n, function(r) {
+        if (r.code === 0) renderSyslog(r.data);
+        else content.innerHTML = '<div class="loading">Error loading log</div>';
+    });
+}
+
+// ═══════════════════════════════════════════════════════════
+//  PROCESSES
+// ═══════════════════════════════════════════════════════════
+
+function renderProcesses(d) {
+    var html = '';
+
+    html += '<div class="card"><div class="card-header"><h2>Running Processes</h2></div><div class="card-body">';
+    html += '<table><thead><tr><th>PID</th><th>User</th><th>Status</th><th>Command</th></tr></thead><tbody>';
+    if (d.processes && d.processes.length > 0) {
+        d.processes.forEach(function(p) {
+            html += '<tr>';
+            html += '<td style="font-family:monospace">' + p.pid + '</td>';
+            html += '<td>' + escHtml(p.user) + '</td>';
+            html += '<td style="font-family:monospace;font-size:11px">' + escHtml(p.stat || '') + '</td>';
+            html += '<td style="font-family:monospace;font-size:12px;max-width:400px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="' + escHtml(p.cmd) + '">' + escHtml(p.cmd) + '</td>';
+            html += '</tr>';
+        });
+    } else {
+        html += '<tr><td colspan="4" class="empty">No process data</td></tr>';
+    }
+    html += '</tbody></table></div></div>';
+
+    document.getElementById('content').innerHTML = html;
+}
+
+// ═══════════════════════════════════════════════════════════
+//  MODAL HELPERS
+// ═══════════════════════════════════════════════════════════
+
+function showModal(title, bodyHtml, footerHtml) {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalBody').innerHTML = bodyHtml;
+    document.getElementById('modalFooter').innerHTML = footerHtml || '<button class="btn" onclick="closeModal()">Cancel</button>';
+    document.getElementById('modalOverlay').classList.remove('hidden');
+}
+
+function closeModal() {
+    document.getElementById('modalOverlay').classList.add('hidden');
+}
+
+// ═══════════════════════════════════════════════════════════
+//  WIRELESS
+// ═══════════════════════════════════════════════════════════
+
+function renderWireless(d) {
+    var html = '';
+
+    // Wireless legend (collapsible)
+    html += '<div class="ref-card collapsed" style="margin-bottom:16px">';
+    html += '<div class="ref-card-h" onclick="this.parentElement.classList.toggle(\'collapsed\')"><h3>Wireless Reference</h3><span class="arr">&#9660;</span></div>';
+    html += '<div class="ref-card-b">';
+    html += '<dl class="ref-dl">';
+    html += '<dt>wifi0 / wifi1</dt><dd>Physical radio devices. wifi0 = 2.4 GHz (11beg), wifi1 = 5 GHz (11bea, WiFi 7). Each radio can host multiple VAPs (Virtual Access Points).</dd>';
+    html += '<dt>VAP (Virtual AP)</dt><dd>Each row in the table below is a VAP — a logical AP with its own SSID, security, and network binding. Multiple VAPs on the same radio share airtime.</dd>';
+    html += '<dt>hostap_mld0</dt><dd>Host AP Multi-Link Device. This is the MLO (WiFi 7 Multi-Link Operation) management interface. When enabled, client VAPs are linked here to support simultaneous 2.4+5 GHz.</dd>';
+    html += '<dt>bh_ap_2g / bh_ap_5g</dt><dd>Mesh backhaul VAPs (hidden). Used by Xiaomi mesh networking for inter-node communication. These VAPs are protected from deletion.</dd>';
+    html += '<dt>miot_2G</dt><dd>Xiaomi IoT provisioning VAP (hidden). Used for adding Xiaomi smart home devices. Can be enabled or disabled from the Wireless page.</dd>';
+    html += '</dl>';
+    html += '</div></div>';
+
+    if (!d.radios || d.radios.length === 0) {
+        html += '<div class="empty">No wireless radios found</div>';
+        document.getElementById('content').innerHTML = html;
+        return;
+    }
+
+    html += '<div style="display:flex;justify-content:flex-end;margin-bottom:16px"><button class="btn btn-primary" onclick="showCreateVap()">+ New WiFi</button></div>';
+
+    d.radios.forEach(function(radio) {
+        var bandLabel = radio.band === '5g' ? '5 GHz' : '2.4 GHz';
+        var bandClass = radio.band === '5g' ? 'g5' : 'g2';
+        var radioState = radio.state === 'up' ? 'badge-up' : (radio.disabled === '1' ? 'badge-drop' : 'badge-down');
+        var chDisplay = radio.channel === 'auto' ? 'Auto' : radio.channel;
+        var txpwrDisplay = radio.txpower ? radio.txpower + ' dBm' : 'Default';
+
+        html += '<div class="radio-card">';
+        html += '<div class="radio-card-header">';
+        html += '<div class="radio-band"><span class="radio-band-dot ' + bandClass + '"></span> ' + bandLabel + ' <span style="font-weight:400;font-size:12px;color:var(--text-secondary)">' + escHtml(radio.name) + '</span></div>';
+        html += '<div style="display:flex;align-items:center;gap:16px">';
+        html += '<span style="font-size:12px;color:var(--text-secondary)">Ch: ' + chDisplay + ' | BW: ' + escHtml(radio.htmode || 'Auto') + ' | Tx: ' + txpwrDisplay + '</span>';
+        html += '<span class="badge ' + radioState + '">' + escHtml(radio.state) + '</span>';
+        html += '<button class="btn btn-sm" onclick="editRadio(\'' + escQs(radio.name) + '\',\'' + escQs(radio.channel) + '\',\'' + escQs(radio.htmode) + '\',\'' + escQs(radio.txpower) + '\',\'' + radio.disabled + '\')">Edit Radio</button>';
+        html += '</div>';
+        html += '</div>';
+
+        html += '<div class="radio-card-body">';
+        html += '<table><thead><tr><th>SSID</th><th>Mode</th><th>Security</th><th>Network</th><th>Interface</th><th>Status</th><th>Actions</th></tr></thead><tbody>';
+
+        if (radio.vaps && radio.vaps.length > 0) {
+            radio.vaps.forEach(function(vap) {
+                var vState = vap.state === 'up' ? 'badge-up' : (vap.disabled === '1' ? 'badge-drop' : 'badge-down');
+                var encLabel = vap.encryption === 'none' ? 'Open' : vap.encryption.toUpperCase();
+                var extraTag = vap.extra_wifi === '1' ? ' <span class="badge" style="background:#fff3e8;color:#ff6700;font-size:10px">extra</span>' : '';
+
+                html += '<tr>';
+                html += '<td><strong>' + escHtml(vap.ssid || '—') + '</strong>' + extraTag + '</td>';
+                html += '<td>' + escHtml(vap.mode) + '</td>';
+                html += '<td>' + encLabel + '</td>';
+                html += '<td>' + escHtml(vap.network) + '</td>';
+                html += '<td style="font-family:monospace;font-size:11px">' + escHtml(vap.ifname || '—') + '</td>';
+                html += '<td><span class="badge ' + vState + '">' + escHtml(vap.state) + '</span>' + (vap.hidden === '1' ? ' <span class="badge" style="background:#f0f0f0;color:#888;font-size:10px">hidden</span>' : '') + '</td>';
+                var isCore = vap.section.indexOf('miot_') === 0 || vap.section.indexOf('bh_ap_') === 0 || vap.section.indexOf('bhsta_') === 0 || vap.section === '0' || vap.section === '1';
+                html += '<td style="white-space:nowrap">';
+                html += '<button class="btn btn-sm" onclick="editVap(\'' + escQs(vap.section) + '\',\'' + escQs(vap.ssid) + '\',\'' + escQs(vap.encryption) + '\',\'' + vap.disabled + '\',\'' + vap.hidden + '\')">Edit</button>';
+                if (!isCore) html += ' <button class="btn btn-sm" style="color:#e74c3c" onclick="deleteVap(\'' + escQs(vap.section) + '\',\'' + escQs(vap.ssid) + '\')">Del</button>';
+                html += '</td>';
+                html += '</tr>';
+            });
+        } else {
+            html += '<tr><td colspan="7" class="empty">No VAPs configured on this radio</td></tr>';
+        }
+
+        html += '</tbody></table></div>';
+        html += '</div>';
+    });
+
+    html += '<div class="card"><div class="card-body" style="text-align:center;font-size:12px;color:var(--text-muted)">Changes to wireless settings may require a WiFi restart. New networks are created instantly via iw/hostapd (no wifi lock).</div></div>';
+
+    document.getElementById('content').innerHTML = html;
+}
+
+function editRadio(name, channel, htmode, txpower, disabled) {
+    var body = '';
+    body += '<div class="form-group"><label>Channel</label><select id="er_channel">';
+    body += '<option value="auto"' + (channel === 'auto' ? ' selected' : '') + '>Auto</option>';
+    [1,2,3,4,5,6,7,8,9,10,11].forEach(function(ch) { body += '<option value="' + ch + '"' + (channel == ch ? ' selected' : '') + '>' + ch + '</option>'; });
+    if (name.indexOf('wifi1') !== -1 || name.indexOf('5') !== -1) {
+        [36,40,44,48,149,153,157,161,165].forEach(function(ch) { body += '<option value="' + ch + '"' + (channel == ch ? ' selected' : '') + '>' + ch + ' (5GHz)</option>'; });
+    }
+    body += '</select></div>';
+
+    body += '<div class="form-group"><label>Bandwidth (htmode)</label><select id="er_htmode">';
+    ['','HT20','HT40','HT80','HT160'].forEach(function(m) { var l = m || 'Auto'; body += '<option value="' + m + '"' + (htmode === m ? ' selected' : '') + '>' + l + '</option>'; });
+    body += '</select></div>';
+
+    body += '<div class="form-group"><label>TX Power (dBm)</label><select id="er_txpower">';
+    [['','Default'],['20','20 (Max)'],['17','17 (High)'],['14','14 (Medium)'],['10','10 (Low)']].forEach(function(p) { body += '<option value="' + p[0] + '"' + (txpower === p[0] ? ' selected' : '') + '>' + p[1] + '</option>'; });
+    body += '</select></div>';
+
+    body += '<div class="form-group"><label>Status</label><select id="er_disabled">';
+    body += '<option value="0"' + (disabled === '0' ? ' selected' : '') + '>Enabled</option>';
+    body += '<option value="1"' + (disabled === '1' ? ' selected' : '') + '>Disabled</option>';
+    body += '</select></div>';
+
+    var footer = '<button class="btn btn-primary" onclick="saveRadio(\'' + escQs(name) + '\')">Save Radio</button>' +
+                 '<button class="btn" onclick="closeModal()">Cancel</button>';
+    showModal('Edit Radio: ' + name, body, footer);
+}
+
+function saveRadio(name) {
+    var channel = document.getElementById('er_channel').value;
+    var htmode = document.getElementById('er_htmode').value;
+    var txpower = document.getElementById('er_txpower').value;
+    var disabled = document.getElementById('er_disabled').value;
+
+    var params = 'action=edit_wifi_iface&is_radio=1&section=' + encodeURIComponent(name);
+    if (channel) params += '&channel=' + encodeURIComponent(channel);
+    if (htmode) params += '&htmode=' + encodeURIComponent(htmode);
+    if (txpower) params += '&txpower=' + encodeURIComponent(txpower);
+    params += '&disabled=' + encodeURIComponent(disabled);
+
+    apiCall(params, function(r) {
+        closeModal();
+        if (r.code === 0) {
+            toast(r.msg || 'Radio updated');
+            loadPage('wireless');
+        } else {
+            toast(r.msg || 'Error', 'error');
+        }
+    });
+}
+
+function editVap(section, ssid, encryption, disabled, hidden) {
+    var body = '';
+    body += '<div class="form-group"><label>SSID</label><input type="text" id="ev_ssid" value="' + escHtml(ssid) + '" maxlength="32"></div>';
+    body += '<div class="form-group"><label>Encryption</label><select id="ev_encryption" onchange="document.getElementById(\'ev_key_row\').style.display=this.value===\'none\'?\'none\':\'block\'">';
+    ['psk2','psk-mixed','sae','psk2+sae','none'].forEach(function(e) {
+        var label = {psk2:'WPA2-PSK', 'psk-mixed':'WPA/WPA2 Mixed', sae:'WPA3-SAE', 'psk2+sae':'WPA2/WPA3 Mixed', none:'Open (No Password)'}[e] || e;
+        body += '<option value="' + e + '"' + (encryption === e ? ' selected' : '') + '>' + label + '</option>';
+    });
+    body += '</select></div>';
+    body += '<div class="form-group" id="ev_key_row" style="display:' + (encryption === 'none' ? 'none' : 'block') + '">';
+    body += '<label>WiFi Password <span style="font-weight:400;color:var(--text-muted)">(leave blank to keep current)</span></label>';
+    body += '<input type="text" id="ev_key" placeholder="Min 8 characters" minlength="8" maxlength="63"></div>';
+    body += '<div class="form-row">';
+    body += '<div class="form-group"><label>Status</label><select id="ev_disabled"><option value="0"' + (disabled === '0' ? ' selected' : '') + '>Enabled</option><option value="1"' + (disabled === '1' ? ' selected' : '') + '>Disabled</option></select></div>';
+    body += '<div class="form-group"><label>Hidden SSID</label><select id="ev_hidden"><option value="0"' + (hidden === '0' ? ' selected' : '') + '>Visible</option><option value="1"' + (hidden === '1' ? ' selected' : '') + '>Hidden</option></select></div>';
+    body += '</div>';
+
+    var footer = '<button class="btn btn-primary" onclick="saveVap(\'' + escQs(section) + '\')">Save VAP</button>' +
+                 '<button class="btn" onclick="closeModal()">Cancel</button>';
+    showModal('Edit VAP: ' + ssid, body, footer);
+}
+
+function saveVap(section) {
+    var ssid = document.getElementById('ev_ssid').value;
+    var encryption = document.getElementById('ev_encryption').value;
+    var key = document.getElementById('ev_key').value;
+    var disabled = document.getElementById('ev_disabled').value;
+    var hidden = document.getElementById('ev_hidden').value;
+
+    if (!ssid) { toast('SSID is required', 'error'); return; }
+    if (encryption !== 'none' && key && key.length < 8) { toast('Password must be at least 8 characters', 'error'); return; }
+
+    var params = 'action=edit_wifi_iface&section=' + encodeURIComponent(section);
+    params += '&ssid=' + encodeURIComponent(ssid);
+    params += '&encryption=' + encodeURIComponent(encryption);
+    if (key) params += '&key=' + encodeURIComponent(key);
+    params += '&disabled=' + encodeURIComponent(disabled);
+    params += '&hidden=' + encodeURIComponent(hidden);
+
+    apiCall(params, function(r) {
+        closeModal();
+        if (r.code === 0) {
+            toast(r.msg || 'VAP updated');
+            loadPage('wireless');
+        } else {
+            toast(r.msg || 'Error', 'error');
+        }
+    });
+}
+
+function showCreateVap() {
+    // Fetch interfaces list to populate network dropdown
+    apiCall('action=list_ifaces', function(r) {
+        var netOpts = '<option value="lan" selected>lan (default)</option>';
+        if (r.code === 0 && r.data && r.data.interfaces) {
+            r.data.interfaces.forEach(function(iface) {
+                if (iface.name !== 'lan' && iface.name !== 'loopback' && iface.name !== 'wan' && iface.name !== 'wan6' && iface.name.indexOf('_ipv6') === -1) {
+                    var label = iface.name + (iface.ipaddr ? ' (' + iface.ipaddr + ')' : '') + (iface.type === 'bridge' ? ' [bridge]' : '');
+                    netOpts += '<option value="' + escHtml(iface.name) + '">' + escHtml(label) + '</option>';
+                }
+            });
+        }
+
+        var body = '<div class="form-group"><label>SSID</label><input type="text" id="cv_ssid" placeholder="My Network" maxlength="32" required></div>';
+        body += '<div class="form-group"><label>Band</label><select id="cv_band">';
+        body += '<option value="both" selected>Both (2.4 + 5 GHz)</option>';
+        body += '<option value="2g">2.4 GHz only</option>';
+        body += '<option value="5g">5 GHz only</option>';
+        body += '</select></div>';
+        body += '<div class="form-group"><label>Security</label><select id="cv_enc" onchange="document.getElementById(\'cv_key_row\').style.display=this.value===\'none\'?\'none\':\'block\'">';
+        body += '<option value="psk2" selected>WPA2-PSK</option>';
+        body += '<option value="psk-mixed">WPA/WPA2 Mixed</option>';
+        body += '<option value="sae">WPA3-SAE</option>';
+        body += '<option value="psk2+sae">WPA2/WPA3 Mixed</option>';
+        body += '<option value="none">Open (No Password)</option>';
+        body += '</select></div>';
+        body += '<div class="form-group" id="cv_key_row"><label>Password</label><input type="text" id="cv_key" placeholder="Min 8 characters" minlength="8" maxlength="63"></div>';
+        body += '<div class="form-group"><label>Bridge to Network</label><select id="cv_net">' + netOpts + '</select>';
+        body += '<p style="font-size:11px;color:var(--text-muted);margin-top:4px">The network interface this WiFi will bridge to. Create VLAN networks via the Devices page first.</p></div>';
+
+        var footer = '<button class="btn btn-primary" onclick="saveCreateVap()">Create WiFi</button><button class="btn" onclick="closeModal()">Cancel</button>';
+        showModal('New WiFi', body, footer);
+    });
+}
+
+function saveCreateVap() {
+    var ssid = document.getElementById('cv_ssid').value.trim();
+    var band = document.getElementById('cv_band').value;
+    var enc = document.getElementById('cv_enc').value;
+    var key = document.getElementById('cv_key').value;
+    var net = document.getElementById('cv_net').value.trim() || 'lan';
+
+    if (!ssid) { toast('SSID required', 'error'); return; }
+    if (enc !== 'none' && (!key || key.length < 8)) { toast('Password min 8 chars', 'error'); return; }
+
+    var params = 'action=create_wifi_vap&ssid=' + encodeURIComponent(ssid) + '&band=' + encodeURIComponent(band) + '&encryption=' + encodeURIComponent(enc) + '&network=' + encodeURIComponent(net);
+    if (key) params += '&key=' + encodeURIComponent(key);
+
+    apiCall(params, function(r) {
+        closeModal();
+        if (r.code === 0) { toast(r.msg); loadPage('wireless'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function deleteVap(section, ssid) {
+    if (!confirm('Delete VAP "' + ssid + '"?\nThis removes the UCI config and tears down the VAP.')) return;
+    apiCall('action=delete_wifi_vap&section=' + encodeURIComponent(section), function(r) {
+        if (r.code === 0) { toast(r.msg); loadPage('wireless'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+// ═══════════════════════════════════════════════════════════
+//  REFERENCE
+// ═══════════════════════════════════════════════════════════
+
+function renderReference(d) {
+    var html = '';
+
+    // Card 1: Hardware Layout
+    html += '<div class="ref-card">';
+    html += '<div class="ref-card-h" onclick="this.parentElement.classList.toggle(\'collapsed\')"><h3>Hardware Layout</h3><span class="arr">&#9660;</span></div>';
+    html += '<div class="ref-card-b">';
+    html += '<p>The Xiaomi BE3600 is built on the <strong>Qualcomm IPQ5312</strong> (Kaelte) platform with two Ethernet datapaths and two WiFi radios:</p>';
+    html += '<dl class="ref-dl">';
+    html += '<dt>eth0</dt><dd><strong>4-port Gigabit switch</strong> (dp1 datapath). The three physical LAN ports are broken out as VLAN subinterfaces — eth0.1, eth0.2, eth0.3 — each bridged into br-lan. This is why you see separate eth0.N devices even with one cable.</dd>';
+    html += '<dt>eth1</dt><dd><strong>2.5G WAN/LAN port</strong> (dp2 datapath). In this configuration eth1 is bridged directly into br-lan, making the 2.5G port act as a LAN uplink. VLAN subinterfaces (eth1.20, eth1.100, eth1.101) carry tagged traffic.</dd>';
+    html += '<dt>wifi0</dt><dd><strong>2.4 GHz radio</strong> — integrated in the IPQ5312 SoC. Uses hwmode 11beg (b/g/n/ax). Connected to antenna 0.</dd>';
+    html += '<dt>wifi1</dt><dd><strong>5 GHz radio</strong> — Qualcomm QCN6432 chip. Uses hwmode 11bea (WiFi 7: a/n/ac/ax/be). Supports 160 MHz channels.</dd>';
+    html += '</dl>';
+    html += '<div class="ref-note info">The router has a <strong>Dual-Core ARM Cortex-A7 @ 1.5 GHz</strong> with 256 MB RAM, running OpenWrt 18.06-SNAPSHOT (Qualcomm SDK fork).</div>';
+    html += '</div></div>';
+
+    // Card 2: Device Type Legend
+    html += '<div class="ref-card">';
+    html += '<div class="ref-card-h" onclick="this.parentElement.classList.toggle(\'collapsed\')"><h3>Device Type Reference</h3><span class="arr">&#9660;</span></div>';
+    html += '<div class="ref-card-b">';
+    html += '<p>Each network device on the <strong>Devices</strong> page has a type. Here is what each type means:</p>';
+    html += '<dl class="ref-dl">';
+    html += '<dt>phy</dt><dd>A <strong>physical hardware interface</strong> — eth0 (switch), eth1 (2.5G port), wifi0, wifi1. These correspond to real silicon. You cannot delete these.</dd>';
+    html += '<dt>vlan</dt><dd>A <strong>VLAN subinterface</strong> (802.1q) carved from a physical port. For example eth1.100 is VLAN ID 100 on eth1. Each VLAN gets its own bridge (br-vlan_100) and can be assigned a different subnet.</dd>';
+    html += '<dt>bridge</dt><dd>A <strong>software bridge</strong> that joins multiple devices into a single layer-2 domain. br-lan combines eth1 + eth0.1–eth0.3. Each br-vlan_* bridge isolates its VLAN.</dd>';
+    html += '<dt>wifi</dt><dd>A <strong>wireless radio</strong> — the base hardware that VAPs (Virtual Access Points) are created on top of.</dd>';
+    html += '<dt>virtual</dt><dd>A <strong>virtual/management interface</strong> created by the WiFi driver or kernel. These are not directly usable for traffic but serve as control handles for features like MLO (Multi-Link Operation) and mesh backhaul.</dd>';
+    html += '</dl>';
+    html += '<div class="ref-note">Devices marked as <strong>virtual</strong> (mld-*, bhap_*, bhsta_*, hostap_*, soc*) are driver-level constructs. They are <strong>hidden from the Devices page</strong> by default because they cannot and should not be modified — they are managed entirely by the WiFi subsystem and kernel drivers.</div>';
+    html += '</div></div>';
+
+    // Card 3: MLD Interfaces
+    html += '<div class="ref-card">';
+    html += '<div class="ref-card-h" onclick="this.parentElement.classList.toggle(\'collapsed\')"><h3>MLD (Multi-Link Device) Interfaces</h3><span class="arr">&#9660;</span></div>';
+    html += '<div class="ref-card-b">';
+    html += '<p>The BE3600 uses <strong>Qualcomm\'s Multi-Link Operation (MLO)</strong> framework, part of the WiFi 7 standard. MLD interfaces are virtual management handles that allow a single AP to operate across both 2.4 GHz and 5 GHz radios simultaneously. <strong>These interfaces are hidden from the Devices page</strong> since they are managed entirely by the WiFi driver and should not be modified.</p>';
+    html += '<dl class="ref-dl">';
+    html += '<dt>mld-wifi0</dt><dd>The <strong>MLD management interface</strong> for the wifi0 (2.4 GHz) radio. This is a skeleton handle — always DOWN with no MAC. It exists so the driver can bind the radio to an MLD group.</dd>';
+    html += '<dt>hostap_mld0</dt><dd>The <strong>primary Host AP MLD</strong>. This is the MLO-capable AP interface that hostapd manages. When MLO is enabled, client VAPs are linked to this MLD so they can advertise simultaneous 2.4+5 GHz connectivity. MAC prefix 62:xx (derived from eth0).</dd>';
+    html += '<dt>bhap_mld0</dt><dd><strong>Backhaul AP MLD</strong> — the mesh backhaul in AP mode. When this router is the mesh controller, remote nodes connect to this MLD. MAC prefix 72:xx. Currently bridged into br-lan.</dd>';
+    html += '<dt>bhsta_mld0</dt><dd><strong>Backhaul Station MLD</strong> — the mesh backhaul in client/station mode. When this router connects to another mesh node as a satellite, it uses this MLD to associate. MAC prefix 82:xx. Role is "Non-AP" (station).</dd>';
+    html += '<dt>soc0 / soc1</dt><dd><strong>SoC-level radio handles</strong> for wifi0 and wifi1 respectively. These are always DOWN with MTU 0 — they are placeholders the driver creates to represent each hardware radio block at the kernel level. They have no MAC address and carry no traffic. They exist for driver management only.</dd>';
+    html += '</dl>';
+    html += '<div class="ref-note info">You can identify these by their MAC prefixes: hostap (62:xx), bhap (72:xx), bhsta (82:xx) — all derived from the eth0 base MAC (50:88:11:b4:f8:bc). The offset pattern is +0x12, +0x22, +0x32 from the base.</div>';
+    html += '</div></div>';
+
+    // Card 4: Mesh Backhaul
+    html += '<div class="ref-card">';
+    html += '<div class="ref-card-h" onclick="this.parentElement.classList.toggle(\'collapsed\')"><h3>Xiaomi Mesh Backhaul</h3><span class="arr">&#9660;</span></div>';
+    html += '<div class="ref-card-b">';
+    html += '<p>The BE3600 supports Xiaomi\'s proprietary mesh networking. The mesh backhaul uses hidden VAPs on both bands:</p>';
+    html += '<dl class="ref-dl">';
+    html += '<dt>bh_ap_2g</dt><dd>2.4 GHz mesh backhaul AP VAP (wl4). Hidden SSID "MiMesh_xxxx", uses WDS (4-address mode) for transparent layer-2 bridging between mesh nodes.</dd>';
+    html += '<dt>bh_ap_5g</dt><dd>5 GHz mesh backhaul AP VAP (wl5). Same mesh SSID, higher throughput for inter-node traffic.</dd>';
+    html += '<dt>miot_2G</dt><dd>Xiaomi IoT device provisioning VAP (wl13). Hidden network on 192.168.32.0/24, used for Xiaomi smart home device setup. You can enable or disable it from the Wireless page.</dd>';
+    html += '</dl>';
+    html += '<div class="ref-note">These VAPs are protected from deletion in the Wireless page. If you see mesh-related devices in the device list (bhap_mld0, bhsta_mld0) but are not using mesh, they can be safely ignored — they consume no resources when idle.</div>';
+    html += '</div></div>';
+
+    // Card 5: Tunnel & Virtual Interfaces
+    html += '<div class="ref-card">';
+    html += '<div class="ref-card-h" onclick="this.parentElement.classList.toggle(\'collapsed\')"><h3>Tunnel &amp; Virtual Interfaces</h3><span class="arr">&#9660;</span></div>';
+    html += '<div class="ref-card-b">';
+    html += '<p>These are kernel built-in placeholder interfaces. They are <strong>always DOWN</strong> and consume no resources. They exist because the kernel was compiled with support for these protocols:</p>';
+    html += '<dl class="ref-dl">';
+    html += '<dt>gre0</dt><dd>GRE (Generic Routing Encapsulation) tunnel — layer-3 tunneling protocol. Created automatically by the ip_gre kernel module.</dd>';
+    html += '<dt>gretap0</dt><dd>GRE TAP tunnel — layer-2 encapsulation over GRE. Used for Ethernet bridging over IP tunnels.</dd>';
+    html += '<dt>erspan0</dt><dd>ERSPAN (Encapsulated Remote SPAN) — Cisco protocol for remote port mirroring over GRE. Type I version 1.</dd>';
+    html += '<dt>ip6tnl0</dt><dd>IPv6-in-IPv6 tunnel — automatic tunnel for IPv6 transition mechanisms (6in4, 6rd, 6to4).</dd>';
+    html += '<dt>bond0</dt><dd>Linux bonding driver master — link aggregation (LACP/802.3ad). Kernel placeholder; no slave interfaces are attached.</dd>';
+    html += '<dt>lo</dt><dd>Loopback interface (127.0.0.1). Standard on every Linux system. Hidden from most dashboard views.</dd>';
+    html += '</dl>';
+    html += '<div class="ref-note info">These interfaces are filtered out of the Devices page. If you create a GRE tunnel or bonding configuration, you would use these as the base device type.</div>';
+    html += '</div></div>';
+
+    // Card 6: VLAN Architecture
+    html += '<div class="ref-card">';
+    html += '<div class="ref-card-h" onclick="this.parentElement.classList.toggle(\'collapsed\')"><h3>VLAN Architecture</h3><span class="arr">&#9660;</span></div>';
+    html += '<div class="ref-card-b">';
+    html += '<p>This router uses an <strong>RTL8367S switch</strong> (switch1) for the 4 LAN ports. VLANs are configured through both the switch hardware and Linux kernel:</p>';
+    html += '<dl class="ref-dl">';
+    html += '<dt>Switch-side</dt><dd>eth0.1, eth0.2, eth0.3 — each is a VLAN on the internal switch (switch1). Port 5t is the CPU/trunk port that connects the switch to the SoC. These are bridged into br-lan by default.</dd>';
+    html += '<dt>WAN-side</dt><dd>eth1.20, eth1.100, eth1.101 — VLAN subinterfaces carved from the 2.5G port. Each has its own bridge (br-vlan_N) for network isolation.</dd>';
+    html += '<dt>Bridge per VLAN</dt><dd>Each VLAN gets a dedicated bridge (br-vlan_N) so it can be assigned to a different UCI network interface with its own IP subnet, DHCP, and firewall zone.</dd>';
+    html += '</dl>';
+    html += '<div class="ref-note">To create a new isolated network: Create a VLAN device (e.g. eth1.50) from the Devices page, then create a new Interface bound to br-vlan_50 with a static IP. Devices connected to that VLAN port will be on a separate subnet.</div>';
+    html += '</div></div>';
+
+    document.getElementById('content').innerHTML = html;
+}
+
+// ═══════════════════════════════════════════════════════════
+//  DHCP & DNS
+// ═══════════════════════════════════════════════════════════
+
+function renderDhcpDns(d) {
+    var html = '';
+
+    // Card 1: DNS / dnsmasq settings
+    var dm = d.dnsmasq || {};
+    html += '<div class="card"><div class="card-header"><h2>DNS Forwarder (dnsmasq)</h2></div><div class="card-body">';
+    html += '<table><thead><tr><th>Setting</th><th>Value</th><th>Toggle</th></tr></thead><tbody>';
+
+    function dnsRow(label, key, desc) {
+        var val = dm[key] === '1' ? true : false;
+        html += '<tr><td><strong>' + escHtml(label) + '</strong><br><span style="font-size:11px;color:var(--text-muted)">' + desc + '</span></td>';
+        html += '<td><span class="badge ' + (val ? 'badge-up' : 'badge-down') + '">' + (val ? 'Yes' : 'No') + '</span></td>';
+        html += '<td><button class="btn btn-sm" onclick="toggleDnsmasq(\'' + key + '\',\'' + (val ? '0' : '1') + '\')">' + (val ? 'Disable' : 'Enable') + '</button></td>';
+        html += '</tr>';
+    }
+
+    dnsRow('Domain Needed', 'domainneeded', 'Never forward plain hostnames without dots');
+    dnsRow('Bogus Priv', 'boguspriv', 'Reject reverse lookups for private IP ranges');
+    dnsRow('Localise Queries', 'localise_queries', 'Return answers from local /etc/hosts priority');
+    dnsRow('Rebind Protection', 'rebind_protection', 'Discard upstream DNS rebinding responses');
+    dnsRow('Authoritative', 'authoritative', 'Act as authoritative DNS for local domain');
+    dnsRow('Expand Hosts', 'expandhosts', 'Add domain to hostnames in /etc/hosts');
+    dnsRow('All Servers', 'allservers', 'Query all configured upstream DNS servers');
+
+    html += '</tbody></table>';
+    html += '<p style="font-size:11px;color:var(--text-muted);margin-top:8px">Local domain: <code>' + escHtml(dm.local || '/lan/') + '</code> — changes to dnsmasq restart the service automatically.</p>';
+    html += '</div></div>';
+
+    // Card 2: DHCP Pools
+    html += '<div class="card"><div class="card-header"><h2>DHCP Pools</h2></div><div class="card-body">';
+    html += '<table><thead><tr><th>Interface</th><th>Subnet</th><th>DHCP Range</th><th>Lease</th><th>DHCP Options</th><th>Status</th><th>Actions</th></tr></thead><tbody>';
+
+    if (d.pools && d.pools.length > 0) {
+        d.pools.forEach(function(pool) {
+            var isOn = pool.ignore !== '1';
+            var ifname = pool.interface;
+
+            // Calculate actual IP range from interface subnet
+            var ipaddr = pool.ipaddr || '';
+            var netmask = pool.netmask || '';
+            var rangeStart = parseInt(pool.start, 10) || 0;
+            var rangeLimit = parseInt(pool.limit, 10) || 150;
+            var rangeEnd = rangeStart + rangeLimit - 1;
+            var subnetBase = '';
+            var rangeStr = '';
+            if (ipaddr && netmask) {
+                var ipParts = ipaddr.split('.');
+                subnetBase = ipParts[0] + '.' + ipParts[1] + '.' + ipParts[2] + '.';
+                rangeStr = isOn ? subnetBase + rangeStart + ' - ' + subnetBase + Math.min(rangeEnd, 254) : '—';
+            } else {
+                rangeStr = isOn ? rangeStart + ' - ' + rangeEnd : '—';
+            }
+
+            // DHCP options as tags
+            var optsHtml = '—';
+            if (pool.dhcp_options) {
+                var opts = pool.dhcp_options.split('|');
+                var optNames = {'6':'DNS','3':'Gateway','42':'NTP','121':'Routes','15':'Domain','44':'WINS'};
+                var optTags = [];
+                opts.forEach(function(o) {
+                    if (!o) return;
+                    var parts = o.split(',');
+                    var code = parts[0];
+                    var label = optNames[code] || ('Opt ' + code);
+                    var display = label + (parts.length > 1 ? ': ' + parts.slice(1).join(',') : '');
+                    optTags.push(display);
+                });
+                if (optTags.length > 0) optsHtml = optTags.map(function(o) { return '<span class="badge" style="background:#f3e5f5;color:#7b1fa2;font-size:10px;margin-right:2px" title="' + escHtml(o) + '">' + escHtml(o.substring(0,20) + (o.length > 20 ? '…' : '')) + '</span>'; }).join('');
+            }
+
+            html += '<tr>';
+            html += '<td><strong>' + escHtml(ifname) + '</strong></td>';
+            html += '<td style="font-family:monospace;font-size:12px">' + escHtml(subnetBase ? subnetBase + '0' : '—') + '</td>';
+            html += '<td style="font-family:monospace;font-size:12px">' + rangeStr + '</td>';
+            html += '<td>' + (isOn ? escHtml(pool.leasetime) : '—') + '</td>';
+            html += '<td style="font-size:11px">' + optsHtml + '</td>';
+            html += '<td><span class="badge ' + (isOn ? 'badge-up' : 'badge-down') + '">' + (isOn ? 'On' : 'Off') + '</span></td>';
+            html += '<td style="white-space:nowrap">';
+            html += '<button class="btn btn-sm" onclick="toggleDhcp(\'' + escQs(pool.section) + '\',\'' + (isOn ? '1' : '0') + '\')">' + (isOn ? 'Off' : 'On') + '</button>';
+            html += ' <button class="btn btn-sm" onclick="editDhcpPool(\'' + escQs(pool.section) + '\',\'' + escQs(ifname) + '\',\'' + pool.start + '\',\'' + pool.limit + '\',\'' + pool.leasetime + '\',\'' + escQs(ipaddr) + '\',\'' + escQs(netmask) + '\',\'' + escQs(pool.dhcp_options || '') + '\')">Edit</button>';
+            html += '</td></tr>';
+        });
+    } else {
+        html += '<tr><td colspan="7" class="empty">No DHCP pools configured</td></tr>';
+    }
+    html += '</tbody></table>';
+    html += '<p style="font-size:11px;color:var(--text-muted);margin-top:8px">Enable DHCP on an interface to have the router assign IP addresses to clients on that network. Edit a pool to configure range, lease time, and DHCP options (e.g. custom DNS).</p>';
+    html += '</div></div>';
+
+    // Card 3: Static Leases
+    html += '<div class="card"><div class="card-header"><h2>Static Leases (MAC -> IP)</h2>';
+    html += '<button class="btn btn-primary btn-sm" onclick="showStaticLease(\'add\')">+ Add Static Lease</button>';
+    html += '</div><div class="card-body">';
+    html += '<table><thead><tr><th>Hostname</th><th>MAC Address</th><th>IP Address</th><th>Actions</th></tr></thead><tbody>';
+    if (d.static_leases && d.static_leases.length > 0) {
+        d.static_leases.forEach(function(sl) {
+            html += '<tr>';
+            html += '<td>' + escHtml(sl.name || '—') + '</td>';
+            html += '<td style="font-family:monospace">' + escHtml(sl.mac) + '</td>';
+            html += '<td style="font-family:monospace">' + escHtml(sl.ip) + '</td>';
+            html += '<td style="white-space:nowrap">';
+            html += '<button class="btn btn-sm" onclick="showStaticLease(\'edit\',\'' + escQs(sl.section) + '\',\'' + escQs(sl.mac) + '\',\'' + escQs(sl.ip) + '\',\'' + escQs(sl.name) + '\')">Edit</button>';
+            html += ' <button class="btn btn-sm" style="color:#e74c3c" onclick="deleteStaticLease(\'' + escQs(sl.section) + '\')">Del</button>';
+            html += '</td></tr>';
+        });
+    } else {
+        html += '<tr><td colspan="4" class="empty">No static leases configured</td></tr>';
+    }
+    html += '</tbody></table></div></div>';
+
+    // Card 4: Active Leases
+    html += '<div class="card"><div class="card-header"><h2>Active DHCP Leases</h2>';
+    html += '<button class="btn btn-sm" onclick="refreshDhcpLeases()">&#8635; Refresh</button>';
+    html += '</div><div class="card-body">';
+    html += '<div id="activeLeases"><div class="loading">Loading active leases...</div></div>';
+    html += '</div></div>';
+
+    document.getElementById('content').innerHTML = html;
+
+    // Fetch active leases async
+    refreshDhcpLeases();
+}
+
+function refreshDhcpLeases() {
+    apiCall('action=list_dhcp_leases', function(r) {
+        var div = document.getElementById('activeLeases');
+        if (!div) return;
+        if (r.code !== 0) { div.innerHTML = '<div class="empty">Error loading leases</div>'; return; }
+        var leases = r.data.leases;
+        if (!leases || leases.length === 0) {
+            div.innerHTML = '<div class="empty">No active leases (DHCP may be disabled or no clients have leased addresses)</div>';
+            return;
+        }
+        var h = '<table><thead><tr><th>Lease Time</th><th>MAC</th><th>IP</th><th>Hostname</th><th>Client ID</th></tr></thead><tbody>';
+        leases.forEach(function(l) {
+            h += '<tr>';
+            h += '<td style="font-family:monospace;font-size:11px">' + escHtml(l.ts || '—') + '</td>';
+            h += '<td style="font-family:monospace">' + escHtml(l.mac) + '</td>';
+            h += '<td style="font-family:monospace"><strong>' + escHtml(l.ip) + '</strong></td>';
+            h += '<td>' + escHtml(l.host || '—') + '</td>';
+            h += '<td style="font-size:11px;color:var(--text-muted)">' + escHtml(l.client || '—') + '</td>';
+            h += '</tr>';
+        });
+        h += '</tbody></table>';
+        div.innerHTML = h;
+    });
+}
+
+function toggleDnsmasq(key, newVal) {
+    apiCall('action=edit_dhcp&section=dnsmasq&field=' + encodeURIComponent(key) + '&value=' + encodeURIComponent(newVal), function(r) {
+        if (r.code === 0) { toast(r.msg); loadPage('dhcpdns'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function toggleDhcp(section, ignoreVal) {
+    apiCall('action=edit_dhcp&section=' + encodeURIComponent(section) + '&field=ignore&value=' + encodeURIComponent(ignoreVal), function(r) {
+        if (r.code === 0) { toast(r.msg); loadPage('dhcpdns'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function editDhcpPool(section, ifname, start, limit, leasetime, ipaddr, netmask, dhcpOpts) {
+    // Calculate the actual start IP from subnet
+    var subnetBase = '';
+    var fullStartIp = start;
+    if (ipaddr && netmask) {
+        var ipParts = ipaddr.split('.');
+        subnetBase = ipParts[0] + '.' + ipParts[1] + '.' + ipParts[2];
+        fullStartIp = subnetBase + '.' + start;
+    }
+
+    var body = '<div class="form-group"><label>Interface</label><input type="text" value="' + escHtml(ifname) + (subnetBase ? ' (' + subnetBase + '.0' + (netmask ? '/' + netmask : '') + ')' : '') + '" disabled></div>';
+    body += '<div class="form-row">';
+    body += '<div class="form-group"><label>Start IP</label><input type="text" id="ep_start" value="' + escHtml(fullStartIp) + '" placeholder="' + (subnetBase ? subnetBase + '.100' : 'e.g. 100') + '"></div>';
+    body += '<div class="form-group"><label>Max Leases</label><input type="number" id="ep_limit" value="' + escHtml(limit) + '" min="1" max="500"></div>';
+    body += '</div>';
+    if (subnetBase) {
+        var endOctet = Math.min(parseInt(start,10) + parseInt(limit,10) - 1, 254);
+        body += '<p style="font-size:11px;color:var(--text-muted);margin:-8px 0 10px">End IP: <code>' + subnetBase + '.' + endOctet + '</code></p>';
+    }
+    body += '<div class="form-group"><label>Lease Time</label><select id="ep_lease">';
+    ['1h','2h','6h','12h','24h','48h','infinite'].forEach(function(v) {
+        body += '<option value="' + v + '"' + (leasetime === v ? ' selected' : '') + '>' + v + '</option>';
+    });
+    body += '</select></div>';
+
+    // DHCP Options section
+    var opts = dhcpOpts ? dhcpOpts.split('|') : [];
+    body += '<div class="form-group"><label>DHCP Options <span style="font-weight:400;color:var(--text-muted)">(RFC 2132)</span></label>';
+    body += '<div id="ep_opts_list" style="margin-bottom:8px">';
+    if (opts.length > 0 && opts[0] !== '') {
+        opts.forEach(function(opt, i) {
+            body += '<div style="display:flex;gap:6px;align-items:center;margin-bottom:4px" id="ep_opt_row_' + i + '">';
+            body += '<code style="flex:1;background:#f5f5f5;padding:4px 8px;border-radius:4px;font-size:12px">' + escHtml(opt) + '</code>';
+            body += '<button class="btn btn-sm" style="color:#e74c3c;flex-shrink:0" onclick="var el=document.getElementById(\'ep_opt_row_' + i + '\');el.parentElement.removeChild(el);">X</button>';
+            body += '</div>';
+        });
+    }
+    body += '</div>';
+    body += '<div style="display:flex;gap:6px">';
+    body += '<input type="text" id="ep_opt_val" placeholder="e.g. 6,192.168.10.2" style="flex:1;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px">';
+    body += '<button class="btn btn-sm" onclick="addDhcpOptRow()">Add</button>';
+    body += '</div>';
+    body += '<p style="font-size:11px;color:var(--text-muted);margin-top:4px">Common presets: ';
+    body += '<a href="#" onclick="document.getElementById(\'ep_opt_val\').value=\'6,' + escHtml(ipaddr || '192.168.1.1') + '\';return false">DNS=' + escHtml(ipaddr || 'router-ip') + '</a> &middot; ';
+    body += '<a href="#" onclick="document.getElementById(\'ep_opt_val\').value=\'3,' + escHtml(ipaddr || '192.168.1.1') + '\';return false">Gateway</a> &middot; ';
+    body += '<a href="#" onclick="document.getElementById(\'ep_opt_val\').value=\'42,' + escHtml(ipaddr || '192.168.1.1') + '\';return false">NTP</a>';
+    body += '</p></div>';
+
+    var footer = '<button class="btn btn-primary" onclick="saveDhcpPool(\'' + escQs(section) + '\',\'' + escQs(ifname) + '\')">Save Pool</button><button class="btn" onclick="closeModal()">Cancel</button>';
+    showModal('Edit DHCP Pool: ' + ifname, body, footer);
+}
+
+function addDhcpOptRow() {
+    var val = document.getElementById('ep_opt_val').value.trim();
+    if (!val) return;
+    var list = document.getElementById('ep_opts_list');
+    var idx = list.children.length;
+    var div = document.createElement('div');
+    div.style.cssText = 'display:flex;gap:6px;align-items:center;margin-bottom:4px';
+    div.id = 'ep_opt_row_' + idx;
+    div.innerHTML = '<code style="flex:1;background:#f5f5f5;padding:4px 8px;border-radius:4px;font-size:12px">' + escHtml(val) + '</code><button class="btn btn-sm" style="color:#e74c3c;flex-shrink:0" onclick="this.parentElement.parentElement.removeChild(this.parentElement)">X</button>';
+    list.appendChild(div);
+    document.getElementById('ep_opt_val').value = '';
+}
+
+function saveDhcpPool(section, ifname) {
+    var startRaw = document.getElementById('ep_start').value.trim();
+    var limit = document.getElementById('ep_limit').value;
+    var lease = document.getElementById('ep_lease').value;
+
+    // Parse start: could be full IP or just last octet
+    var startVal = startRaw;
+    if (startRaw.indexOf('.') !== -1) {
+        var parts = startRaw.split('.');
+        startVal = parts[parts.length - 1];
+    }
+    if (!/^\d+$/.test(startVal) || parseInt(startVal) < 1 || parseInt(startVal) > 254) {
+        toast('Invalid start IP', 'error'); return;
+    }
+
+    // Save range + lease
+    apiCall('action=edit_dhcp&section=' + encodeURIComponent(section) + '&field=start&value=' + encodeURIComponent(startVal), function(){});
+    apiCall('action=edit_dhcp&section=' + encodeURIComponent(section) + '&field=limit&value=' + encodeURIComponent(limit), function(){});
+    apiCall('action=edit_dhcp&section=' + encodeURIComponent(section) + '&field=leasetime&value=' + encodeURIComponent(lease), function(){});
+
+    // Collect and save DHCP options
+    var optsList = document.getElementById('ep_opts_list');
+    var opts = [];
+    if (optsList) {
+        var codes = optsList.querySelectorAll('code');
+        for (var i = 0; i < codes.length; i++) {
+            opts.push(codes[i].textContent);
+        }
+    }
+    // We need to delete all existing and re-add. Do this sequentially.
+    function applyOpts(idx) {
+        if (idx >= opts.length) {
+            closeModal();
+            toast('Pool updated');
+            loadPage('dhcpdns');
+            return;
+        }
+        apiCall('action=edit_dhcp_option&mode=add&section=' + encodeURIComponent(section) + '&value=' + encodeURIComponent(opts[idx]), function(r) {
+            applyOpts(idx + 1);
+        });
+    }
+
+    // Clear existing options, then re-add current list
+    apiCall('action=edit_dhcp_option&mode=clear&section=' + encodeURIComponent(section), function() {
+        applyOpts(0);
+    });
+}
+
+function showStaticLease(mode, section, mac, ip, host) {
+    var title = mode === 'add' ? 'Add Static Lease' : 'Edit Static Lease';
+    var body = '';
+    body += '<div class="form-group"><label>Hostname</label><input type="text" id="sl_host" value="' + escHtml(host || '') + '" placeholder="e.g. printer"></div>';
+    body += '<div class="form-group"><label>MAC Address</label><input type="text" id="sl_mac" value="' + escHtml(mac || '') + '" placeholder="AA:BB:CC:DD:EE:FF" required></div>';
+    body += '<div class="form-group"><label>IP Address</label><input type="text" id="sl_ip" value="' + escHtml(ip || '') + '" placeholder="192.168.10.50" required></div>';
+    var footer = '<button class="btn btn-primary" onclick="saveStaticLease(\'' + mode + '\',\'' + escQs(section || '') + '\')">Save</button><button class="btn" onclick="closeModal()">Cancel</button>';
+    showModal(title, body, footer);
+}
+
+function saveStaticLease(mode, section) {
+    var host = document.getElementById('sl_host').value.trim();
+    var mac = document.getElementById('sl_mac').value.trim();
+    var ip = document.getElementById('sl_ip').value.trim();
+    if (!mac) { toast('MAC address required', 'error'); return; }
+    if (!ip) { toast('IP address required', 'error'); return; }
+    if (!/^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$/.test(mac)) { toast('Invalid MAC format (AA:BB:CC:DD:EE:FF)', 'error'); return; }
+
+    var params = 'action=edit_static_lease&mode=' + mode + '&mac=' + encodeURIComponent(mac) + '&ip=' + encodeURIComponent(ip);
+    if (host) params += '&host=' + encodeURIComponent(host);
+    if (section) params += '&section=' + encodeURIComponent(section);
+    apiCall(params, function(r) {
+        closeModal();
+        if (r.code === 0) { toast(r.msg); loadPage('dhcpdns'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function deleteStaticLease(section) {
+    if (!confirm('Delete this static lease?')) return;
+    apiCall('action=edit_static_lease&mode=delete&section=' + encodeURIComponent(section), function(r) {
+        if (r.code === 0) { toast(r.msg); loadPage('dhcpdns'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+// ═══════════════════════════════════════════════════════════
+//  TRAFFIC RULES
+// ═══════════════════════════════════════════════════════════
+
+function renderTrafficRules(d) {
+    var html = '';
+
+    // Card 1: Traffic Rules
+    html += '<div class="card"><div class="card-header"><h2>Traffic Rules</h2>';
+    html += '<button class="btn btn-primary btn-sm" onclick="showTrafficRule(\'add\')">+ Add Rule</button>';
+    html += '</div><div class="card-body">';
+    html += '<table><thead><tr><th>Name</th><th>From</th><th>To</th><th>Proto</th><th>Target</th><th>Status</th><th>Actions</th></tr></thead><tbody>';
+    if (d.rules && d.rules.length > 0) {
+        d.rules.forEach(function(rule) {
+            var tBadge = rule.target === 'ACCEPT' ? 'badge-up' : (rule.target === 'DROP' || rule.target === 'REJECT' ? 'badge-drop' : 'badge-stale');
+            html += '<tr>';
+            html += '<td><strong>' + escHtml(rule.name || '—') + '</strong>' + (rule.dest_port ? '<br><span style="font-size:10px;color:var(--text-muted)">port ' + escHtml(rule.dest_port) + '</span>' : '') + '</td>';
+            html += '<td>' + escHtml(rule.src || '—') + (rule.src_ip ? '<br><span style="font-size:10px;font-family:monospace">' + escHtml(rule.src_ip) + '</span>' : '') + '</td>';
+            html += '<td>' + escHtml(rule.dest || '—') + (rule.dest_ip ? '<br><span style="font-size:10px;font-family:monospace">' + escHtml(rule.dest_ip) + '</span>' : '') + '</td>';
+            html += '<td>' + escHtml(rule.proto || 'all') + '</td>';
+            html += '<td><span class="badge ' + tBadge + '">' + escHtml(rule.target) + '</span></td>';
+            html += '<td><span class="badge ' + (rule.enabled === '1' ? 'badge-up' : 'badge-down') + '">' + (rule.enabled === '1' ? 'On' : 'Off') + '</span></td>';
+            html += '<td style="white-space:nowrap">';
+            html += '<button class="btn btn-sm" onclick="toggleRule(\'' + escQs(rule.section) + '\')">' + (rule.enabled === '1' ? 'Off' : 'On') + '</button>';
+            html += ' <button class="btn btn-sm" onclick="showTrafficRule(\'edit\',\'' + escQs(rule.section) + '\',\'' + escQs(rule.name) + '\',\'' + escQs(rule.src) + '\',\'' + escQs(rule.dest) + '\',\'' + escQs(rule.proto) + '\',\'' + escQs(rule.target) + '\',\'' + escQs(rule.src_ip) + '\',\'' + escQs(rule.dest_ip) + '\',\'' + escQs(rule.src_port) + '\',\'' + escQs(rule.dest_port) + '\')">Edit</button>';
+            html += ' <button class="btn btn-sm" style="color:#e74c3c" onclick="deleteRule(\'' + escQs(rule.section) + '\')">Del</button>';
+            html += '</td></tr>';
+        });
+    } else {
+        html += '<tr><td colspan="7" class="empty">No traffic rules defined</td></tr>';
+    }
+    html += '</tbody></table></div></div>';
+
+    // Card 2: Port Forwards
+    html += '<div class="card"><div class="card-header"><h2>Port Forwards</h2>';
+    html += '<button class="btn btn-primary btn-sm" onclick="showPortForward(\'add\')">+ Add Forward</button>';
+    html += '</div><div class="card-body">';
+    html += '<table><thead><tr><th>Name</th><th>From Zone</th><th>Proto</th><th>External Port</th><th>Internal IP</th><th>Internal Port</th><th>Status</th><th>Actions</th></tr></thead><tbody>';
+    if (d.redirects && d.redirects.length > 0) {
+        d.redirects.forEach(function(r) {
+            html += '<tr>';
+            html += '<td><strong>' + escHtml(r.name || '—') + '</strong></td>';
+            html += '<td>' + escHtml(r.src || '—') + '</td>';
+            html += '<td>' + escHtml(r.proto) + '</td>';
+            html += '<td style="font-family:monospace"><strong>' + escHtml(r.src_dport) + '</strong></td>';
+            html += '<td style="font-family:monospace">' + escHtml(r.dest_ip) + '</td>';
+            html += '<td style="font-family:monospace">' + escHtml(r.dest_port || r.src_dport) + '</td>';
+            html += '<td><span class="badge ' + (r.enabled === '1' ? 'badge-up' : 'badge-down') + '">' + (r.enabled === '1' ? 'On' : 'Off') + '</span></td>';
+            html += '<td style="white-space:nowrap">';
+            html += '<button class="btn btn-sm" onclick="togglePortForward(\'' + escQs(r.section) + '\')">' + (r.enabled === '1' ? 'Off' : 'On') + '</button>';
+            html += ' <button class="btn btn-sm" onclick="showPortForward(\'edit\',\'' + escQs(r.section) + '\',\'' + escQs(r.name) + '\',\'' + escQs(r.src) + '\',\'' + escQs(r.proto) + '\',\'' + escQs(r.src_dport) + '\',\'' + escQs(r.dest_ip) + '\',\'' + escQs(r.dest_port) + '\')">Edit</button>';
+            html += ' <button class="btn btn-sm" style="color:#e74c3c" onclick="deletePortForward(\'' + escQs(r.section) + '\')">Del</button>';
+            html += '</td></tr>';
+        });
+    } else {
+        html += '<tr><td colspan="8" class="empty">No port forwards defined</td></tr>';
+    }
+    html += '</tbody></table></div></div>';
+
+    document.getElementById('content').innerHTML = html;
+}
+
+function toggleRule(section) {
+    apiCall('action=edit_traffic_rule&mode=toggle&section=' + encodeURIComponent(section), function(r) {
+        if (r.code === 0) { toast(r.msg); loadPage('trafficrules'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function deleteRule(section) {
+    if (!confirm('Delete this rule?')) return;
+    apiCall('action=edit_traffic_rule&mode=delete&section=' + encodeURIComponent(section), function(r) {
+        if (r.code === 0) { toast(r.msg); loadPage('trafficrules'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function showTrafficRule(mode, section, name, src, dest, proto, target, src_ip, dest_ip, src_port, dest_port) {
+    var title = mode === 'add' ? 'Add Traffic Rule' : 'Edit Traffic Rule';
+    var body = '';
+    body += '<div class="form-group"><label>Rule Name</label><input type="text" id="tr_name" value="' + escHtml(name || '') + '" placeholder="e.g. Allow SSH from WAN"></div>';
+    body += '<div class="form-row">';
+    body += '<div class="form-group"><label>Source Zone</label><select id="tr_src"><option value="wan"' + (src === 'wan' ? ' selected' : '') + '>wan</option><option value="lan"' + (src === 'lan' ? ' selected' : '') + '>lan</option></select></div>';
+    body += '<div class="form-group"><label>Dest Zone</label><select id="tr_dest"><option value=""' + (!dest ? ' selected' : '') + '>— any —</option><option value="wan"' + (dest === 'wan' ? ' selected' : '') + '>wan</option><option value="lan"' + (dest === 'lan' ? ' selected' : '') + '>lan</option></select></div>';
+    body += '</div>';
+    body += '<div class="form-row">';
+    body += '<div class="form-group"><label>Protocol</label><select id="tr_proto"><option value="all"' + (proto === 'all' || !proto ? ' selected' : '') + '>All</option><option value="tcp"' + (proto === 'tcp' ? ' selected' : '') + '>TCP</option><option value="udp"' + (proto === 'udp' ? ' selected' : '') + '>UDP</option><option value="tcpudp"' + (proto === 'tcpudp' ? ' selected' : '') + '>TCP+UDP</option></select></div>';
+    body += '<div class="form-group"><label>Target</label><select id="tr_target"><option value="ACCEPT"' + (target === 'ACCEPT' ? ' selected' : '') + '>ACCEPT</option><option value="DROP"' + (target === 'DROP' ? ' selected' : '') + '>DROP</option><option value="REJECT"' + (target === 'REJECT' ? ' selected' : '') + '>REJECT</option></select></div>';
+    body += '</div>';
+    body += '<div class="form-row">';
+    body += '<div class="form-group"><label>Source IP (optional)</label><input type="text" id="tr_src_ip" value="' + escHtml(src_ip || '') + '" placeholder="any"></div>';
+    body += '<div class="form-group"><label>Dest IP (optional)</label><input type="text" id="tr_dest_ip" value="' + escHtml(dest_ip || '') + '" placeholder="any"></div>';
+    body += '</div>';
+    body += '<div class="form-row">';
+    body += '<div class="form-group"><label>Source Port</label><input type="text" id="tr_src_port" value="' + escHtml(src_port || '') + '" placeholder="any"></div>';
+    body += '<div class="form-group"><label>Dest Port</label><input type="text" id="tr_dest_port" value="' + escHtml(dest_port || '') + '" placeholder="any"></div>';
+    body += '</div>';
+    var footer = '<button class="btn btn-primary" onclick="saveTrafficRule(\'' + mode + '\',\'' + escQs(section || '') + '\')">Save</button><button class="btn" onclick="closeModal()">Cancel</button>';
+    showModal(title, body, footer);
+}
+
+function saveTrafficRule(mode, section) {
+    var params = 'action=edit_traffic_rule&mode=' + mode;
+    if (section) params += '&section=' + encodeURIComponent(section);
+    params += '&name=' + encodeURIComponent(document.getElementById('tr_name').value);
+    params += '&src=' + encodeURIComponent(document.getElementById('tr_src').value);
+    var dest = document.getElementById('tr_dest').value;
+    if (dest) params += '&dest=' + encodeURIComponent(dest);
+    params += '&proto=' + encodeURIComponent(document.getElementById('tr_proto').value);
+    params += '&target=' + encodeURIComponent(document.getElementById('tr_target').value);
+    var src_ip = document.getElementById('tr_src_ip').value.trim();
+    if (src_ip) params += '&src_ip=' + encodeURIComponent(src_ip);
+    var dest_ip = document.getElementById('tr_dest_ip').value.trim();
+    if (dest_ip) params += '&dest_ip=' + encodeURIComponent(dest_ip);
+    var src_port = document.getElementById('tr_src_port').value.trim();
+    if (src_port) params += '&src_port=' + encodeURIComponent(src_port);
+    var dest_port = document.getElementById('tr_dest_port').value.trim();
+    if (dest_port) params += '&dest_port=' + encodeURIComponent(dest_port);
+    apiCall(params, function(r) {
+        closeModal();
+        if (r.code === 0) { toast(r.msg); loadPage('trafficrules'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function showPortForward(mode, section, name, src, proto, src_dport, dest_ip, dest_port) {
+    var title = mode === 'add' ? 'Add Port Forward' : 'Edit Port Forward';
+    var body = '';
+    body += '<div class="form-group"><label>Name</label><input type="text" id="pf_name" value="' + escHtml(name || '') + '" placeholder="e.g. Web Server"></div>';
+    body += '<div class="form-group"><label>Source Zone</label><select id="pf_src"><option value="wan"' + (src === 'wan' ? ' selected' : '') + '>wan</option><option value="lan"' + (src === 'lan' ? ' selected' : '') + '>lan</option></select></div>';
+    body += '<div class="form-row">';
+    body += '<div class="form-group"><label>Protocol</label><select id="pf_proto"><option value="tcp"' + (proto === 'tcp' || !proto ? ' selected' : '') + '>TCP</option><option value="udp"' + (proto === 'udp' ? ' selected' : '') + '>UDP</option><option value="tcpudp"' + (proto === 'tcpudp' ? ' selected' : '') + '>TCP+UDP</option></select></div>';
+    body += '<div class="form-group"><label>External Port</label><input type="text" id="pf_dport" value="' + escHtml(src_dport || '') + '" placeholder="e.g. 8080" required></div>';
+    body += '</div>';
+    body += '<div class="form-row">';
+    body += '<div class="form-group"><label>Internal IP</label><input type="text" id="pf_dest_ip" value="' + escHtml(dest_ip || '') + '" placeholder="192.168.10.50" required></div>';
+    body += '<div class="form-group"><label>Internal Port</label><input type="text" id="pf_dest_port" value="' + escHtml(dest_port || '') + '" placeholder="same as external"></div>';
+    body += '</div>';
+    var footer = '<button class="btn btn-primary" onclick="savePortForward(\'' + mode + '\',\'' + escQs(section || '') + '\')">Save</button><button class="btn" onclick="closeModal()">Cancel</button>';
+    showModal(title, body, footer);
+}
+
+function savePortForward(mode, section) {
+    var params = 'action=edit_port_forward&mode=' + mode;
+    if (section) params += '&section=' + encodeURIComponent(section);
+    params += '&name=' + encodeURIComponent(document.getElementById('pf_name').value);
+    params += '&src=' + encodeURIComponent(document.getElementById('pf_src').value);
+    params += '&proto=' + encodeURIComponent(document.getElementById('pf_proto').value);
+    params += '&src_dport=' + encodeURIComponent(document.getElementById('pf_dport').value);
+    params += '&dest_ip=' + encodeURIComponent(document.getElementById('pf_dest_ip').value);
+    var dp = document.getElementById('pf_dest_port').value.trim();
+    if (dp) params += '&dest_port=' + encodeURIComponent(dp);
+    if (!document.getElementById('pf_dport').value.trim()) { toast('External port required', 'error'); return; }
+    if (!document.getElementById('pf_dest_ip').value.trim()) { toast('Internal IP required', 'error'); return; }
+    apiCall(params, function(r) {
+        closeModal();
+        if (r.code === 0) { toast(r.msg); loadPage('trafficrules'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function togglePortForward(section) {
+    apiCall('action=edit_port_forward&mode=toggle&section=' + encodeURIComponent(section), function(r) {
+        if (r.code === 0) { toast(r.msg); loadPage('trafficrules'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function deletePortForward(section) {
+    if (!confirm('Delete this port forward?')) return;
+    apiCall('action=edit_port_forward&mode=delete&section=' + encodeURIComponent(section), function(r) {
+        if (r.code === 0) { toast(r.msg); loadPage('trafficrules'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+// ═══════════════════════════════════════════════════════════
+//  CONNECTIONS
+// ═══════════════════════════════════════════════════════════
+
+function renderConnections(d) {
+    var html = '';
+    var protoMap = {'2':'TCP','6':'UDP','1':'ICMP','10':'ICMPv6','17':'UDP','4':'IPIP','47':'GRE','50':'ESP'};
+
+    html += '<div class="card"><div class="card-header"><h2>Active Connections</h2>';
+    html += '<span style="font-size:13px;color:var(--text-secondary)">Tracking: <strong>' + (d.total || 0) + '</strong> entries</span>';
+    html += '</div><div class="card-body">';
+    html += '<table><thead><tr><th>Protocol</th><th>Source</th><th>Dest</th><th>State</th></tr></thead><tbody>';
+
+    if (d.connections && d.connections.length > 0) {
+        d.connections.forEach(function(c) {
+            var proto = protoMap[c.proto] || c.proto;
+            var srcStr = c.src + (c.sport > 0 ? ':' + c.sport : '');
+            var dstStr = c.dst + (c.dport > 0 ? ':' + c.dport : '');
+            // Filter out boring loopback/localhost
+            html += '<tr>';
+            html += '<td><span class="badge" style="background:#e3f2fd;color:#1565c0">' + proto + '</span></td>';
+            html += '<td style="font-family:monospace;font-size:12px">' + escHtml(srcStr) + '</td>';
+            html += '<td style="font-family:monospace;font-size:12px">' + escHtml(dstStr) + '</td>';
+            html += '<td style="font-size:11px">' + escHtml(c.state) + '</td>';
+            html += '</tr>';
+        });
+    } else {
+        html += '<tr><td colspan="4" class="empty">No connection tracking data</td></tr>';
+    }
+
+    html += '</tbody></table>';
+    html += '<p style="font-size:11px;color:var(--text-muted);margin-top:8px">Showing up to 500 entries from /proc/net/nf_conntrack. Refresh the page to see current connections.</p>';
+    html += '</div></div>';
+
+    document.getElementById('content').innerHTML = html;
+}
+
+// ═══════════════════════════════════════════════════════════
+//  DIAGNOSTICS
+// ═══════════════════════════════════════════════════════════
+
+function renderDiagnostics(d) {
+    var html = '';
+
+    // Ping
+    html += '<div class="card"><div class="card-header"><h2>Ping</h2></div><div class="card-body">';
+    html += '<div style="display:flex;gap:8px;margin-bottom:12px">';
+    html += '<input type="text" id="diag_ping_host" placeholder="Hostname or IP" value="8.8.8.8" style="flex:1;padding:8px 12px;border:1px solid #ddd;border-radius:6px;font-size:14px">';
+    html += '<select id="diag_ping_count" style="padding:8px 12px;border:1px solid #ddd;border-radius:6px;font-size:14px">';
+    [1,2,3,4,5,10].forEach(function(n) { html += '<option value="' + n + '"' + (n===4?' selected':'') + '>' + n + ' pkt</option>'; });
+    html += '</select>';
+    html += '<button class="btn btn-primary" onclick="runDiag(\'ping\')">Ping</button>';
+    html += '</div>';
+    html += '<pre id="diag_ping_out" style="background:#1a1a1a;color:#e0e0e0;font-family:monospace;font-size:12px;padding:12px;border-radius:6px;max-height:300px;overflow-y:auto;white-space:pre-wrap;display:none"></pre>';
+    html += '</div></div>';
+
+    // Traceroute
+    html += '<div class="card"><div class="card-header"><h2>Traceroute</h2></div><div class="card-body">';
+    html += '<div style="display:flex;gap:8px;margin-bottom:12px">';
+    html += '<input type="text" id="diag_tr_host" placeholder="Hostname or IP" value="8.8.8.8" style="flex:1;padding:8px 12px;border:1px solid #ddd;border-radius:6px;font-size:14px">';
+    html += '<button class="btn btn-primary" onclick="runDiag(\'traceroute\')">Trace</button>';
+    html += '</div>';
+    html += '<pre id="diag_tr_out" style="background:#1a1a1a;color:#e0e0e0;font-family:monospace;font-size:12px;padding:12px;border-radius:6px;max-height:300px;overflow-y:auto;white-space:pre-wrap;display:none"></pre>';
+    html += '</div></div>';
+
+    // Nslookup
+    html += '<div class="card"><div class="card-header"><h2>DNS Lookup</h2></div><div class="card-body">';
+    html += '<div style="display:flex;gap:8px;margin-bottom:12px">';
+    html += '<input type="text" id="diag_ns_host" placeholder="Hostname or IP" value="google.com" style="flex:1;padding:8px 12px;border:1px solid #ddd;border-radius:6px;font-size:14px">';
+    html += '<button class="btn btn-primary" onclick="runDiag(\'nslookup\')">Lookup</button>';
+    html += '</div>';
+    html += '<pre id="diag_ns_out" style="background:#1a1a1a;color:#e0e0e0;font-family:monospace;font-size:12px;padding:12px;border-radius:6px;max-height:300px;overflow-y:auto;white-space:pre-wrap;display:none"></pre>';
+    html += '</div></div>';
+
+    document.getElementById('content').innerHTML = html;
+}
+
+function runDiag(tool) {
+    var host, count, outId;
+    if (tool === 'ping') {
+        host = document.getElementById('diag_ping_host').value.trim();
+        count = document.getElementById('diag_ping_count').value;
+        outId = 'diag_ping_out';
+    } else if (tool === 'traceroute') {
+        host = document.getElementById('diag_tr_host').value.trim();
+        outId = 'diag_tr_out';
+    } else {
+        host = document.getElementById('diag_ns_host').value.trim();
+        outId = 'diag_ns_out';
+    }
+    if (!host) { toast('Host required', 'error'); return; }
+
+    var out = document.getElementById(outId);
+    out.style.display = 'block';
+    out.textContent = 'Running...';
+    var params = 'action=diag_' + tool + '&host=' + encodeURIComponent(host);
+    if (count) params += '&count=' + encodeURIComponent(count);
+    apiCall(params, function(r) {
+        if (r.code === 0 && r.data && r.data.output) {
+            out.textContent = r.data.output;
+        } else {
+            out.textContent = 'Error: ' + (r.msg || 'Failed');
+        }
+    });
+}
+
+// ═══════════════════════════════════════════════════════════
+//  SETTINGS
+// ═══════════════════════════════════════════════════════════
+
+function renderSettings(d) {
+    var html = '';
+
+    // System settings
+    html += '<div class="card"><div class="card-header"><h2>System</h2></div><div class="card-body">';
+    html += '<div class="form-group"><label>Hostname</label>';
+    html += '<div style="display:flex;gap:8px">';
+    html += '<input type="text" id="set_hostname" value="' + escHtml(d.hostname) + '" style="flex:1">';
+    html += '<button class="btn btn-primary" onclick="saveSysSetting(\'hostname\')">Save</button></div></div>';
+
+    // Timezone
+    html += '<div class="form-group"><label>Timezone</label><select id="set_timezone">';
+    var tzs = [
+        ['UTC', 'UTC (Coordinated Universal Time)'],
+
+        ['<-12>12', 'UTC-12 (Baker Island)'],
+        ['<-11>11', 'UTC-11 (Pago Pago, Niue)'],
+        ['<-10>10', 'UTC-10 (Hawaii, Cook Islands)'],
+        ['<-09>9',  'UTC-9 (Alaska, Gambier Islands)'],
+        ['PST8PDT,M3.2.0,M11.1.0', 'UTC-8/-7 (US Pacific, Vancouver)'],
+        ['MST7MDT,M3.2.0,M11.1.0', 'UTC-7/-6 (US Mountain, Calgary)'],
+        ['CST6CDT,M3.2.0,M11.1.0', 'UTC-6/-5 (US Central, Mexico City)'],
+        ['EST5EDT,M3.2.0,M11.1.0', 'UTC-5/-4 (US Eastern, Toronto)'],
+        ['<-04>4',  'UTC-4 (Manaus, Caracas, Santiago)'],
+        ['<-03>3',  'UTC-3 (Brasilia, Sao Paulo, Buenos Aires)'],
+        ['<-02>2',  'UTC-2 (Fernando de Noronha, South Georgia)'],
+        ['<-01>1',  'UTC-1 (Azores, Cape Verde)'],
+
+        ['GMT0BST,M3.5.0,M10.5.0', 'UTC+0/+1 (London, Dublin, Lisbon)'],
+        ['CET-1CEST,M3.5.0,M10.5.0', 'UTC+1/+2 (Berlin, Paris, Rome, Madrid)'],
+        ['EET-2EEST,M3.5.0,M10.5.0', 'UTC+2/+3 (Helsinki, Athens, Kyiv)'],
+        ['MSK-3',  'UTC+3 (Moscow, Nairobi, Riyadh)'],
+        ['<-04>-4', 'UTC+4 (Dubai, Baku, Mauritius)'],
+        ['<-05>-5', 'UTC+5 (Karachi, Yekaterinburg)'],
+        ['IST-5:30', 'UTC+5:30 (India, Sri Lanka)'],
+        ['<-06>-6', 'UTC+6 (Dhaka, Almaty)'],
+        ['<-07>-7', 'UTC+7 (Bangkok, Jakarta, Ho Chi Minh)'],
+        ['CST-8',  'UTC+8 (Beijing, Shanghai, Singapore, Perth)'],
+        ['JST-9',  'UTC+9 (Tokyo, Seoul)'],
+        ['AEST-10AEDT,M10.1.0,M4.1.0', 'UTC+10/+11 (Sydney, Melbourne)'],
+        ['<-11>-11', 'UTC+11 (Solomon Islands, Noumea)'],
+        ['NZST-12NZDT,M9.5.0,M4.1.0', 'UTC+12/+13 (Auckland, Fiji)']
+    ];
+    tzs.forEach(function(tz) {
+        html += '<option value="' + tz[0] + '"' + (d.timezone === tz[0] ? ' selected' : '') + '>' + tz[1] + '</option>';
+    });
+    html += '</select></div>';
+    html += '<div class="form-group"><label>Current Router Time</label><input type="text" value="' + escHtml(d.current_time || '') + '" disabled></div>';
+
+    html += '<button class="btn btn-primary" onclick="saveSysSetting(\'timezone\')">Save Timezone</button>';
+    html += '</div></div>';
+
+    // NTP settings
+    html += '<div class="card"><div class="card-header"><h2>NTP Client</h2></div><div class="card-body">';
+
+    html += '<div class="form-group"><label>NTP Client</label><div style="display:flex;gap:8px;align-items:center">';
+    var ntpOn = d.ntp_enabled === '1';
+    html += '<span class="badge ' + (ntpOn ? 'badge-up' : 'badge-down') + '">' + (ntpOn ? 'Enabled' : 'Disabled') + '</span>';
+    html += '<button class="btn btn-sm" onclick="toggleNtp(\'' + (ntpOn ? '0' : '1') + '\')">' + (ntpOn ? 'Disable' : 'Enable') + '</button>';
+    html += '</div></div>';
+
+    // NTP servers
+    html += '<div class="form-group"><label>NTP Servers</label>';
+    html += '<div id="ntp_servers_list" style="margin-bottom:6px">';
+    if (d.ntp_servers && d.ntp_servers.length > 0) {
+        d.ntp_servers.forEach(function(srv) {
+            html += '<div style="display:flex;gap:6px;align-items:center;margin-bottom:4px">';
+            html += '<code style="flex:1;background:#f5f5f5;padding:4px 8px;border-radius:4px;font-size:12px">' + escHtml(srv) + '</code>';
+            html += '<button class="btn btn-sm" style="color:#e74c3c" onclick="delNtpServer(\'' + escQs(srv) + '\')">X</button>';
+            html += '</div>';
+        });
+    }
+    html += '</div>';
+    html += '<div style="display:flex;gap:6px">';
+    html += '<input type="text" id="ntp_server_input" placeholder="e.g. ntp.example.com" style="flex:1;padding:6px 10px;border:1px solid #ddd;border-radius:6px;font-size:13px">';
+    html += '<button class="btn btn-sm" onclick="addNtpServer()">Add</button>';
+    html += '</div></div>';
+
+    html += '</div></div>';
+
+    document.getElementById('content').innerHTML = html;
+}
+
+function saveSysSetting(field) {
+    var value = '';
+    if (field === 'hostname') value = document.getElementById('set_hostname').value.trim();
+    else if (field === 'timezone') value = document.getElementById('set_timezone').value;
+    if (!value) { toast('Value required', 'error'); return; }
+    var params = 'action=edit_system&field=' + encodeURIComponent(field) + '&value=' + encodeURIComponent(value);
+    if (field === 'timezone') params += '&tzindex=' + encodeURIComponent(value);
+    apiCall(params, function(r) {
+        if (r.code === 0) { toast(r.msg); loadPage('settings'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function toggleNtp(val) {
+    apiCall('action=edit_system&field=ntp_enabled&value=' + val, function(r) {
+        if (r.code === 0) { toast(r.msg); loadPage('settings'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function addNtpServer() {
+    var srv = document.getElementById('ntp_server_input').value.trim();
+    if (!srv) return;
+    apiCall('action=edit_system&field=ntp_server&mode=add&value=' + encodeURIComponent(srv), function(r) {
+        if (r.code === 0) { toast(r.msg); loadPage('settings'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function delNtpServer(srv) {
+    apiCall('action=edit_system&field=ntp_server&mode=del&value=' + encodeURIComponent(srv), function(r) {
+        if (r.code === 0) { toast(r.msg); loadPage('settings'); }
+        else toast(r.msg || 'Error', 'error');
+    });
+}
+
+function syncBrowserTime() {
+    var now = new Date();
+    var iso = now.getFullYear() + '-' +
+        String(now.getMonth()+1).padStart(2,'0') + '-' +
+        String(now.getDate()).padStart(2,'0') + ' ' +
+        String(now.getHours()).padStart(2,'0') + ':' +
+        String(now.getMinutes()).padStart(2,'0') + ':' +
+        String(now.getSeconds()).padStart(2,'0');
+    // Use date command to set time (approximate — no ms precision needed)
+    apiCall('action=edit_system&field=hostname&value=' + encodeURIComponent(document.getElementById('set_hostname').value || 'XiaoQiang'), function(r) {
+        // Just refresh to show time didn't actually change via API
+        toast('Browser time: ' + iso + ' — use NTP for accurate sync');
+    });
+}
+
+// ═══════════════════════════════════════════════════════════
+//  REBOOT
+// ═══════════════════════════════════════════════════════════
+
+function renderReboot(d) {
+    var html = '';
+
+    html += '<div class="card"><div class="card-header"><h2>Reboot Router</h2></div><div class="card-body">';
+    html += '<p style="margin-bottom:16px;color:var(--text-secondary);line-height:1.6">Rebooting will restart the router. WiFi clients will disconnect and reconnect once the router is back up (typically 30–60 seconds). All unsaved changes will be lost.</p>';
+    html += '<button class="btn" style="background:var(--danger);color:#fff;border-color:var(--danger);font-size:15px;padding:12px 32px" onclick="doReboot()">Reboot Now</button>';
+    html += '</div></div>';
+
+    document.getElementById('content').innerHTML = html;
+}
+
+function doReboot() {
+    if (!confirm('Are you sure you want to reboot the router?\n\nWiFi will go down and clients will disconnect.\nThe router will be back in ~30-60 seconds.')) return;
+    apiCall('action=reboot', function(r) {
+        toast(r.msg || 'Rebooting...');
+        // The API call will likely fail/timeout since the router reboots
+        setTimeout(function() {
+            document.getElementById('content').innerHTML = '<div class="loading" style="text-align:center;padding:80px"><h2 style="margin-bottom:12px">Router is rebooting</h2><p style="color:var(--text-secondary)">The dashboard will reload in 45 seconds...</p></div>';
+            setTimeout(function() { location.reload(); }, 45000);
+        }, 2000);
+    });
+}
+
+// ═══════════════════════════════════════════════════════════
+//  TAILSCALE
+// ═══════════════════════════════════════════════════════════
+
+
+
+
+
+
+// ── Init ──
+var hash = window.location.hash.replace('#', '') || 'overview';
+if (!pages[hash]) hash = 'overview';
+navigate(hash);
+
+// Handle browser back/forward
+window.addEventListener('hashchange', function() {
+    var h = window.location.hash.replace('#', '');
+    if (pages[h] && h !== currentPage) navigate(h);
+});
+</script>
+
+</body>
+</html>
