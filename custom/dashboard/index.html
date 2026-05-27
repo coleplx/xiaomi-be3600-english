@@ -2549,7 +2549,150 @@ function renderServices(d) {
     });
 
     html += '</tbody></table></div></div>';
+
+    // Placeholder cards for async-loaded sections
+    html += '<div id="bloatCronsCard" class="card" style="margin-top:16px"><div class="card-header"><h2>Bloat Crons</h2></div><div class="card-body"><p style="color:var(--text-secondary)">Loading...</p></div></div>';
+    html += '<div id="trackerDomainsCard" class="card" style="margin-top:16px"><div class="card-header"><h2>Tracker Domains</h2></div><div class="card-body"><p style="color:var(--text-secondary)">Loading...</p></div></div>';
+    html += '<div id="statPointsCard" class="card" style="margin-top:16px"><div class="card-header"><h2>Stat Points</h2></div><div class="card-body"><p style="color:var(--text-secondary)">Loading...</p></div></div>';
+
     document.getElementById('content').innerHTML = html;
+
+    // Load sub-sections async
+    loadBloatCrons();
+    loadTrackerDomains();
+    loadStatPoints();
+}
+
+function loadBloatCrons() {
+    apiCall('action=list_bloat_crons', function(r) {
+        var el = document.getElementById('bloatCronsCard');
+        if (!el) return;
+        if (!r || !r.data || !r.data.crons) {
+            el.innerHTML = '<div class="card-header"><h2>Bloat Crons</h2></div><div class="card-body"><p class="error">Failed to load.</p></div>';
+            return;
+        }
+        var h = '<div class="card-header"><h2>Bloat Crons</h2></div><div class="card-body">';
+        h += '<p style="margin-bottom:12px;color:var(--text-secondary);line-height:1.5">Known Xiaomi cron jobs that waste CPU. Remove them with one click.</p>';
+        h += '<table><thead><tr><th>Cron</th><th>Status</th><th>Actions</th></tr></thead><tbody>';
+        var allActive = true;
+        r.data.crons.forEach(function(c) {
+            var statusClass = c.active ? 'status-up' : 'status-down';
+            var statusText = c.active ? 'Active' : 'Removed';
+            var btn = c.active
+                ? '<button class="btn btn-sm btn-stop" onclick="toggleBloatCron(\'' + c.name + '\',\'remove\')">Remove</button>'
+                : '<button class="btn btn-sm btn-start" onclick="toggleBloatCron(\'' + c.name + '\',\'restore\')">Restore</button>';
+            if (c.active) allActive = false;
+            h += '<tr><td><strong>' + c.name + '</strong></td>';
+            h += '<td><span class="' + statusClass + '">' + statusText + '</span></td>';
+            h += '<td>' + btn + '</td></tr>';
+        });
+        h += '</tbody></table>';
+        h += '<div style="margin-top:12px">';
+        h += '<button class="btn btn-stop" onclick="toggleBloatCron(\'all\',\'remove\')">Remove All</button> ';
+        h += '<button class="btn btn-start" onclick="toggleBloatCron(\'all\',\'restore\')">Restore All</button>';
+        h += '</div></div>';
+        el.innerHTML = h;
+    });
+}
+
+function toggleBloatCron(name, action) {
+    var q = name === 'all' ? '' : '&name=' + encodeURIComponent(name);
+    // For 'all', server needs to handle it — we batch by calling for each
+    if (name === 'all') {
+        var crons = ['sp_check.sh','startscene_crontab.lua','otapredownload','mobile_accel.sh'];
+        var done = 0;
+        crons.forEach(function(c) {
+            apiCall('action=toggle_bloat_cron&toggle_action=' + action + '&name=' + encodeURIComponent(c), function(r) {
+                done++;
+                if (done >= crons.length) { toast(action === 'remove' ? 'All crons removed' : 'All crons restored'); loadBloatCrons(); }
+            });
+        });
+    } else {
+        apiCall('action=toggle_bloat_cron&toggle_action=' + action + '&name=' + encodeURIComponent(name), function(r) {
+            if (r && r.code === 0) { toast(r.msg); loadBloatCrons(); }
+            else toast(r.msg || 'Failed');
+        });
+    }
+}
+
+function loadTrackerDomains() {
+    apiCall('action=list_blocked_domains', function(r) {
+        var el = document.getElementById('trackerDomainsCard');
+        if (!el) return;
+        if (!r || !r.data || !r.data.domains) {
+            el.innerHTML = '<div class="card-header"><h2>Tracker Domains</h2></div><div class="card-body"><p class="error">Failed to load.</p></div>';
+            return;
+        }
+        var h = '<div class="card-header"><h2>Tracker Domains</h2></div><div class="card-body">';
+        h += '<p style="margin-bottom:12px;color:var(--text-secondary);line-height:1.5">Block known Xiaomi telemetry domains via DNS sinkhole (dnsmasq). Prevents phone-home traffic.</p>';
+        h += '<table><thead><tr><th>Domain</th><th>Purpose</th><th>Status</th><th>Actions</th></tr></thead><tbody>';
+        r.data.domains.forEach(function(d) {
+            var statusClass = d.blocked ? 'status-down' : 'status-up';
+            var statusText = d.blocked ? 'Blocked' : 'Allowed';
+            var btn = d.blocked
+                ? '<button class="btn btn-sm btn-start" onclick="toggleDomainBlock(\'' + d.domain + '\',\'unblock\')">Unblock</button>'
+                : '<button class="btn btn-sm btn-stop" onclick="toggleDomainBlock(\'' + d.domain + '\',\'block\')">Block</button>';
+            h += '<tr><td><strong>' + d.domain + '</strong></td>';
+            h += '<td>' + d.label + '</td>';
+            h += '<td><span class="' + statusClass + '">' + statusText + '</span></td>';
+            h += '<td>' + btn + '</td></tr>';
+        });
+        h += '</tbody></table>';
+        h += '<div style="margin-top:12px">';
+        h += '<button class="btn btn-stop" onclick="toggleDomainBlock(\'all\',\'block\')">Block All</button> ';
+        h += '<button class="btn btn-start" onclick="toggleDomainBlock(\'all\',\'unblock\')">Unblock All</button>';
+        h += '</div></div>';
+        el.innerHTML = h;
+    });
+}
+
+function toggleDomainBlock(domain, action) {
+    if (domain === 'all') {
+        apiCall('action=list_blocked_domains', function(r) {
+            if (!r || !r.data || !r.data.domains) return;
+            var domains = r.data.domains.map(function(d) { return d.domain; });
+            var done = 0;
+            domains.forEach(function(d) {
+                apiCall('action=toggle_domain_block&toggle_action=' + action + '&domain=' + encodeURIComponent(d), function() {
+                    done++;
+                    if (done >= domains.length) { toast(action === 'block' ? 'All domains blocked' : 'All domains unblocked'); loadTrackerDomains(); }
+                });
+            });
+        });
+    } else {
+        apiCall('action=toggle_domain_block&toggle_action=' + action + '&domain=' + encodeURIComponent(domain), function(r) {
+            if (r && r.code === 0) { toast(r.msg); loadTrackerDomains(); }
+            else toast(r.msg || 'Failed');
+        });
+    }
+}
+
+function loadStatPoints() {
+    apiCall('action=stat_points_info', function(r) {
+        var el = document.getElementById('statPointsCard');
+        if (!el) return;
+        var h = '<div class="card-header"><h2>Stat Points</h2></div><div class="card-body">';
+        h += '<p style="margin-bottom:12px;color:var(--text-secondary);line-height:1.5">Xiaomi telemetry log directory (<code>/tmp/stat_points</code>). Safe to clear.</p>';
+        if (r && r.data) {
+            h += '<table><tbody>';
+            h += '<tr><td><strong>Exists</strong></td><td>' + (r.data.exists ? 'Yes' : 'No') + '</td></tr>';
+            h += '<tr><td><strong>Size</strong></td><td>' + (r.data.size_kb || 0) + ' KB</td></tr>';
+            h += '<tr><td><strong>Files</strong></td><td>' + (r.data.file_count || 0) + '</td></tr>';
+            h += '</tbody></table>';
+        } else {
+            h += '<p class="error">Failed to load stat info.</p>';
+        }
+        h += '<div style="margin-top:12px"><button class="btn btn-stop" onclick="clearStatPoints()">Clear Now</button></div>';
+        h += '</div>';
+        el.innerHTML = h;
+    });
+}
+
+function clearStatPoints() {
+    apiCall('action=clear_stat_points', function(r) {
+        if (r && r.code === 0) { toast(r.msg); loadStatPoints(); }
+        else toast(r.msg || 'Failed');
+    });
 }
 
 function svcAction(name, action) {

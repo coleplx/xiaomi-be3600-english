@@ -9,6 +9,21 @@ PIDFILE="/var/run/dashboard_uhttpd.pid"
 
 log() { echo "[dashboard] $*"; }
 
+apply_wifi_patches() {
+    local patch_dir="$BASE/patched"
+    [ -d "$patch_dir" ] || return 0
+
+    # Bind-mount patched wifi scripts over buggy Qualcomm originals.
+    # hostapd.sh: added "local ssid device hwmode phy" to prevent variable leakage
+    # qcawificfg80211.sh: neutered radio-index ifname "correction" that fights inverted naming
+    for script in hostapd.sh qcawificfg80211.sh; do
+        if [ -f "$patch_dir/$script" ] && ! mount | grep -q "/lib/wifi/$script"; then
+            mount --bind "$patch_dir/$script" "/lib/wifi/$script" 2>/dev/null && \
+                log "Patched $script"
+        fi
+    done
+}
+
 start_uhttpd() {
     if [ -f "$PIDFILE" ]; then
         oldpid=$(cat "$PIDFILE")
@@ -28,4 +43,5 @@ start_uhttpd() {
     log "uhttpd started on port 8081"
 }
 
+apply_wifi_patches
 start_uhttpd

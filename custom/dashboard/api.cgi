@@ -1680,6 +1680,158 @@ action_services() {
 
 
 
+# -- Bloat Crons ----------------------------------------------------
+BLOAT_CRONS="sp_check.sh:*/5 * * * * command -v sp_check.sh >/dev/null && sp_check.sh
+startscene_crontab.lua:* * * * * /usr/sbin/startscene_crontab.lua \x60/bin/date \"+%u %H:%M\"\x60
+otapredownload:1 3,4,5 * * * /usr/sbin/otapredownload >/dev/null 2>&1
+mobile_accel.sh:*/3 * * * * /usr/sbin/mobile_accel.sh check >/dev/null 2>&1"
+
+action_list_bloat_crons() {
+    printf '{"code":0,"data":{"crons":['
+    local first=1
+    echo "$BLOAT_CRONS" | while IFS=':' read -r name line; do
+        [ -z "$name" ] && continue
+        local active=0
+        grep -qF "$line" /etc/crontabs/root 2>/dev/null && active=1
+        [ $first -eq 0 ] && printf ","
+        first=0
+        printf '{"name":"%s","active":%d}' "$(json_esc "$name")" $active
+    done
+    printf ']}}'
+}
+
+action_toggle_bloat_cron() {
+    name=$(get_param "name")
+    act=$(get_param "toggle_action")  # remove or restore
+    [ -z "$name" ] && { printf '{"code":1,"msg":"Cron name required"}'; return; }
+    [ -z "$act" ] && { printf '{"code":1,"msg":"Action required"}'; return; }
+
+    # Find the line for this cron
+    line=$(echo "$BLOAT_CRONS" | tr ':' '\n' | while read -r n; do
+        read -r l
+        [ "$n" = "$name" ] && echo "$l" && break
+    done)
+    [ -z "$line" ] && { printf '{"code":1,"msg":"Unknown cron: %s"}' "$(json_esc "$name")"; return; }
+
+    # Build a pattern that matches the cron line (escape for grep -v)
+    # Use a distinctive part of the line that's unique
+    case "$act" in
+        remove)
+            cp /etc/crontabs/root /etc/crontabs/root.bak 2>/dev/null
+            grep -vF "$line" /etc/crontabs/root > /tmp/crontab_new
+            mv /tmp/crontab_new /etc/crontabs/root
+            /etc/init.d/cron restart 2>/dev/null
+            printf '{"code":0,"msg":"Removed %s"}' "$(json_esc "$name")"
+            ;;
+        restore)
+            grep -qF "$line" /etc/crontabs/root 2>/dev/null && {
+                printf '{"code":0,"msg":"%s already active"}' "$(json_esc "$name")"
+                return
+            }
+            echo "$line" >> /etc/crontabs/root
+            /etc/init.d/cron restart 2>/dev/null
+            printf '{"code":0,"msg":"Restored %s"}' "$(json_esc "$name")"
+            ;;
+        *) printf '{"code":1,"msg":"Invalid action: %s"}' "$(json_esc "$act")" ;;
+    esac
+}
+
+# -- Tracker Domain Blocking -----------------------------------------
+# Domains sourced from /etc/config/miwifi + common Xiaomi endpoints
+KNOWN_DOMAINS="api.miwifi.com:API
+log.miwifi.com:Log
+s.miwifi.com:Stats
+app.miwifi.com:App
+stun.miwifi.com:STUN
+broker.miwifi.com:MQTT Broker
+bbs.xiaomi.cn:Forums
+router.miwifi.com:Router Mgmt"
+
+BLOCKLIST="/data/dashboard/.blocked_domains"
+DNSMASQ_BLOCK="/etc/dnsmasq.d/xiaomi-block.conf"
+
+action_list_blocked_domains() {
+    printf '{"code":0,"data":{"domains":['
+    local first=1
+    echo "$KNOWN_DOMAINS" | while IFS=':' read -r domain label; do
+        [ -z "$domain" ] && continue
+        local blocked=0
+        grep -q "^${domain}$" "$BLOCKLIST" 2>/dev/null && blocked=1
+        [ $first -eq 0 ] && printf ","
+        first=0
+        printf '{"domain":"%s","label":"%s","blocked":%d}' "$(json_esc "$domain")" "$(json_esc "$label")" $blocked
+    done
+    printf ']}}'
+}
+
+action_toggle_domain_block() {
+    domain=$(get_param "domain")
+    act=$(get_param "toggle_action")  # block or unblock
+    [ -z "$domain" ] && { printf '{"code":1,"msg":"Domain required"}'; return; }
+    [ -z "$act" ] && { printf '{"code":1,"msg":"Action required"}'; return; }
+
+    # Validate domain is in known list
+    valid=0
+    echo "$KNOWN_DOMAINS" | while IFS=':' read -r d _; do
+        [ "$d" = "$domain" ] && echo "1" > /tmp/_domain_valid
+    done
+    [ -f /tmp/_domain_valid ] && valid=$(cat /tmp/_domain_valid) && rm -f /tmp/_domain_valid
+    [ "$valid" != "1" ] && { printf '{"code":1,"msg":"Unknown domain"}'; return; }
+
+    touch "$BLOCKLIST" 2>/dev/null
+
+    case "$act" in
+        block)
+            grep -q "^${domain}$" "$BLOCKLIST" 2>/dev/null || echo "$domain" >> "$BLOCKLIST"
+            ;;
+        unblock)
+            grep -v "^${domain}$" "$BLOCKLIST" > /tmp/_blocklist_new 2>/dev/null
+            cat /tmp/_blocklist_new > "$BLOCKLIST"
+            rm -f /tmp/_blocklist_new
+            ;;
+        *) printf '{"code":1,"msg":"Invalid action"}'; return ;;
+    esac
+
+    # Regenerate dnsmasq block conf
+    apply_domain_blocks
+
+    printf '{"code":0,"msg":"%s %s"}' "$(json_esc "$domain")" "$([ "$act" = "block" ] && echo "blocked" || echo "unblocked")"
+}
+
+apply_domain_blocks() {
+    > "$DNSMASQ_BLOCK"
+    if [ -f "$BLOCKLIST" ] && [ -s "$BLOCKLIST" ]; then
+        while read -r d; do
+            [ -z "$d" ] && continue
+            echo "address=/${d}/0.0.0.0" >> "$DNSMASQ_BLOCK"
+        done < "$BLOCKLIST"
+    fi
+    /etc/init.d/dnsmasq restart 2>/dev/null &
+}
+
+# -- Stat Points Cleanup ---------------------------------------------
+action_stat_points_info() {
+    local dir="/tmp/stat_points"
+    local size=0 count=0
+    if [ -d "$dir" ]; then
+        size=$(du -s "$dir" 2>/dev/null | awk '{print $1}')
+        count=$(find "$dir" -type f 2>/dev/null | wc -l)
+    fi
+    printf '{"code":0,"data":{"size_kb":%s,"file_count":%s,"exists":%d}}' \
+        "${size:-0}" "${count:-0}" "$([ -d "$dir" ] && echo 1 || echo 0)"
+}
+
+action_clear_stat_points() {
+    local dir="/tmp/stat_points"
+    if [ -d "$dir" ]; then
+        rm -rf "$dir"/* 2>/dev/null
+        printf '{"code":0,"msg":"Stat points cleared"}'
+    else
+        printf '{"code":0,"msg":"Nothing to clear"}'
+    fi
+}
+
+
 # ---------------------------------------------------------------------------
 # DISPATCH
 # ---------------------------------------------------------------------------
@@ -1718,6 +1870,12 @@ case "$action" in
     diag_traceroute)   action_diag_traceroute ;;
     diag_nslookup)     action_diag_nslookup ;;
     reboot)            action_reboot ;;
-    services)          action_services ;;
+    services)                action_services ;;
+    list_bloat_crons)        action_list_bloat_crons ;;
+    toggle_bloat_cron)       action_toggle_bloat_cron ;;
+    list_blocked_domains)    action_list_blocked_domains ;;
+    toggle_domain_block)     action_toggle_domain_block ;;
+    stat_points_info)        action_stat_points_info ;;
+    clear_stat_points)       action_clear_stat_points ;;
     *)               printf '{"code":1,"msg":"Unknown action: %s"}' "$action" ;;
 esac

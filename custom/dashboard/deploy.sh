@@ -31,6 +31,11 @@ do_deploy() {
     # Copy apply_vap.sh from extra_wifi for Wireless tab VAP operations
     [ -f "$SCRIPT_DIR/../extra_wifi/apply_vap.sh" ] && $SCP_CMD "$SCRIPT_DIR/../extra_wifi/apply_vap.sh" "${ROUTER_USER}@${ROUTER_IP}:${REMOTE_BASE}/"
 
+    # Copy patched wifi scripts (fixes Qualcomm variable-leakage & ifname-corruption bugs)
+    $SSH_CMD "mkdir -p $REMOTE_BASE/patched"
+    [ -f "$SCRIPT_DIR/patched/hostapd.sh" ] && $SCP_CMD "$SCRIPT_DIR/patched/hostapd.sh" "${ROUTER_USER}@${ROUTER_IP}:${REMOTE_BASE}/patched/"
+    [ -f "$SCRIPT_DIR/patched/qcawificfg80211.sh" ] && $SCP_CMD "$SCRIPT_DIR/patched/qcawificfg80211.sh" "${ROUTER_USER}@${ROUTER_IP}:${REMOTE_BASE}/patched/"
+
     $SSH_CMD "chmod +x $REMOTE_BASE/www/cgi-bin/api.cgi $REMOTE_BASE/boot_setup.sh $REMOTE_BASE/disable_xiaomi.sh $REMOTE_BASE/apply_vap.sh 2>/dev/null"
 
     # Setup authentication
@@ -72,18 +77,16 @@ setup_persistence() {
         }
     "
 
-    # Firewall include for Xiaomi service killer
+    # Cron: disable_xiaomi.sh runs every 3 min (firewall include runs too early
+    # at boot, before services start — cron catches them after they're up)
     $SSH_CMD "
-        uci get firewall.disable_xiaomi > /dev/null 2>&1 || {
-            uci set firewall.disable_xiaomi=include
-            uci set firewall.disable_xiaomi.type='script'
-            uci set firewall.disable_xiaomi.path='${REMOTE_BASE}/disable_xiaomi.sh'
-            uci set firewall.disable_xiaomi.enabled='1'
-            uci commit firewall
-        }
+        if ! grep -q 'dashboard/disable_xiaomi' /etc/crontabs/root 2>/dev/null; then
+            echo '*/3 * * * * ${REMOTE_BASE}/disable_xiaomi.sh' >> /etc/crontabs/root
+            /etc/init.d/cron restart 2>/dev/null || true
+        fi
     "
 
-    # Cron fallback (runs every 2 min, catches manual kills)
+    # Cron fallback: boot_setup.sh every 2 min (keeps uhttpd alive)
     $SSH_CMD "
         if ! grep -q 'dashboard/boot_setup' /etc/crontabs/root 2>/dev/null; then
             echo '*/2 * * * * ${REMOTE_BASE}/boot_setup.sh' >> /etc/crontabs/root
