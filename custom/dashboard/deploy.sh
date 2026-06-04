@@ -44,7 +44,7 @@ do_deploy() {
     log "Starting uhttpd on port 8081..."
     $SSH_CMD "sh $REMOTE_BASE/boot_setup.sh"
 
-    setup_persistence
+    setup_persistence || log "WARNING: persistence setup had issues (check manually)"
 
     log ""
     log "============================================"

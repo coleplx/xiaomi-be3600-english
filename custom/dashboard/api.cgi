@@ -58,11 +58,13 @@ json_esc() {
 
 # Format bytes to human readable
 fmt_size() {
-    local kb="$1"
+    local kb="$1" val
     if [ "$kb" -gt 1048576 ]; then
-        printf "%.1f GB" "$(echo "scale=1; $kb / 1048576" | bc 2>/dev/null || echo "?")"
+        val=$(echo "scale=1; $kb / 1048576" | bc 2>/dev/null)
+        [ -n "$val" ] && printf "%.1f GB" "$val" || echo "? GB"
     elif [ "$kb" -gt 1024 ]; then
-        printf "%.1f MB" "$(echo "scale=1; $kb / 1024" | bc 2>/dev/null || echo "?")"
+        val=$(echo "scale=1; $kb / 1024" | bc 2>/dev/null)
+        [ -n "$val" ] && printf "%.1f MB" "$val" || echo "? MB"
     else
         printf "%d KB" "$kb"
     fi
@@ -741,15 +743,17 @@ action_create_wifi_vap() {
         uci commit wireless
         sh /data/dashboard/apply_vap.sh create "$idx1" >/dev/null 2>&1 &
         sh /data/dashboard/apply_vap.sh create "$idx2" >/dev/null 2>&1 &
-        # Wait for both result files (30s timeout each is too long — 15s each, sequential)
-        local r1=$(_wait_vap_result "$idx1" 30)
-        local r2=$(_wait_vap_result "$idx2" 30)
+        local r1=$(_wait_vap_result "$idx1" 45)
+        local r2=$(_wait_vap_result "$idx2" 45)
         local ok1=0; local ok2=0
         case "$r1" in OK*) ok1=1 ;; esac
         case "$r2" in OK*) ok2=1 ;; esac
+        # Read ifnames from UCI (set by apply_vap.sh) — reliable regardless of timing
+        local if_2g=$(uci -q get "wireless.${idx1}.ifname" 2>/dev/null)
+        local if_5g=$(uci -q get "wireless.${idx2}.ifname" 2>/dev/null)
         if [ $ok1 -eq 1 ] && [ $ok2 -eq 1 ]; then
             printf '{"code":0,"msg":"VAP %s created on both bands","ifname_2g":"%s","ifname_5g":"%s"}' \
-                "$(json_esc "$ssid_val")" "$(json_esc "${r1#OK }")" "$(json_esc "${r2#OK }")"
+                "$(json_esc "$ssid_val")" "$(json_esc "${if_2g:-?}")" "$(json_esc "${if_5g:-?}")"
         else
             printf '{"code":1,"msg":"Partial failure: 2G=%s 5G=%s"}' "$(json_esc "$r1")" "$(json_esc "$r2")"
         fi
@@ -769,10 +773,11 @@ action_create_wifi_vap() {
         uci set "wireless.${idx}.extra_wifi_group=${ssid_val}"
         uci commit wireless
         sh /data/dashboard/apply_vap.sh create "$idx" >/dev/null 2>&1 &
-        local result=$(_wait_vap_result "$idx" 30)
+        local result=$(_wait_vap_result "$idx" 60)
+        local ifname=$(uci -q get "wireless.${idx}.ifname" 2>/dev/null)
         case "$result" in
             OK*) printf '{"code":0,"msg":"VAP %s created","ifname":"%s"}' \
-                    "$(json_esc "$ssid_val")" "$(json_esc "${result#OK }")" ;;
+                    "$(json_esc "$ssid_val")" "$(json_esc "${ifname:-?}")" ;;
             *)   printf '{"code":1,"msg":"VAP creation failed: %s"}' "$(json_esc "$result")" ;;
         esac
     fi
@@ -780,11 +785,32 @@ action_create_wifi_vap() {
 
 action_delete_wifi_vap() {
     section=$(get_param "section")
-    [ -z "$section" ] && { printf '{"code":1,"msg":"Section name required"}'; return; }
+    ssid_val=$(get_param "ssid")
+    [ -z "$section" -a -z "$ssid_val" ] && { printf '{"code":1,"msg":"Section name or SSID required"}'; return; }
+
+    # Resolve section by SSID group if section name is stale (UCI renames on delete)
+    if [ -n "$section" ]; then
+        exists=$(uci -q get "wireless.${section}" 2>/dev/null)
+        [ -z "$exists" ] && section=""
+    fi
+    if [ -z "$section" ] && [ -n "$ssid_val" ]; then
+        # Find by extra_wifi_group tag (stable across renames)
+        tmpf="/tmp/api_del_ssid_$$.tmp"
+        uci -X show wireless 2>/dev/null | grep '=wifi-iface' > "$tmpf"
+        while IFS='=' read -r sec _; do
+            [ -z "$sec" ] && continue
+            local sname=$(echo "$sec" | cut -d'.' -f2)
+            [ -z "$sname" ] && continue
+            local grp=$(uci -q get "wireless.${sname}.extra_wifi_group" 2>/dev/null || echo "")
+            [ "$grp" = "$ssid_val" ] && { section="$sname"; break; }
+        done < "$tmpf"
+        rm -f "$tmpf"
+    fi
+    [ -z "$section" ] && { printf '{"code":1,"msg":"VAP not found"}'; return; }
 
     # Protect core VAPs
     case "$section" in
-        miot_*|bh_ap_*|bhsta_*|[012]) printf '{"code":1,"msg":"Cannot delete core VAP"}'; return ;;
+        miot_*|bh_ap_*|bhsta_*) printf '{"code":1,"msg":"Cannot delete core VAP"}'; return ;;
     esac
 
     exists=$(uci -q get "wireless.${section}" 2>/dev/null)

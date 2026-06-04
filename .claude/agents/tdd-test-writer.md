@@ -15,8 +15,8 @@ Write a failing test that verifies the requested feature behavior.
 ## Process
 
 1. Understand the feature requirement from the prompt.
-2. Write a test in the project's test location (see CUSTOMIZE below).
-3. Run the test command to verify it FAILS.
+2. Write a test in `tests/unit/` (pure logic) or `tests/integration/` (router SSH).
+3. Run `bats tests/` to verify it FAILS.
 4. Return the test file path and the failure output.
 
 ## Requirements
@@ -36,15 +36,11 @@ Return:
 
 ---
 
-## CUSTOMIZE FOR YOUR PROJECT
+## Project conventions
 
-Replace the placeholders below to match your stack. Delete this section once filled in.
-
-- **Test command:** `<TEST_COMMAND>` — e.g. `npm test --`, `pnpm test:unit`,
-  `pytest`, `go test ./...`, `cargo test`, `bundle exec rspec`.
-- **Test location:** `<TEST_DIR>` — e.g. `src/__tests__/`, `tests/`, `spec/`,
-  `*_test.go` next to source.
-- **Test framework conventions:** describe your assertion library, fixtures, and
-  any shared setup helper (e.g. a `createTestApp()` / `renderWithProviders()` helper)
-  so tests stay consistent. Consider capturing these in a dedicated
-  `project-testing-conventions` skill and referencing it in the frontmatter above.
+- **Test command:** `bats tests/`
+- **Test location:** `tests/unit/` for pure logic, `tests/integration/` for router SSH tests
+- **Fixtures:** `tests/fixtures/` — extracted helper functions for unit testing
+- **Helpers:** `tests/helpers.bash` — mock utilities shared across tests
+- Shell scripts are POSIX (BusyBox ash), not bash. Tests use bats with bash.
+- Router-dependent commands (uci, iw, hostapd) must be mocked or tested via SSH integration.
