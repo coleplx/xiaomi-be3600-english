@@ -1,5 +1,5 @@
 # Xiaomi BE3600 Router — Technical Knowledge Base
-# Last updated: 2026-06-03 (factory reset verification, test framework, apply_vap fixes)
+# Last updated: 2026-06-04 (VLAN DHCP, MAC collision, boot persistence, WPS stripping)
 
 ## Hardware
 - Xiaomi BE3600 (RD15, model_number=0002)
@@ -268,6 +268,37 @@ iw dev wlXX station dump | grep -E 'rx bitrate|tx bitrate'  # per-client rate
 | hostapd with broken config | exit 1, stderr has errors, no SSID | apply_vap.sh captures stderr |
 | WPA2 password < 8 chars | exit 1, config validation fails | apply_vap.sh captures stderr |
 | Missing bridge in config | exit 0, hostapd AUTO-CREATES the bridge — VAP works but isolated (no eth1.N uplink) | resolve_bridge() warns; not a blocker |
+| hostapd binary not found | exit 127, no SSID | process check catches |
+| ctrl_interface dir missing | hostapd creates it, works | Not a failure |
+| ctrl_interface is a file | exit 1, fails | Not expected in practice |
+| Duplicate interface creation | `Invalid argument (-22)` | Collision check catches |
+| No hostapd after interface creation | VAP exists, NO SSID (invisible) | Retry + hostapd_alive() check |
+| Stale PID file | hostapd overwrites it | Not a failure |
+| Interface delete while hostapd running | iw dev del succeeds | Safe cleanup path |
+| `type ap` (single underscore) | FAILS — requires management daemon | `type __ap` required |
+
+## MAC Address Collision on VLAN Bridges
+
+When multiple VLAN bridges use the same MAC (inherited from eth1), the upstream DHCP server sees duplicate client MACs across VLANs and only issues one lease. Fix: assign each VLAN a unique MAC derived from base WAN MAC.
+
+```sh
+last_oct=$(printf '%02x' $((0x2f + VLAN_ID)))
+new_mac="cc:d8:43:1d:3e:$last_oct"
+```
+
+Set on eth1.VLAN subinterface FIRST, then bridge. Store in UCI. Must be reapplied at boot (boot_setup.sh handles this).
+
+## DHCP IP Display in Dashboard
+
+DHCP interfaces (proto=dhcp) have no ipaddr/netmask in UCI — those come from runtime. api.cgi now reads runtime IP from the bridge (`ip -o addr show br-<name>`) and converts CIDR to dotted-quad netmask. Also applies to all proto=dhcp interfaces.
+
+## global hostapd Ifname Reassignment
+
+The global hostapd reassigns ifnames at EVERY boot. apply_vap.sh's carefully chosen ifnames are overwritten. UCI gets updated to match. This is unavoidable — the Qualcomm driver assigns ifnames based on its internal state. Solution: accept whatever ifnames the global hostapd assigns, strip WPS from its configs, restart dead VAPs with apply_vap.sh. Do not fight for ifname control.
+
+## VAP Link Rate Delay (Observed)
+
+Multiple 5GHz VAPs with identical configs showed different link rates after creation — only one negotiated 2882 Mbps. After several minutes, all reached max rate. Root cause unknown (not confirmed as ACS). Diagnose with: `iw dev wlXX station dump | grep 'rx bitrate\|tx bitrate'`
 | hostapd binary not found | exit 127, no SSID | process check catches |
 | ctrl_interface dir missing | hostapd creates it, works | Not a failure |
 | ctrl_interface is a file | exit 1, fails | Not expected in practice |
