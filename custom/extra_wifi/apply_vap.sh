@@ -1,17 +1,39 @@
 #!/bin/sh
 # apply_vap.sh - Lightweight VAP management (no wifi lock)
 # Generates hostapd config from scratch (no template dependency)
-# Usage: apply_vap.sh create|delete <uci_section> [ifname_override]
+# Usage: apply_vap.sh create|delete|update <uci_section> [ifname_override]
 
 BASE="/data/extra_wifi"
 ACTION="$1"
 SECTION="$2"
 EXTRA_IFNAME="$3"
 
-[ -z "$SECTION" ] && { echo "Usage: $0 create|delete <section>"; exit 1; }
+[ -z "$SECTION" ] && { echo "Usage: $0 create|delete|update <section>"; exit 1; }
 
 log() { echo "[apply_vap] $*"; }
 g() { uci -q get "wireless.${SECTION}.${1}" 2>/dev/null; }
+
+# Write result so callers (api.cgi) can poll for completion
+write_result() {
+    echo "$1" > "/tmp/apply_vap_result.${SECTION}"
+}
+cleanup_result() {
+    rm -f "/tmp/apply_vap_result.${SECTION}"
+}
+
+# Check whether another (non-disabled) UCI section already claims this ifname
+ifname_collision() {
+    local ifname="$1"
+    uci -X show wireless 2>/dev/null | grep '=wifi-iface' | while IFS='=' read -r sec _; do
+        local sname=$(echo "$sec" | cut -d'.' -f2)
+        [ "$sname" = "$SECTION" ] && continue
+        local d=$(uci -q get "wireless.${sname}.disabled" 2>/dev/null || echo "0")
+        [ "$d" = "1" ] && continue
+        local n=$(uci -q get "wireless.${sname}.ifname" 2>/dev/null || echo "")
+        [ "$n" = "$ifname" ] && { echo "1"; return 0; }
+    done
+    echo "0"
+}
 
 gen_config() {
     local ifname="$1" radio="$2"
@@ -101,8 +123,25 @@ EOF
     echo "$conf"
 }
 
+cleanup_stale_pid() {
+    local ifname="$1"
+    local pidfile="/var/run/hostapd-${ifname}.pid"
+    if [ -f "$pidfile" ]; then
+        local stale_pid=$(cat "$pidfile" 2>/dev/null)
+        if [ -n "$stale_pid" ] && ! kill -0 "$stale_pid" 2>/dev/null; then
+            rm -f "$pidfile"
+        fi
+    fi
+}
+
 try_create_vap() {
     local ifname="$1" radio="$2" ssid="$3"
+
+    # Check for UCI ifname collision (skip disabled sections)
+    if [ "$(ifname_collision "$ifname")" = "1" ]; then
+        log "SKIP $ifname: collision with another active UCI section"
+        return 1
+    fi
 
     rm -f "/var/run/hostapd-${radio}/${ifname}"
 
@@ -111,6 +150,7 @@ try_create_vap() {
     local conf=$(gen_config "$ifname" "$radio")
     [ -z "$conf" ] && { iw dev "$ifname" del 2>/dev/null; return 1; }
 
+    cleanup_stale_pid "$ifname"
     local pidfile="/var/run/hostapd-${ifname}.pid"
     hostapd -B -P "$pidfile" "$conf" 2>/dev/null
     sleep 2
@@ -119,6 +159,7 @@ try_create_vap() {
         return 0
     fi
 
+    # Failed — clean up
     kill $(cat "$pidfile" 2>/dev/null) 2>/dev/null
     sleep 1
     iw dev "$ifname" del 2>/dev/null
@@ -128,12 +169,12 @@ try_create_vap() {
 
 do_create() {
     local radio=$(g device)
-    [ -z "$radio" ] && { log "ERROR: no device"; exit 1; }
+    [ -z "$radio" ] && { log "ERROR: no device"; write_result "FAIL no device"; exit 1; }
 
     local ssid=$(g ssid)
     local disabled=$(g disabled)
-    [ "$disabled" = "1" ] && { log "SKIP: ${SECTION} is disabled"; exit 0; }
-    [ -z "$ssid" ] && { log "ERROR: no ssid"; exit 1; }
+    [ "$disabled" = "1" ] && { log "SKIP: ${SECTION} is disabled"; write_result "SKIP disabled"; exit 0; }
+    [ -z "$ssid" ] && { log "ERROR: no ssid"; write_result "FAIL no ssid"; exit 1; }
 
     local radionum
     case "$radio" in
@@ -141,12 +182,10 @@ do_create() {
         wifi1) radionum=0 ;;
     esac
 
-    # Try suffixes 10-30, retrying on failure (driver caches deleted names)
     local suffix
     for suffix in 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30; do
         local ifname="wl${radionum}${suffix:1}"
 
-        # Skip if already existing
         iw dev "$ifname" info >/dev/null 2>&1 && continue
 
         log "Trying VAP $ifname on $radio (SSID: $ssid)"
@@ -154,7 +193,7 @@ do_create() {
             uci set "wireless.${SECTION}.ifname=${ifname}"
             uci commit wireless
             log "VAP $ifname started OK"
-            echo "OK $ifname"
+            write_result "OK $ifname"
             return 0
         fi
         log "VAP $ifname failed, trying next..."
@@ -162,13 +201,13 @@ do_create() {
     done
 
     log "ERROR: all suffixes 10-30 failed for $radio"
-    echo "FAIL"
+    write_result "FAIL all suffixes exhausted"
     exit 1
 }
 
 do_delete() {
     local ifname="${EXTRA_IFNAME:-$(g ifname)}"
-    [ -z "$ifname" ] && { log "SKIP: no ifname for $SECTION"; exit 0; }
+    [ -z "$ifname" ] && { log "SKIP: no ifname for $SECTION"; write_result "OK"; exit 0; }
 
     log "Deleting VAP $ifname (SSID: $(g ssid))"
 
@@ -180,14 +219,61 @@ do_delete() {
     brctl delif "br-vlan_"* "$ifname" 2>/dev/null
     iw dev "$ifname" del 2>/dev/null
 
-    rm -f "/var/run/hostapd-${ifname}.conf"           "/var/run/hostapd-${ifname}.pid"           "/var/run/hostapd-${ifname}.lock"           "/var/run/hostapd-wifi0/${ifname}"           "/var/run/hostapd-wifi1/${ifname}"
+    rm -f "/var/run/hostapd-${ifname}.conf" \
+          "/var/run/hostapd-${ifname}.pid" \
+          "/var/run/hostapd-${ifname}.lock" \
+          "/var/run/hostapd-wifi0/${ifname}" \
+          "/var/run/hostapd-wifi1/${ifname}"
 
     log "VAP $ifname deleted"
-    echo "OK"
+    write_result "OK"
 }
+
+do_update() {
+    local radio=$(g device)
+    local ssid=$(g ssid)
+    local disabled=$(g disabled)
+    [ "$disabled" = "1" ] && { log "SKIP: ${SECTION} is disabled"; write_result "SKIP disabled"; exit 0; }
+    [ -z "$radio" ] && { log "ERROR: no device"; write_result "FAIL no device"; exit 1; }
+
+    local ifname="${EXTRA_IFNAME:-$(g ifname)}"
+
+    # If ifname is empty or interface doesn't exist, fall back to create
+    if [ -z "$ifname" ] || ! iw dev "$ifname" info >/dev/null 2>&1; then
+        log "VAP $ifname missing, falling back to create"
+        do_create
+        return
+    fi
+
+    # Kill existing hostapd for this VAP
+    local pidfile="/var/run/hostapd-${ifname}.pid"
+    if [ -f "$pidfile" ]; then
+        kill $(cat "$pidfile") 2>/dev/null
+        sleep 1
+    fi
+
+    # Regenerate config and restart
+    local conf=$(gen_config "$ifname" "$radio")
+    [ -z "$conf" ] && { write_result "FAIL config gen"; exit 1; }
+
+    cleanup_stale_pid "$ifname"
+    hostapd -B -P "$pidfile" "$conf" 2>/dev/null
+    sleep 2
+
+    if iw dev "$ifname" info 2>/dev/null | grep -q "ssid ${ssid}"; then
+        log "VAP $ifname updated OK"
+        write_result "OK $ifname"
+    else
+        log "ERROR: update failed for $ifname, trying create"
+        do_create
+    fi
+}
+
+cleanup_result
 
 case "$ACTION" in
     create) do_create ;;
     delete) do_delete ;;
-    *) echo "Unknown action: $ACTION"; exit 1 ;;
+    update)  do_update ;;
+    *) echo "Unknown action: $ACTION"; write_result "FAIL unknown action"; exit 1 ;;
 esac

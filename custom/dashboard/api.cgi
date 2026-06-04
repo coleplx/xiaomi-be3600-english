@@ -666,7 +666,36 @@ action_edit_wifi_iface() {
 
     uci commit wireless
 
-    printf '{"code":0,"msg":"VAP %s updated. WiFi restart may be needed."}' "$(json_esc "$section")"
+    # If this is a user-managed VAP, apply changes at runtime
+    local extra=$(uci -q get "wireless.${section}.extra_wifi" 2>/dev/null || echo "0")
+    if [ "$extra" = "1" ]; then
+        sh /data/dashboard/apply_vap.sh update "$section" >/dev/null 2>&1 &
+        local result=$(_wait_vap_result "$section" 15)
+        case "$result" in
+            OK*) printf '{"code":0,"msg":"VAP %s updated and applied"}' "$(json_esc "$section")" ;;
+            *)   printf '{"code":1,"msg":"VAP config updated but apply failed: %s"}' "$(json_esc "$result")" ;;
+        esac
+    else
+        printf '{"code":0,"msg":"VAP %s updated. WiFi restart may be needed."}' "$(json_esc "$section")"
+    fi
+}
+
+# Wait for apply_vap.sh result file with timeout
+_wait_vap_result() {
+    local section="$1" timeout="$2"
+    local result_file="/tmp/apply_vap_result.${section}"
+    local waited=0
+    while [ $waited -lt $timeout ]; do
+        if [ -f "$result_file" ]; then
+            cat "$result_file"
+            rm -f "$result_file"
+            return 0
+        fi
+        sleep 1
+        waited=$((waited + 1))
+    done
+    rm -f "$result_file"
+    return 1
 }
 
 action_create_wifi_vap() {
@@ -698,6 +727,8 @@ action_create_wifi_vap() {
         uci set "wireless.${idx1}.encryption=${encryption_val}"
         uci set "wireless.${idx1}.disabled=0"
         [ -n "$key_val" ] && uci set "wireless.${idx1}.key=${key_val}"
+        uci set "wireless.${idx1}.extra_wifi=1"
+        uci set "wireless.${idx1}.extra_wifi_group=${ssid_val}"
         uci set "wireless.${idx2}.device=wifi1"
         uci set "wireless.${idx2}.network=${network_val}"
         uci set "wireless.${idx2}.mode=ap"
@@ -705,9 +736,23 @@ action_create_wifi_vap() {
         uci set "wireless.${idx2}.encryption=${encryption_val}"
         uci set "wireless.${idx2}.disabled=0"
         [ -n "$key_val" ] && uci set "wireless.${idx2}.key=${key_val}"
+        uci set "wireless.${idx2}.extra_wifi=1"
+        uci set "wireless.${idx2}.extra_wifi_group=${ssid_val}"
         uci commit wireless
         sh /data/dashboard/apply_vap.sh create "$idx1" >/dev/null 2>&1 &
         sh /data/dashboard/apply_vap.sh create "$idx2" >/dev/null 2>&1 &
+        # Wait for both result files (30s timeout each is too long — 15s each, sequential)
+        local r1=$(_wait_vap_result "$idx1" 30)
+        local r2=$(_wait_vap_result "$idx2" 30)
+        local ok1=0; local ok2=0
+        case "$r1" in OK*) ok1=1 ;; esac
+        case "$r2" in OK*) ok2=1 ;; esac
+        if [ $ok1 -eq 1 ] && [ $ok2 -eq 1 ]; then
+            printf '{"code":0,"msg":"VAP %s created on both bands","ifname_2g":"%s","ifname_5g":"%s"}' \
+                "$(json_esc "$ssid_val")" "$(json_esc "${r1#OK }")" "$(json_esc "${r2#OK }")"
+        else
+            printf '{"code":1,"msg":"Partial failure: 2G=%s 5G=%s"}' "$(json_esc "$r1")" "$(json_esc "$r2")"
+        fi
     else
         device="wifi0"
         [ "$band_val" = "5g" ] && device="wifi1"
@@ -720,11 +765,17 @@ action_create_wifi_vap() {
         uci set "wireless.${idx}.encryption=${encryption_val}"
         uci set "wireless.${idx}.disabled=0"
         [ -n "$key_val" ] && uci set "wireless.${idx}.key=${key_val}"
+        uci set "wireless.${idx}.extra_wifi=1"
+        uci set "wireless.${idx}.extra_wifi_group=${ssid_val}"
         uci commit wireless
         sh /data/dashboard/apply_vap.sh create "$idx" >/dev/null 2>&1 &
+        local result=$(_wait_vap_result "$idx" 30)
+        case "$result" in
+            OK*) printf '{"code":0,"msg":"VAP %s created","ifname":"%s"}' \
+                    "$(json_esc "$ssid_val")" "$(json_esc "${result#OK }")" ;;
+            *)   printf '{"code":1,"msg":"VAP creation failed: %s"}' "$(json_esc "$result")" ;;
+        esac
     fi
-
-    printf '{"code":0,"msg":"VAP %s created"}' "$(json_esc "$ssid_val")"
 }
 
 action_delete_wifi_vap() {
@@ -744,8 +795,11 @@ action_delete_wifi_vap() {
     uci commit wireless
 
     sh /data/dashboard/apply_vap.sh delete "$section" "$ifname_val" >/dev/null 2>&1 &
-
-    printf '{"code":0,"msg":"VAP deleted"}'
+    local result=$(_wait_vap_result "$section" 15)
+    case "$result" in
+        OK*) printf '{"code":0,"msg":"VAP deleted"}' ;;
+        *)   printf '{"code":1,"msg":"VAP cleanup issue: %s"}' "$(json_esc "$result")" ;;
+    esac
 }
 
 # ---------------------------------------------------------------------------
