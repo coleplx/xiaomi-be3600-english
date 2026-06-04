@@ -172,9 +172,18 @@ check_vaps() {
 
         [ -z "$section" ] && continue  # not our VAP
 
-        # Strip WPS and restart with clean config
-        if grep -q "manufacturer=xiaomi" "$conf" 2>/dev/null; then
-            log "Stripping Xiaomi WPS from $ifname (SSID: $(uci -q get "wireless.${section}.ssid"))"
+        # Global hostapd owns this VAP (no our PID). Verify it's actually broadcasting.
+        local ssid=$(uci -q get "wireless.${section}.ssid" 2>/dev/null || echo "")
+        local alive=0
+        [ -n "$ssid" ] && iw dev "$ifname" info 2>/dev/null | grep -q "ssid ${ssid}" && alive=1
+
+        if [ "$alive" = "0" ]; then
+            log "Restarting VAP $ifname (SSID: $ssid) — global hostapd didn't start it"
+            sh /data/dashboard/apply_vap.sh update "$section" >/dev/null 2>&1
+            sleep 2
+            fixed=$((fixed + 1))
+        elif grep -q "manufacturer=xiaomi" "$conf" 2>/dev/null; then
+            log "Stripping Xiaomi WPS from $ifname (SSID: $ssid)"
             sh /data/dashboard/apply_vap.sh update "$section" >/dev/null 2>&1
             sleep 2
             fixed=$((fixed + 1))
