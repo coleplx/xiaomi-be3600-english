@@ -229,6 +229,17 @@ The Qualcomm driver assigns ifnames as `wl<radioidx><suffix>`:
 - All standard router commands present: uci, iw, iwinfo, iwconfig, ifconfig, brctl, ip, iptables, hostapd, uhttpd, wpa_cli, hostapd_cli, killall, netstat
 - `ps` format: PID USER VSZ STAT COMMAND (BusyBox)
 - `bc` is MISSING — fmt_size() in api.cgi falls back to `? GB`/`? MB` for converted sizes
+- `iw dev $iface info` shows channel and width; `iw dev $iface station dump` shows per-client link rates
+
+## Observed: VAP Link Rate Delay After Creation
+
+Multiple 5GHz VAPs with identical hostapd configs (channel 44, 160MHz, EHT) showed different link rates immediately after creation — only one negotiated 2882 Mbps. After several minutes, all VAPs reached max rate. Configs were verified identical throughout.
+
+**Root cause unknown.** Not confirmed whether it was ACS settling, client-side caching, or driver behavior. To diagnose next time:
+```sh
+iw dev wlXX info | grep -E 'channel|width'    # AP-side view
+iw dev wlXX station dump | grep -E 'rx bitrate|tx bitrate'  # per-client rate
+```
 - `/etc/xiaoqiang_version` exists but is EMPTY on factory firmware — fw version falls through to "Unknown"
 - `uci add wireless wifi-iface` returns section names like `cfg0b3579`
 

@@ -436,6 +436,45 @@ action_list_ifaces() {
         itype=$(uci -q get "network.${iname}.type" 2>/dev/null || echo "")
         disabled=$(uci -q get "network.${iname}.disabled" 2>/dev/null || echo "0")
 
+        # For DHCP interfaces, read runtime IP from bridge (not in UCI)
+        if [ -z "$ipaddr" ] && [ "$proto" = "dhcp" ]; then
+            local br="br-${iname}"
+            local rt=$(ip -o addr show "$br" 2>/dev/null | grep -m1 'inet ' | awk '{print $4}')
+            if [ -n "$rt" ]; then
+                ipaddr="${rt%/*}"
+                local cidr="${rt#*/}"
+                # Convert CIDR to dotted quad (avoid using bc since it's missing)
+                case "$cidr" in
+                    32) netmask="255.255.255.255" ;;
+                    31) netmask="255.255.255.254" ;;
+                    30) netmask="255.255.255.252" ;;
+                    29) netmask="255.255.255.248" ;;
+                    28) netmask="255.255.255.240" ;;
+                    27) netmask="255.255.255.224" ;;
+                    26) netmask="255.255.255.192" ;;
+                    25) netmask="255.255.255.128" ;;
+                    24) netmask="255.255.255.0" ;;
+                    23) netmask="255.255.254.0" ;;
+                    22) netmask="255.255.252.0" ;;
+                    21) netmask="255.255.248.0" ;;
+                    20) netmask="255.255.240.0" ;;
+                    19) netmask="255.255.224.0" ;;
+                    18) netmask="255.255.192.0" ;;
+                    17) netmask="255.255.128.0" ;;
+                    16) netmask="255.255.0.0" ;;
+                    15) netmask="255.254.0.0" ;;
+                    14) netmask="255.252.0.0" ;;
+                    13) netmask="255.248.0.0" ;;
+                    12) netmask="255.240.0.0" ;;
+                    11) netmask="255.224.0.0" ;;
+                    10) netmask="255.192.0.0" ;;
+                    9)  netmask="255.128.0.0" ;;
+                    8)  netmask="255.0.0.0" ;;
+                    *)  netmask="$cidr" ;;
+                esac
+            fi
+        fi
+
         # Resolve device display: ifname may be empty (wantype interfaces)
         device_display="$ifname"
         [ -z "$device_display" ] && [ -n "$wantype" ] && device_display="auto ($wantype)"
