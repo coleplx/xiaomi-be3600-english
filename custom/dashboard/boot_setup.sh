@@ -130,6 +130,48 @@ fix_vlan_macs() {
     [ $fixed -gt 0 ] && log "Fixed $fixed VLAN MAC addresses"
 }
 
+# Remove known Xiaomi bloat crons from /etc/crontabs/root
+# Runs on install and every boot — idempotent and safe.
+remove_bloat_crons() {
+    local changed=0
+    local tmp="/tmp/crontab_clean_$$"
+
+    # Match by the distinctive binary path in each cron line
+    cp /etc/crontabs/root "$tmp" 2>/dev/null || return 0
+
+    if grep -qF '/usr/sbin/startscene_crontab.lua' "$tmp" 2>/dev/null; then
+        grep -vF '/usr/sbin/startscene_crontab.lua' "$tmp" > "${tmp}.1"
+        mv "${tmp}.1" "$tmp"
+        changed=1
+    fi
+
+    if grep -qF '/usr/sbin/mobile_accel.sh' "$tmp" 2>/dev/null; then
+        grep -vF '/usr/sbin/mobile_accel.sh' "$tmp" > "${tmp}.1"
+        mv "${tmp}.1" "$tmp"
+        changed=1
+    fi
+
+    if grep -qF '/usr/sbin/otapredownload' "$tmp" 2>/dev/null; then
+        grep -vF '/usr/sbin/otapredownload' "$tmp" > "${tmp}.1"
+        mv "${tmp}.1" "$tmp"
+        changed=1
+    fi
+
+    if grep -qF 'sp_check.sh' "$tmp" 2>/dev/null; then
+        grep -vF 'sp_check.sh' "$tmp" > "${tmp}.1"
+        mv "${tmp}.1" "$tmp"
+        changed=1
+    fi
+
+    if [ "$changed" -eq 1 ]; then
+        mv "$tmp" /etc/crontabs/root
+        /etc/init.d/cron restart 2>/dev/null &
+        log "Removed Xiaomi bloat crons"
+    else
+        rm -f "$tmp" "${tmp}.1"
+    fi
+}
+
 # Health check: ensure all extra_wifi VAPs are running and WPS-free
 # The global hostapd recreates VAPs at boot with Xiaomi WPS in the config.
 # If our per-VAP hostapd is not running (no PID file), strip WPS and restart.
@@ -244,8 +286,36 @@ check_vaps() {
     [ $fixed -eq 0 ] && log "Health check: all $ok VAPs healthy"
 }
 
+# Populate default disabled-services list on first install.
+# Only writes if the file doesn't exist — preserves user customizations.
+disable_xiaomi_services_defaults() {
+    local list="/data/dashboard/.disabled_services"
+    [ -f "$list" ] && return 0
+
+    cat > "$list" <<'DISABLED_EOF'
+tbusd
+trafficd
+miio_client
+miot
+xqbc
+xq_info_sync_mqtt
+messagingagent.sh
+mosquitto
+smartcontroller
+cab_meshd
+xiaoqiang_sync
+milog
+miwifi-discovery
+netapi
+DISABLED_EOF
+    log "Default: all 14 Xiaomi services disabled"
+    return 0
+}
+
 apply_wifi_patches
 start_uhttpd
+remove_bloat_crons
+disable_xiaomi_services_defaults
 _wait_radios || true
 cleanup_zombies
 fix_vlan_macs

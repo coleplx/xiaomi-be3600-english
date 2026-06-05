@@ -44,6 +44,9 @@ do_deploy() {
     log "Starting uhttpd on port 8081..."
     $SSH_CMD "sh $REMOTE_BASE/boot_setup.sh"
 
+    log "Stopping Xiaomi background services..."
+    $SSH_CMD "sh $REMOTE_BASE/disable_xiaomi.sh"
+
     setup_persistence || log "WARNING: persistence setup had issues (check manually)"
 
     log ""

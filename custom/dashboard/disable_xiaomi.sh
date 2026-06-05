@@ -8,11 +8,27 @@ BLOCKLIST="/data/dashboard/.blocked_domains"
 DNSMASQ_BLOCK="/etc/dnsmasq.d/xiaomi-block.conf"
 
 # ── Stop disabled services ──
+# Maps init.d script names to process names (may differ: messagingagent.sh → messagingagent)
+svc_procname() {
+    case "$1" in
+        messagingagent.sh) echo "messagingagent" ;;
+        *) echo "$1" ;;
+    esac
+}
+
 if [ -f "$CONFIG" ]; then
     while read -r svc; do
         [ -z "$svc" ] && continue
         [ -f "/etc/init.d/$svc" ] || continue
+        # Try init.d stop first
         /etc/init.d/"$svc" stop 2>/dev/null
+        # Kill any remaining processes by PID (killall is unreliable on BusyBox)
+        pname=$(svc_procname "$svc")
+        pid=$(pidof "$pname" 2>/dev/null)
+        if [ -n "$pid" ]; then
+            kill -9 $pid 2>/dev/null
+            sleep 1
+        fi
     done < "$CONFIG"
 fi
 

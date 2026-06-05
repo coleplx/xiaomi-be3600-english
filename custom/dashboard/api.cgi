@@ -1800,15 +1800,15 @@ action_services() {
 
 
 # -- Bloat Crons ----------------------------------------------------
-BLOAT_CRONS="sp_check.sh:*/5 * * * * command -v sp_check.sh >/dev/null && sp_check.sh
-startscene_crontab.lua:* * * * * /usr/sbin/startscene_crontab.lua \x60/bin/date \"+%u %H:%M\"\x60
-otapredownload:1 3,4,5 * * * /usr/sbin/otapredownload >/dev/null 2>&1
-mobile_accel.sh:*/3 * * * * /usr/sbin/mobile_accel.sh check >/dev/null 2>&1"
+BLOAT_CRONS="sp_check.sh|*/5 * * * * command -v sp_check.sh >/dev/null && sp_check.sh
+startscene_crontab.lua|* * * * * /usr/sbin/startscene_crontab.lua \`/bin/date \"+%u %H:%M\"\`
+otapredownload|1 3,4,5 * * * /usr/sbin/otapredownload >/dev/null 2>&1
+mobile_accel.sh|*/3 * * * * /usr/sbin/mobile_accel.sh check >/dev/null 2>&1"
 
 action_list_bloat_crons() {
     printf '{"code":0,"data":{"crons":['
     local first=1
-    echo "$BLOAT_CRONS" | while IFS=':' read -r name line; do
+    echo "$BLOAT_CRONS" | while IFS='|' read -r name line; do
         [ -z "$name" ] && continue
         local active=0
         grep -qF "$line" /etc/crontabs/root 2>/dev/null && active=1
@@ -1826,8 +1826,7 @@ action_toggle_bloat_cron() {
     [ -z "$act" ] && { printf '{"code":1,"msg":"Action required"}'; return; }
 
     # Find the line for this cron
-    line=$(echo "$BLOAT_CRONS" | tr ':' '\n' | while read -r n; do
-        read -r l
+    line=$(echo "$BLOAT_CRONS" | while IFS='|' read -r n l; do
         [ "$n" = "$name" ] && echo "$l" && break
     done)
     [ -z "$line" ] && { printf '{"code":1,"msg":"Unknown cron: %s"}' "$(json_esc "$name")"; return; }
